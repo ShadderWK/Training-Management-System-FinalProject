@@ -1,0 +1,113 @@
+package controller
+
+import (
+	"net/http"
+
+	// "github.com/asaskevich/govalidator"
+	"github.com/gin-gonic/gin"
+	"github.com/ShadderWK/Training-Management-System-FinalProject/entity"
+)
+
+// POST /Question
+func CreateQuestion(c *gin.Context) {
+	var question		entity.Question
+	var member			entity.Member
+
+	if err := c.ShouldBindJSON(&question); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	if tx := entity.DB().Where("id = ?", question.MemberID).First(&member); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Member not found"})
+		return
+	}
+
+	// แทรกการ validate ไว้ช่วงนี้ของ controller
+	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
+	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	// 	return
+	// }
+
+	qus := entity.Question{
+		Title:			question.Title,
+		Detail:			question.Detail,
+		Member: 		member,
+	}
+
+	if err := entity.DB().Create(&qus).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusCreated, gin.H{"data": qus})
+}
+
+// GET /Question/:id
+func GetQuestion(c *gin.Context) {
+	var question entity.Question
+	id := c.Param("id")
+
+	if tx := entity.DB().Preload("Member").Where("id = ?", id).First(&question); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Question not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": question})
+}
+
+// GET /Questions
+func ListQuestions(c *gin.Context) {
+	var questions []entity.Question
+	if err := entity.DB().Preload("Member").Raw("SELECT * FROM questions").Find(&questions).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": questions})
+}
+
+// DELETE /Question/:id
+func DeleteQuestion(c *gin.Context) {
+	id := c.Param("id")
+
+	if tx := entity.DB().Exec("DELETE FROM questions WHERE id = ?", id); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Question not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": id})
+}
+
+// PATCH /Question
+func UpdateQuestion(c *gin.Context) {
+	var question		entity.Question
+	var member			entity.Member
+
+	if err := c.ShouldBindJSON(&question); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	if tx := entity.DB().Where("id = ?", question.MemberID).First(&member); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Member not found"})
+		return
+	}
+
+	// แทรกการ validate ไว้ช่วงนี้ของ controller
+	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
+	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	// 	return
+	// }
+
+	update := entity.Question{
+		Title:			question.Title,
+		Detail:			question.Detail,
+		Member: 		member,
+	}
+
+	if err := entity.DB().Where("id = ?", question.ID).Updates(&update).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusCreated, gin.H{"data": update})
+}

@@ -29,8 +29,19 @@ func SetupDatabase() {
   // Migrate the schema
 
   database.AutoMigrate(
+    // Actor
     &Admin{},
-    &Member{},)
+    &Member{},
+    &Employee{},
+    // Main Entity
+    &Course{},
+    &CourseRegistration{},
+    &PaymentStatus{},
+    &PaymentCheck {},
+    &Question{},
+    &Reply{},
+    &News{},
+  )
 
   db = database
 

@@ -6,7 +6,8 @@ import (
 
 type Admin struct {
 	gorm.Model
-	Name 		string
+	Email 		string
+	Name		string
 	Password	string
 
 	News		[]News `gorm:"foreignKey:AdminID"`

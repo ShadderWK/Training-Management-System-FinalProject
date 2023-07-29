@@ -4,6 +4,7 @@ import (
 	"os"
 	"github.com/ShadderWK/Training-Management-System-FinalProject/controller"
   	"github.com/ShadderWK/Training-Management-System-FinalProject/entity"
+	"github.com/ShadderWK/Training-Management-System-FinalProject/middlewares"
   	"github.com/gin-gonic/gin"
 )
 
@@ -25,73 +26,86 @@ func main() {
 
 	os.Remove("./TSM.db")
 	entity.SetupDatabase()
-  	r := gin.Default()
 
+  	r := gin.Default()
 	r.Use(CORSMiddleware())
 
-	//Admin
-	r.GET("/admin/:id", controller.GetAdmin)
-	r.GET("/admins", controller.ListAdmins)
+	router := r.Group("/") 
+	{
+		router.Use(middlewares.Authorizes())
+		{
+			//Admin
+			router.GET("/admin/:id", controller.GetAdmin)
+			router.GET("/admins", controller.ListAdmins)
 
-	//Employee
+			//Employee
+			router.GET("/employee/:id", controller.GetEmployee)
+			router.GET("/employees", controller.ListEmployees)
+			router.DELETE("/employee/:id", controller.DeleteEmployee)
+			router.PATCH("/employee", controller.UpdateEmployee)
+
+			//Member
+			router.GET("/member/:id", controller.GetMember)
+			router.GET("/members", controller.ListMembers)
+			router.DELETE("/member/:id", controller.DeleteMember)
+			router.PATCH("/member", controller.UpdateMember)
+
+			//PaymentStatus
+			router.GET("/payment_status/:id", controller.GetPaymentStatus)
+			router.GET("/payment_statuses", controller.ListPaymentStatuses)
+
+			//Course
+			router.POST("/course", controller.CreateCourse)
+			router.GET("/course/:id", controller.GetCourse)
+			router.GET("/courses", controller.ListCourses)
+			router.DELETE("/course/:id", controller.DeleteCourse)
+			router.PATCH("/course", controller.UpdateCourse)
+
+			//CourseRegistration
+			router.POST("/course_registration", controller.CreateCourseRegistration)
+			router.GET("/course_registration/:id", controller.GetCourseRegistration)
+			router.GET("/course_registrations", controller.ListCourseRegistrations)
+			router.DELETE("/course_registration/:id", controller.DeleteCourseRegistration)
+			router.PATCH("/course_registration", controller.UpdateCourseRegistration)
+
+			//News
+			router.POST("/news", controller.CreateNews)
+			router.GET("/news/:id", controller.GetNews)
+			router.GET("/news", controller.ListNews)
+			router.DELETE("/news/:id", controller.DeleteNews)
+			router.PATCH("/news", controller.UpdateNews)
+
+			//PaymentCheck
+			router.POST("/payment_check", controller.CreatePaymentCheck)
+			router.GET("/payment_check/:id", controller.GetPaymentCheck)
+			router.GET("/payment_checks", controller.ListPaymentChecks)
+			router.DELETE("/payment_check/:id", controller.DeletePaymentCheck)
+			router.PATCH("/payment_check", controller.UpdatePaymentCheck)
+
+			//Question
+			router.POST("/question", controller.CreateQuestion)
+			router.GET("/question/:id", controller.GetQuestion)
+			router.GET("/questions", controller.ListQuestions)
+			router.DELETE("/question/:id", controller.DeleteQuestion)
+			router.PATCH("/question", controller.UpdateQuestion)
+
+			//Reply
+			router.POST("/reply", controller.CreateReply)
+			router.GET("/reply/:id", controller.GetReply)
+			router.GET("/replies", controller.ListReplies)
+			router.DELETE("/reply/:id", controller.DeleteReply)
+			router.PATCH("/reply", controller.UpdateReply)
+		}
+	}
+
+	//Register
 	r.POST("/employee", controller.CreateEmployee)
-	r.GET("/employee/:id", controller.GetEmployee)
-	r.GET("/employees", controller.ListEmployees)
-	r.DELETE("/employee/:id", controller.DeleteEmployee)
-	r.PATCH("/employee", controller.UpdateEmployee)
-
-	//Member
 	r.POST("/member", controller.CreateMember)
-	r.GET("/member/:id", controller.GetMember)
-	r.GET("/members", controller.ListMembers)
-	r.DELETE("/member/:id", controller.DeleteMember)
-	r.PATCH("/member", controller.UpdateMember)
 
-	//PaymentStatus
-	r.GET("/payment_status/:id", controller.GetPaymentStatus)
-	r.GET("/payment_statuses", controller.ListPaymentStatuses)
-
-	//Course
-	r.POST("/course", controller.CreateCourse)
-	r.GET("/course/:id", controller.GetCourse)
-	r.GET("/courses", controller.ListCourses)
-	r.DELETE("/course/:id", controller.DeleteCourse)
-	r.PATCH("/course", controller.UpdateCourse)
-
-	//CourseRegistration
-	r.POST("/course_registration", controller.CreateCourseRegistration)
-	r.GET("/course_registration/:id", controller.GetCourseRegistration)
-	r.GET("/course_registrations", controller.ListCourseRegistrations)
-	r.DELETE("/course_registration/:id", controller.DeleteCourseRegistration)
-	r.PATCH("/course_registration", controller.UpdateCourseRegistration)
-
-	//News
-	r.POST("/news", controller.CreateNews)
-	r.GET("/news/:id", controller.GetNews)
-	r.GET("/news", controller.ListNews)
-	r.DELETE("/news/:id", controller.DeleteNews)
-	r.PATCH("/news", controller.UpdateNews)
-
-	//PaymentCheck
-	r.POST("/payment_check", controller.CreatePaymentCheck)
-	r.GET("/payment_check/:id", controller.GetPaymentCheck)
-	r.GET("/payment_checks", controller.ListPaymentChecks)
-	r.DELETE("/payment_check/:id", controller.DeletePaymentCheck)
-	r.PATCH("/payment_check", controller.UpdatePaymentCheck)
-
-	//Question
-	r.POST("/question", controller.CreateQuestion)
-	r.GET("/question/:id", controller.GetQuestion)
-	r.GET("/questions", controller.ListQuestions)
-	r.DELETE("/question/:id", controller.DeleteQuestion)
-	r.PATCH("/question", controller.UpdateQuestion)
-
-	//Reply
-	r.POST("/reply", controller.CreateReply)
-	r.GET("/reply/:id", controller.GetReply)
-	r.GET("/replies", controller.ListReplies)
-	r.DELETE("/reply/:id", controller.DeleteReply)
-	r.PATCH("/reply", controller.UpdateReply)
+	//Login
+	r.POST("/memberLogin", controller.LoginMember)
+	r.POST("/adminLogin", controller.LoginAdmin)
+	r.POST("/employeeLogin", controller.LoginEmployee)
 
   	// Run the server
   	r.Run()

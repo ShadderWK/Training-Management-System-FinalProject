@@ -21,7 +21,7 @@ function WelcomePage() {
           overflow: "hidden",
           backgroundSize: "cover",
           color: "#f5f5f5",
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url(${WelcomeBg})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url(https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80)`,
         }}
       >
         <Typography
@@ -39,7 +39,7 @@ function WelcomePage() {
           }}
         >
           <Link
-            to="Homepage"
+            to="role"
             style={{
               textDecoration: "none",
             }}
@@ -47,11 +47,11 @@ function WelcomePage() {
             <Button
               className="btn-signin"
               variant="contained"
-              startIcon={<LoginIcon sx={{ color: "#333" }} />}
+              startIcon={<LoginIcon sx={{ color: "#fff" }} />}
               style={{
-                color: "#333",
+                color: "#fff",
                 borderRadius: 20,
-                backgroundColor: "#fff",
+                backgroundColor: "#64ad6a",
                 padding: "18px 36px",
                 fontSize: "25px",
               }}
@@ -80,7 +80,7 @@ function WelcomePage() {
               style={{
                 color: "#fff",
                 borderRadius: 20,
-                backgroundColor: "#393a3c",
+                backgroundColor: "#12c9ff",
                 padding: "15px 30px",
                 fontSize: "15px",
               }}

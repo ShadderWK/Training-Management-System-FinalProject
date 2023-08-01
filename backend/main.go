@@ -41,14 +41,14 @@ func main() {
 			//Employee
 			router.GET("/employee/:id", controller.GetEmployee)
 			router.GET("/employees", controller.ListEmployees)
-			router.DELETE("/employee/:id", controller.DeleteEmployee)
-			router.PATCH("/employee", controller.UpdateEmployee)
+			router.DELETE("/delete-employee/:id", controller.DeleteEmployee)
+			router.PATCH("/update-employee", controller.UpdateEmployee)
 
 			//Member
 			router.GET("/member/:id", controller.GetMember)
 			router.GET("/members", controller.ListMembers)
-			router.DELETE("/member/:id", controller.DeleteMember)
-			router.PATCH("/member", controller.UpdateMember)
+			router.DELETE("/delete-member/:id", controller.DeleteMember)
+			router.PATCH("/update-member", controller.UpdateMember)
 
 			//PaymentStatus
 			router.GET("/payment_status/:id", controller.GetPaymentStatus)
@@ -58,43 +58,43 @@ func main() {
 			router.POST("/course", controller.CreateCourse)
 			router.GET("/course/:id", controller.GetCourse)
 			router.GET("/courses", controller.ListCourses)
-			router.DELETE("/course/:id", controller.DeleteCourse)
-			router.PATCH("/course", controller.UpdateCourse)
+			router.DELETE("/delete-course/:id", controller.DeleteCourse)
+			router.PATCH("/update-course", controller.UpdateCourse)
 
 			//CourseRegistration
 			router.POST("/course_registration", controller.CreateCourseRegistration)
 			router.GET("/course_registration/:id", controller.GetCourseRegistration)
 			router.GET("/course_registrations", controller.ListCourseRegistrations)
-			router.DELETE("/course_registration/:id", controller.DeleteCourseRegistration)
-			router.PATCH("/course_registration", controller.UpdateCourseRegistration)
+			router.DELETE("/delete-course_registration/:id", controller.DeleteCourseRegistration)
+			router.PATCH("/update-course_registration", controller.UpdateCourseRegistration)
 
 			//News
 			router.POST("/news", controller.CreateNews)
 			router.GET("/news/:id", controller.GetNews)
 			router.GET("/news", controller.ListNews)
-			router.DELETE("/news/:id", controller.DeleteNews)
-			router.PATCH("/news", controller.UpdateNews)
+			router.DELETE("/delete-news/:id", controller.DeleteNews)
+			router.PATCH("/update-news", controller.UpdateNews)
 
 			//PaymentCheck
 			router.POST("/payment_check", controller.CreatePaymentCheck)
 			router.GET("/payment_check/:id", controller.GetPaymentCheck)
 			router.GET("/payment_checks", controller.ListPaymentChecks)
-			router.DELETE("/payment_check/:id", controller.DeletePaymentCheck)
-			router.PATCH("/payment_check", controller.UpdatePaymentCheck)
+			router.DELETE("/delete-payment_check/:id", controller.DeletePaymentCheck)
+			router.PATCH("/update-payment_check", controller.UpdatePaymentCheck)
 
 			//Question
 			router.POST("/question", controller.CreateQuestion)
 			router.GET("/question/:id", controller.GetQuestion)
 			router.GET("/questions", controller.ListQuestions)
-			router.DELETE("/question/:id", controller.DeleteQuestion)
-			router.PATCH("/question", controller.UpdateQuestion)
+			router.DELETE("/delete-question/:id", controller.DeleteQuestion)
+			router.PATCH("/update-question", controller.UpdateQuestion)
 
 			//Reply
 			router.POST("/reply", controller.CreateReply)
 			router.GET("/reply/:id", controller.GetReply)
 			router.GET("/replies", controller.ListReplies)
-			router.DELETE("/reply/:id", controller.DeleteReply)
-			router.PATCH("/reply", controller.UpdateReply)
+			router.DELETE("/delete-reply/:id", controller.DeleteReply)
+			router.PATCH("/update-reply", controller.UpdateReply)
 		}
 	}
 

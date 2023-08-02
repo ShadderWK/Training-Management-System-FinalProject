@@ -38,6 +38,7 @@ function WelcomePage() {
             gap: 5,
           }}
         >
+          {/* ปุ่มเข้าสู่ระบบ */}
           <Link
             to="role"
             style={{
@@ -45,7 +46,6 @@ function WelcomePage() {
             }}
           >
             <Button
-              className="btn-signin"
               variant="contained"
               startIcon={<LoginIcon sx={{ color: "#fff" }} />}
               style={{
@@ -61,6 +61,7 @@ function WelcomePage() {
           </Link>
         </Box>
 
+        {/* ปุ่มสมาชิก */}
         <Box
           sx={{
             display: "flex",

@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Box, Button, Typography, Grid, Paper, Avatar } from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useEffect } from "react";
+import PersonIcon from "@mui/icons-material/Person";
 import FaceIcon from "@mui/icons-material/Face";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 
 import RolePageBg from "../image/RolePageBg.jpg";
 
@@ -68,7 +69,7 @@ function Role() {
                 gap: 5,
               }}
             >
-              {/* Member */}
+              {/* ปุ่มสมาชิก */}
               <Link
                 to="member"
                 style={{
@@ -78,7 +79,7 @@ function Role() {
                 <Button
                   className="btn-member"
                   variant="contained"
-                  startIcon={<AccountCircleIcon sx={{ color: "#fff" }} />}
+                  startIcon={<PersonIcon sx={{ color: "#fff" }} />}
                   style={{
                     color: "#fff",
                     borderRadius: 20,
@@ -91,7 +92,7 @@ function Role() {
                 </Button>
               </Link>
 
-              {/* Employee */}
+              {/* ปุ่มพนักงาน */}
               <Link
                 to="employee"
                 style={{
@@ -101,7 +102,7 @@ function Role() {
                 <Button
                   className="btn-employee"
                   variant="contained"
-                  startIcon={<AccountCircleIcon sx={{ color: "#fff" }} />}
+                  startIcon={<ManageAccountsIcon sx={{ color: "#fff" }} />}
                   style={{
                     color: "#fff",
                     borderRadius: 20,
@@ -114,6 +115,8 @@ function Role() {
                 </Button>
               </Link>
             </Box>
+
+            {/* ปุ่มถอยกลับ */}
             <Box>
               <Link
                 to="/"

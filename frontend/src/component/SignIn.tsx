@@ -1,19 +1,25 @@
+import "../App.css";
 import React, { useEffect, useState } from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import { Link } from "react-router-dom";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Paper,
+  Box,
+  Grid,
+  createTheme,
+  ThemeProvider,
+  Snackbar,
+} from "@mui/material";
+
 import LoginIcon from "@mui/icons-material/Login";
 import Typography from "@mui/material/Typography";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 import { SignInInterface } from "../interface/ISignIn";
-import "../App.css";
-import { Link, useLocation } from "react-router-dom";
+
 import LoginPageBg from "../image/LoginPageBg.jpg";
 
 const theme = createTheme({
@@ -41,19 +47,6 @@ function SignIn({ loginRole }: Prop) {
   const [signin, setSignin] = useState<Partial<SignInInterface>>({});
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
-  const [openEmployee, setOpenEmployee] = useState(false);
-  const [openMember, setOpenMember] = useState(false);
-
-  const location = useLocation();
-
-  const checkLocation = () => {
-    location.pathname === "/employee" && setOpenEmployee(!openEmployee);
-    location.pathname === "/member" && setOpenMember(!openMember);
-  };
-
-  useEffect(() => {
-    checkLocation();
-  }, []);
 
   const handleInputChange = (
     event: React.ChangeEvent<{ id?: string; value: any }>
@@ -160,6 +153,7 @@ function SignIn({ loginRole }: Prop) {
                 เข้าสู่ระบบ
               </Typography>
               <Box sx={{ mt: 1, flexDirection: "column" }}>
+                {/* ช่องใส่อีเมล */}
                 <TextField
                   margin="normal"
                   required
@@ -172,6 +166,8 @@ function SignIn({ loginRole }: Prop) {
                   value={signin.Email || ""}
                   onChange={handleInputChange}
                 />
+
+                {/* ช่องใส่รหัสผ่าน */}
                 <TextField
                   margin="normal"
                   required

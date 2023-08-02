@@ -12,6 +12,10 @@ import {
 import LogoutIcon from "@mui/icons-material/Logout";
 
 function Navbar() {
+  const Logout = () => {
+    localStorage.clear();
+    window.location.href = "/";
+  };
   return (
     <AppBar position="static">
       <Toolbar>
@@ -34,7 +38,7 @@ function Navbar() {
               variant="contained"
               style={{
                 color: "#333",
-                borderRadius: 20,
+                borderRadius: 10,
                 backgroundColor: "#fff",
                 padding: "5px 15px",
                 fontSize: "15px",
@@ -47,7 +51,7 @@ function Navbar() {
               variant="contained"
               style={{
                 color: "#333",
-                borderRadius: 20,
+                borderRadius: 10,
                 backgroundColor: "#fff",
                 padding: "2px 15px",
                 fontSize: "15px",
@@ -60,7 +64,7 @@ function Navbar() {
               variant="contained"
               style={{
                 color: "#333",
-                borderRadius: 20,
+                borderRadius: 10,
                 backgroundColor: "#fff",
                 padding: "2px 15px",
                 fontSize: "15px",
@@ -73,7 +77,7 @@ function Navbar() {
               variant="contained"
               style={{
                 color: "#333",
-                borderRadius: 20,
+                borderRadius: 10,
                 backgroundColor: "#fff",
                 padding: "2px 15px",
                 fontSize: "15px",
@@ -84,18 +88,18 @@ function Navbar() {
             </Button>
           </Box>
         </Stack>
-        <Box position={"absolute"} right="0">
+        <Box position={"absolute"} right="0" sx={{ marginX: 3 }}>
           <Button
-            startIcon={<LogoutIcon sx={{ color: "#333" }} />}
+            startIcon={<LogoutIcon sx={{ color: "#fff" }} />}
             variant="contained"
             style={{
-              color: "#333",
-              borderRadius: 20,
-              backgroundColor: "#fff",
+              color: "#fff",
+              borderRadius: 10,
+              backgroundColor: "#CD5C5C",
               padding: "2px 15px",
               fontSize: "15px",
             }}
-            href="/"
+            onClick={Logout}
           >
             ออกจากระบบ
           </Button>

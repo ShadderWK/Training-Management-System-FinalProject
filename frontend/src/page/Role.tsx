@@ -71,7 +71,7 @@ function Role() {
             >
               {/* ปุ่มสมาชิก */}
               <Link
-                to="member"
+                to="/member"
                 style={{
                   textDecoration: "none",
                 }}
@@ -94,7 +94,7 @@ function Role() {
 
               {/* ปุ่มพนักงาน */}
               <Link
-                to="employee"
+                to="/employee"
                 style={{
                   textDecoration: "none",
                 }}

@@ -17,9 +17,9 @@ function App() {
         <Route path="/role" element={<Role />} />
         <Route path="/homepage" element={<HomePage />}></Route>
         {/* Member */}
-        <Route path="role/member" element={<Member />}></Route>
+        <Route path="/member" element={<Member />}></Route>
         {/* Employee */}
-        <Route path="role/employee" element={<Employee />}></Route>
+        <Route path="/employee" element={<Employee />}></Route>
       </Routes>
     </div>
   );

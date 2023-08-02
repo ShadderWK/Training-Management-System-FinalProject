@@ -1,7 +1,6 @@
-import React from "react";
-import { Box, Button, Typography } from "@mui/material";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
+import React, { useEffect, useState } from "react";
+import { Box, Button, Typography, Grid, Paper } from "@mui/material";
+
 import HomePageBg from "../image/HomePageBg.jpg";
 import Navbar from "./Navbar";
 

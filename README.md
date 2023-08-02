@@ -1,1 +1,2 @@
-# Training-Management-System-FinalProject
+# Training Management System
+จัดทำโดย นายกันตพงศ์ เดชาเกียรติไกร B6311506

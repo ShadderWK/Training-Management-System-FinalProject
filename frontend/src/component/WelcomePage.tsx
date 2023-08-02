@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { useEffect } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import LoginIcon from "@mui/icons-material/Login";
@@ -7,6 +7,10 @@ import LoginIcon from "@mui/icons-material/Login";
 import WelcomeBg from "../image/WelcomeBg.jpg";
 
 function WelcomePage() {
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+
   return (
     <div>
       <Box

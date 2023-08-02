@@ -7,7 +7,6 @@ import { CourseInterface } from "../interface/ICourse";
 import { CourseRegistrationInterface } from "../interface/ICourseRegistration";
 import { NewsInterface } from "../interface/INews";
 import { PaymentCheckInterface } from "../interface/IPaymentCheck";
-import { PaymentStatusInterface } from "../interface/IPaymentStatus";
 import { QuestionInterface } from "../interface/IQuestion";
 import { ReplyInterface } from "../interface/IReply";
 

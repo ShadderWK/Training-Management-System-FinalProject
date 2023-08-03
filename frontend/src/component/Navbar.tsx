@@ -43,10 +43,11 @@ function Navbar() {
                 padding: "5px 15px",
                 fontSize: "15px",
               }}
-              href="/homepage"
+              href="/member/homepage"
             >
               หน้าแรก
             </Button>
+
             <Button
               variant="contained"
               style={{

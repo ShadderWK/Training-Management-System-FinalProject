@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SignIn from "../../component/SignIn";
 import { MemberLogin } from "../../service/HttpClientService";
 import HomePage from "../../component/HomePage";
+import Navbar from "../../component/Navbar";
 
 function Member() {
   const [token, setToken] = useState<String>("");
@@ -19,7 +20,7 @@ function Member() {
 
   return (
     <div>
-      <HomePage />
+      <Navbar />
     </div>
   );
 }

@@ -40,8 +40,7 @@ function Navbar() {
                 color: "#333",
                 borderRadius: 10,
                 backgroundColor: "#fff",
-                padding: "5px 15px",
-                fontSize: "15px",
+                fontSize: "10px",
               }}
               href="/member/homepage"
             >
@@ -54,8 +53,7 @@ function Navbar() {
                 color: "#333",
                 borderRadius: 10,
                 backgroundColor: "#fff",
-                padding: "2px 15px",
-                fontSize: "15px",
+                fontSize: "10px",
               }}
               href="/course-reg"
             >
@@ -67,8 +65,7 @@ function Navbar() {
                 color: "#333",
                 borderRadius: 10,
                 backgroundColor: "#fff",
-                padding: "2px 15px",
-                fontSize: "15px",
+                fontSize: "10px",
               }}
               href="/course"
             >
@@ -80,8 +77,7 @@ function Navbar() {
                 color: "#333",
                 borderRadius: 10,
                 backgroundColor: "#fff",
-                padding: "2px 15px",
-                fontSize: "15px",
+                fontSize: "10px",
               }}
               href="/question"
             >

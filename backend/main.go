@@ -68,7 +68,7 @@ func main() {
 			router.DELETE("/delete-course_registration/:id", controller.DeleteCourseRegistration)
 			router.PATCH("/update-course_registration", controller.UpdateCourseRegistration)
 
-			//News
+			//News 
 			router.POST("/news", controller.CreateNews)
 			router.GET("/news/:id", controller.GetNews)
 			router.GET("/news", controller.ListNews)

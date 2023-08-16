@@ -32,6 +32,7 @@ function HomePage() {
 
   return (
     <div>
+      <Navbar />
       <Box
         sx={{
           display: "flex",

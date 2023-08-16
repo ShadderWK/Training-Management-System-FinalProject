@@ -14,12 +14,12 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Welcome />} />
-        <Route path="/role" element={<Role />} />
+        <Route path="/sign-in" element={<Role />} />
 
         {/* Member */}
-        <Route path="member" element={<Member />}>
-          <Route path="homepage" element={<HomePage />}></Route>
-        </Route>
+        <Route path="/member" element={<Member />}></Route>
+        <Route path="/member/homepage" element={<HomePage />}></Route>
+
         {/* Employee */}
         <Route path="employee" element={<Employee />}></Route>
       </Routes>

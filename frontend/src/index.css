@@ -1,13 +1,73 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  /* Primary */
+  --primary-blue-d: #132653;
+  --primary-blue-pressed: #1d3a7c;
+  --primary-blue-main: #2b56ba;
+  --primary-blue-l1: #5980d9;
+  --primary-blue-l2: #97afe7;
+  --primary-blue-l3: #d6dff5;
+  --primary-b-pressed: #eae3d2;
+  --primary-b-main: #f9f5eb;
+
+  /* Neutral */
+  --neutral-black-d: #121212;
+  --neutral-black-main: #424242;
+  --neutral-black-l: #6a6a6a;
+  --neutral-black-disable: #bbbbbb;
+  --neutral-w-main: #fff;
+
+  /* Gray */
+  --gray-gd: #aaaaaa;
+  --gray-g-main: #dedede;
+  --gray-line-boarder: #f2f2f2;
+
+  /* Status */
+  /* Success */
+  --status-success: #52c41a;
+  --status-success-hover: #73d13d;
+  --status-success-active: #389e0d;
+  --status-success-outline: rgb(82, 196, 26, 0.2);
+  --status-success-bg: #f6ffed;
+  --status-success-d-boarder: #b7eb8f;
+
+  /* Warning */
+  --status-warning: #faad14;
+  --status-warning-hover: #ffc53d;
+  --status-warning-active: #d48806;
+  --status-warning-outline: rgb(250, 173, 20, 0.2);
+  --status-warning-bg: #fffbe6;
+  --status-warning-d-boarder: #ffe58f;
+
+  /* Error */
+  --status-error: #ff4d4f;
+  --status-error-hover: #ff7875;
+  --status-error-active: #d9363e;
+  --status-error-outline: rgb(255, 77, 79, 0.2);
+  --status-error-bg: #fff2f0;
+  --status-error-d-boarder: #ffccc7;
+
+  /* Info */
+  --status-info: #1890ff;
+  --status-info-hover: #40a9ff;
+  --status-info-active: #096dd9;
+  --status-info-outline: rgb(24, 144, 255, 0.2);
+  --status-info-bg: #e6f7ff;
+  --status-info-d-boarder: #91d5ff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans Thai", "sans-serif";
+  font-weight: 700;
+}
+
+/* *,
+*::after,
+*::before {
+  box-sizing: border-box;
+} */
+
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
 }

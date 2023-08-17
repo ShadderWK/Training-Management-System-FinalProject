@@ -1,0 +1,78 @@
+.wrapper-login {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  min-height: 100vh;
+  min-width: 100vw;
+  gap: 92px;
+}
+
+.img-login {
+  width: 768px;
+  height: 480px;
+}
+
+.form-login {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header-memlogin {
+  color: var(--primary-blue-main);
+  font-size: 32px;
+  margin: 0;
+}
+
+.header-adminlogin {
+  color: var(--primary-blue-main);
+  font-size: 32px;
+  margin: 0;
+  justify-content: center;
+  display: flex;
+}
+
+.text-and-input {
+  gap: 8px;
+}
+
+.text-login {
+  color: var(--neutral-black-l);
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.input-login {
+  border: none;
+  border-bottom: 1px solid var(--neutral-black-disable);
+  height: 35px;
+  padding: 0px 20px;
+  width: 400px;
+  font-family: IBM Plex Sans Thai;
+  font-size: 24px;
+  color: var(--neutral-black-main);
+}
+
+.btn-login {
+  background: var(--primary-blue-main);
+  height: 40px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 22px 44px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 24px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.btn-login:hover {
+  background: var(--primary-blue-pressed);
+}

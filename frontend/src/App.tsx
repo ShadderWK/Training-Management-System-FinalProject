@@ -2,7 +2,8 @@ import React from "react";
 import { Router, Routes, Route, Link } from "react-router-dom";
 
 //Page
-import Role from "../src/page/Role";
+import Member from "./page/login/Member";
+import Admin from "./page/login/Admin";
 import Register from "./page/register/Register";
 //Component
 import Topbar from "./component/TopBar/Topbar";
@@ -12,7 +13,8 @@ function App() {
     <div>
       <Routes>
         <Route path="" element={<Topbar />} />
-        <Route path="sign-in" element={<Role />} />
+        <Route path="member" element={<Member />} />
+        <Route path="admin" element={<Admin />} />
         <Route path="register" element={<Register />} />
       </Routes>
     </div>

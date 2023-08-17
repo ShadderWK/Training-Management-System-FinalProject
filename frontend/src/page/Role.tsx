@@ -6,7 +6,7 @@ import FaceIcon from "@mui/icons-material/Face";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 
 import RolePageBg from "../image/RolePageBg.jpg";
-import Topbar from "../component/TopBar/Topbar";
+import TopbarSignIn from "../component/TopBar/TopbarSignIn";
 
 function Role() {
   useEffect(() => {
@@ -15,7 +15,7 @@ function Role() {
 
   return (
     <div>
-      <Topbar />
+      <TopbarSignIn />
       <Box
         sx={{
           display: "flex",

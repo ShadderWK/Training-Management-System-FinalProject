@@ -18,7 +18,7 @@ import {
 import LoginIcon from "@mui/icons-material/Login";
 import Typography from "@mui/material/Typography";
 
-import { SignInInterface } from "../interface/ISignIn";
+import { SignInInterface } from "../interfaces/ISignIn";
 
 import LoginPageBg from "../image/LoginPageBg.jpg";
 

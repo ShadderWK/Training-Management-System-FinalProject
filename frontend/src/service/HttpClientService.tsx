@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { SignInInterface } from "../interface/ISignIn";
-import { AdminInterface } from "../interface/IAdmin";
-import { MemberInterface } from "../interface/IMember";
-import { EmployeeInterface } from "../interface/IEmployee";
-import { CourseInterface } from "../interface/ICourse";
-import { CourseRegistrationInterface } from "../interface/ICourseRegistration";
-import { NewsInterface } from "../interface/INews";
-import { PaymentCheckInterface } from "../interface/IPaymentCheck";
-import { QuestionInterface } from "../interface/IQuestion";
-import { ReplyInterface } from "../interface/IReply";
+import { SignInInterface } from "../interfaces/ISignIn";
+import { AdminInterface } from "../interfaces/IAdmin";
+import { MemberInterface } from "../interfaces/IMember";
+import { EmployeeInterface } from "../interfaces/IEmployee";
+import { CourseInterface } from "../interfaces/ICourse";
+import { CourseRegistrationInterface } from "../interfaces/ICourseRegistration";
+import { NewsInterface } from "../interfaces/INews";
+import { PaymentCheckInterface } from "../interfaces/IPaymentCheck";
+import { QuestionInterface } from "../interfaces/IQuestion";
+import { ReplyInterface } from "../interfaces/IReply";
 
 const apiUrl = `http://localhost:8080`;
 

@@ -16,7 +16,7 @@ import CardNews from "./CardNews";
 
 import { GetNews } from "../service/HttpClientService";
 
-import { NewsInterface } from "../interface/INews";
+import { NewsInterface } from "../interfaces/INews";
 
 function HomePage() {
   const [news, setNews] = useState<NewsInterface[]>([]);

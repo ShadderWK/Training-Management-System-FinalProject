@@ -1,8 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Topbar.css";
 
-function Topbar() {
+function TopbarSignIn() {
   return (
     <nav className="topbar">
       <a className="title" href="/">
@@ -11,21 +10,19 @@ function Topbar() {
 
       <ul className="topUl">
         <li>
-          <Link to="/sign-in">
-            <a>เข้าสู่ระบบ</a>
-          </Link>
+          <a href="sign-in" className="topbarActive">
+            เข้าสู่ระบบ
+          </a>
         </li>
 
         <span>|</span>
 
         <li>
-          <Link to="/register">
-            <a>สมัครสมาชิก</a>
-          </Link>
+          <a href="register">สมัครสมาชิก</a>
         </li>
       </ul>
     </nav>
   );
 }
 
-export default Topbar;
+export default TopbarSignIn;

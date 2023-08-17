@@ -55,17 +55,17 @@
   --status-info-d-boarder: #91d5ff;
 }
 
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "IBM Plex Sans Thai", "sans-serif";
   font-weight: 700;
 }
-
-/* *,
-*::after,
-*::before {
-  box-sizing: border-box;
-} */
 
 .wrapper {
   max-width: 1440px;

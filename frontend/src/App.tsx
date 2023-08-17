@@ -2,26 +2,18 @@ import React from "react";
 import { Router, Routes, Route, Link } from "react-router-dom";
 
 //Page
-import Welcome from "../src/page/Welcome";
 import Role from "../src/page/Role";
-import Member from "./page/login/Member";
-import Employee from "./page/login/Employee";
+import Register from "./page/register/Register";
 //Component
-import HomePage from "./component/HomePage";
+import Topbar from "./component/TopBar/Topbar";
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/sign-in" element={<Role />} />
-
-        {/* Member */}
-        <Route path="/member" element={<Member />}></Route>
-        <Route path="/member/homepage" element={<HomePage />}></Route>
-
-        {/* Employee */}
-        <Route path="employee" element={<Employee />}></Route>
+        <Route path="" element={<Topbar />} />
+        <Route path="sign-in" element={<Role />} />
+        <Route path="register" element={<Register />} />
       </Routes>
     </div>
   );

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import SignInAdmin from "../../component/SignIn/SignInAdmin";
-import TopbarAdmin from "../../component/TopBar/TopbarAdmin";
-import Navbar from "../../component/Navbar";
-
 import { AdminLogin } from "../../service/HttpClientService";
+
+import SignInAdmin from "../../component/SignIn/SignInAdmin";
+import TopbarAdmin from "../../component/TopBar/TopbarNoDec";
+import Navbar from "../../component/Navbar";
 
 function Admin() {
   const [token, setToken] = useState<String>("");

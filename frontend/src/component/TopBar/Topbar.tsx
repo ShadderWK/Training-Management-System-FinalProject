@@ -12,15 +12,7 @@ function Topbar() {
       <ul className="topUl">
         <li>
           <Link to="/member">
-            <a>เข้าสู่ระบบ</a>
-          </Link>
-        </li>
-
-        <span>|</span>
-
-        <li>
-          <Link to="/register">
-            <a>สมัครสมาชิก</a>
+            <a>เข้าสู่ระบบ/สมัครสมาชิก</a>
           </Link>
         </li>
       </ul>

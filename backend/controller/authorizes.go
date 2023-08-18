@@ -33,14 +33,14 @@ func LoginAdmin(c *gin.Context) {
 	}
 	// ค้นหา admin ด้วย email ที่ผู้ใช้กรอกเข้ามา
 	if err := entity.DB().Raw("SELECT * FROM admins WHERE email = ?", payload.Email).Scan(&admin).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "email is incorrect"})
 		return
 	}
 
 	// ตรวจสอบรหัสผ่าน
 	err := bcrypt.CompareHashAndPassword([]byte(admin.Password), []byte(payload.Password))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "password is incorrect"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "รหัสผ่านผิดพลาด"})
 		return
 	}
 
@@ -116,7 +116,7 @@ func LoginEmployee(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": tokenResponse})
 }
 
-// POST /Employeelogin
+// POST /Memberlogin
 func LoginMember(c *gin.Context) {
 	var payload LoginPayload
 	var member entity.Member
@@ -125,16 +125,16 @@ func LoginMember(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	// ค้นหา employee ด้วย Email ที่ผู้ใช้กรอกเข้ามา
+	// ค้นหา member ด้วย Email ที่ผู้ใช้กรอกเข้ามา
 	if err := entity.DB().Raw("SELECT * FROM members WHERE email = ?", payload.Email).Scan(&member).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "email is incorrect"})
+		c.JSON(http.StatusBadRequest, gin.H{"erroremail": "email is incorrect"})
 		return
 	}
 
 	// ตรวจสอบรหัสผ่าน
 	err := bcrypt.CompareHashAndPassword([]byte(member.Password), []byte(payload.Password))
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "password is incorrect"})
+		c.JSON(http.StatusBadRequest, gin.H{"errorpassword": "password is incorrect"})
 		return
 	}
 

@@ -10,6 +10,7 @@
 .img-login {
   width: 768px;
   height: 480px;
+  display: flex;
 }
 
 .form-login {
@@ -55,6 +56,12 @@
   color: var(--neutral-black-main);
 }
 
+.btn-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .btn-login {
   background: var(--primary-blue-main);
   height: 40px;
@@ -75,4 +82,42 @@
 
 .btn-login:hover {
   background: var(--primary-blue-pressed);
+}
+
+.btn-register-link {
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-decoration: none;
+}
+
+.btn-register {
+  background: #fff;
+  height: 40px;
+  width: 400px;
+  color: var(--primary-blue-main);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 22px 44px;
+  border-radius: 8px;
+  border: 1px solid var(--primary-blue-main);
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 24px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.btn-register:hover {
+  background: var(--neutral-black-disable);
+}
+
+.validate-login {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--status-error-active);
 }

@@ -1,12 +1,12 @@
 import React from "react";
 import "./Register.css";
 
-import TopbarReg from "../../component/TopBar/TopbarReg";
+import TopbarNoDec from "../../component/TopBar/TopbarNoDec";
 
 function Register() {
   return (
     <div>
-      <TopbarReg />
+      <TopbarNoDec />
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
+import { MemberLogin } from "../../service/HttpClientService";
+
 import SignInMember from "../../component/SignIn/SignInMember";
 import Navbar from "../../component/Navbar";
-import TopbarSignIn from "../../component/TopBar/TopbarSignIn";
-
-import { MemberLogin } from "../../service/HttpClientService";
+import TopbarAdmin from "../../component/TopBar/TopbarNoDec";
 
 function Member() {
   const [token, setToken] = useState<String>("");
@@ -19,7 +19,7 @@ function Member() {
   if (!token) {
     return (
       <div>
-        <TopbarSignIn />
+        <TopbarAdmin />
         <SignInMember loginRole={MemberLogin} />
       </div>
     );

@@ -1,11 +1,9 @@
 package main
 
 import (
-	"os"
 	"github.com/ShadderWK/Training-Management-System-FinalProject/controller"
-  	"github.com/ShadderWK/Training-Management-System-FinalProject/entity"
 	"github.com/ShadderWK/Training-Management-System-FinalProject/middlewares"
-  	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
 )
 
 func CORSMiddleware() gin.HandlerFunc {
@@ -21,16 +19,16 @@ func CORSMiddleware() gin.HandlerFunc {
 		c.Next()
 	}
 }
- 
+
 func main() {
 
-	os.Remove("./TSM.db")
-	entity.SetupDatabase()
+	// os.Remove("./TSM.db")
+	// entity.SetupDatabase()
 
-  	r := gin.Default()
+	r := gin.Default()
 	r.Use(CORSMiddleware())
 
-	router := r.Group("/") 
+	router := r.Group("/")
 	{
 		router.Use(middlewares.Authorizes())
 		{
@@ -68,7 +66,7 @@ func main() {
 			router.DELETE("/delete-course_registration/:id", controller.DeleteCourseRegistration)
 			router.PATCH("/update-course_registration", controller.UpdateCourseRegistration)
 
-			//News 
+			//News
 			router.POST("/news", controller.CreateNews)
 			router.GET("/news/:id", controller.GetNews)
 			router.GET("/news", controller.ListNews)
@@ -107,7 +105,7 @@ func main() {
 	r.POST("/adminLogin", controller.LoginAdmin)
 	r.POST("/employeeLogin", controller.LoginEmployee)
 
-  	// Run the server
-  	r.Run()
+	// Run the server
+	r.Run()
 
 }

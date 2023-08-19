@@ -1,0 +1,8 @@
+.wrapper-reg {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    min-height: 100vh;
+    min-width: 100vw;
+    gap: 92px;
+  }

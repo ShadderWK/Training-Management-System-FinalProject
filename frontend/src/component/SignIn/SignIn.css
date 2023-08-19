@@ -82,6 +82,7 @@
 
 .btn-login:hover {
   background: var(--primary-blue-pressed);
+  transform: scale(0.95);
 }
 
 .btn-register-link {
@@ -112,7 +113,8 @@
 }
 
 .btn-register:hover {
-  background: var(--neutral-black-disable);
+  background: var(--primary-blue-l3);
+  transform: scale(0.95);
 }
 
 .validate-login {

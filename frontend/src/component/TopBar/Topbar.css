@@ -32,7 +32,7 @@
 }
 
 .topUl a:hover {
-  color: var(--primary-blue-pressed);
+  color: var(--primary-blue-l3);
 }
 
 .topbarActive {

@@ -3,6 +3,7 @@ package entity
 import (
 
            "gorm.io/gorm"
+           "time"
 
            "golang.org/x/crypto/bcrypt"
            "gorm.io/driver/sqlite"
@@ -35,6 +36,7 @@ func SetupDatabase() {
     &Member{},
     &Employee{},
     // Main Entity
+    &Gender{},
     &Course{},
     &CourseRegistration{},
     &PaymentStatus{},
@@ -55,11 +57,30 @@ func SetupDatabase() {
 	}
 	db.Model(&Admin{}).Create(&AdminA)
 
+  GenderA := Gender{
+		Name:     "ชาย",
+	}
+	db.Model(&Gender{}).Create(&GenderA)
+
+  GenderB := Gender{
+		Name:     "หญิง",
+	}
+	db.Model(&Gender{}).Create(&GenderB)
+
+  GenderC := Gender{
+		Name:     "ไม่ระบุ",
+	}
+	db.Model(&Gender{}).Create(&GenderC)
+
+  BirthdayA := time.Date(2017, time.November, 4, 9, 15, 0, 0, time.UTC)
+
   MemberA := Member{
     Email:    "Member01@example.com",
     Name:     "สมาชิก01",
     Password: string(passwordA),
     Image:    "https://img.freepik.com/free-icon/group-profile-users_318-41953.jpg?w=2000",
+    Birthday: BirthdayA,
+    Gender:   GenderA,
   }
   db.Model(&Member{}).Create(&MemberA)
 

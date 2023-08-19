@@ -2,6 +2,8 @@ package entity
 
 import (
 	"gorm.io/gorm"
+
+	"time"
 )
 
 type Admin struct {
@@ -13,12 +15,21 @@ type Admin struct {
 	News		[]News `gorm:"foreignKey:AdminID"`
 }
 
+type Gender struct {
+	gorm.Model
+	Name		string
+}
+
 type Member struct {
 	gorm.Model
 	Name 		string
 	Email		string
 	Password	string
 	Image		string
+	Birthday	time.Time
+
+	GenderID 	int
+	Gender		Gender
 
 	CourseRegistration 	[]CourseRegistration	`gorm:"foreignKey:MemberID"`
 	Question			[]Question   			`gorm:"foreignKey:MemberID"`	

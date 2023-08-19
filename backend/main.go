@@ -1,9 +1,12 @@
 package main
 
 import (
+	"github.com/ShadderWK/Training-Management-System-FinalProject/entity"
 	"github.com/ShadderWK/Training-Management-System-FinalProject/controller"
 	"github.com/ShadderWK/Training-Management-System-FinalProject/middlewares"
 	"github.com/gin-gonic/gin"
+
+	"os"
 )
 
 func CORSMiddleware() gin.HandlerFunc {
@@ -22,8 +25,8 @@ func CORSMiddleware() gin.HandlerFunc {
 
 func main() {
 
-	// os.Remove("./TSM.db")
-	// entity.SetupDatabase()
+	os.Remove("./TSM.db")
+	entity.SetupDatabase()
 
 	r := gin.Default()
 	r.Use(CORSMiddleware())
@@ -51,6 +54,10 @@ func main() {
 			//PaymentStatus
 			router.GET("/payment_status/:id", controller.GetPaymentStatus)
 			router.GET("/payment_statuses", controller.ListPaymentStatuses)
+
+			//Gender
+			router.GET("/gender/:id", controller.GetGender)
+			router.GET("/genders", controller.ListGenders)
 
 			//Course
 			router.POST("/course", controller.CreateCourse)

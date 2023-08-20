@@ -26,6 +26,12 @@ function SignInMember({ loginRole }: Prop) {
     setSignin({ ...signin, [id]: value });
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      submit();
+    }
+  };
+
   const handleClose = () => {
     setError(false);
   };
@@ -75,6 +81,7 @@ function SignInMember({ loginRole }: Prop) {
               className="input-login"
               value={signin.Email || ""}
               onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
             ></input>
 
             {emailerror &&
@@ -93,6 +100,7 @@ function SignInMember({ loginRole }: Prop) {
               className="input-login"
               value={signin.Password || ""}
               onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
             ></input>
 
             {passworderror &&

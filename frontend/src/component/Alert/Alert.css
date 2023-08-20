@@ -61,4 +61,17 @@
 
 .alert-close:hover {
   background-color: var(--primary-blue-pressed);
+  transform: scale(0.95);
+}
+
+@media screen and (max-width: 768px) {
+  .alert-popup {
+    align-items: center;
+    padding-bottom: 18px;
+  }
+
+  .alert-popup-inner {
+    width: 80%;
+    max-width: 320px;
+  }
 }

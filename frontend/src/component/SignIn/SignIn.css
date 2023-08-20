@@ -8,9 +8,8 @@
 }
 
 .img-login {
-  width: 768px;
-  height: 480px;
   display: flex;
+  height: auto;
 }
 
 .form-login {
@@ -48,7 +47,6 @@
 .input-login {
   border: none;
   border-bottom: 1px solid var(--neutral-black-disable);
-  height: 35px;
   padding: 0px 20px;
   width: 400px;
   font-family: IBM Plex Sans Thai;
@@ -64,6 +62,7 @@
 
 .btn-login {
   background: var(--primary-blue-main);
+  width: 100%;
   height: 40px;
   color: #fff;
   justify-content: center;
@@ -96,7 +95,7 @@
 .btn-register {
   background: #fff;
   height: 40px;
-  width: 400px;
+  width: 100%;
   color: var(--primary-blue-main);
   justify-content: center;
   align-items: center;
@@ -122,4 +121,54 @@
   font-weight: 400;
   margin: 0;
   color: var(--status-error-active);
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper-login {
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .img-login {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .form-login {
+    width: 100%;
+  }
+
+  .input-login {
+    width: 100%;
+  }
+
+  .btn-login,
+  .btn-register {
+    width: 100%;
+  }
+
+  .header-memlogin {
+    font-size: 24px;
+  }
+
+  .text-login {
+    font-size: 20px;
+  }
+
+  .input-login {
+    font-size: 20px;
+    height: 30px;
+  }
+
+  .validate-login {
+    font-size: 16px;
+  }
+
+  .img-login img {
+    max-width: 100%;
+    height: auto;
+  }
 }

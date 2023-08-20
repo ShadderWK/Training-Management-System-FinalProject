@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Alert.css";
 
 import AlertIcon from "../../assets/AlertIcon.svg";
@@ -11,11 +11,30 @@ type props = {
 };
 
 function Alert({ trigger, title, message, onClose }: props) {
-  return trigger ? (
-    <div className="alert-popup">
-      <div className="alert-popup-inner">
+  const [showAlert, setShowAlert] = useState(trigger);
+
+  useEffect(() => {
+    setShowAlert(trigger);
+  }, [trigger]);
+
+  const handleOutsideClick = (event: React.MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (!target.closest(".alert-popup-inner")) {
+      onClose();
+    }
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "enter") {
+      onClose();
+    }
+  };
+
+  return showAlert ? (
+    <div className="alert-popup" onClick={handleOutsideClick}>
+      <div className="alert-popup-inner" tabIndex={0} onKeyDown={handleKeyDown}>
         <div className="title-alert">
-          <img src={AlertIcon} />
+          <img src={AlertIcon} alt="Alert Icon" />
           {title}
         </div>
 

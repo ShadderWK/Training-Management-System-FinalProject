@@ -41,3 +41,19 @@
   font-size: 20px;
   font-weight: 700;
 }
+
+@media screen and (max-width: 768px) {
+  .topbar {
+    font-size: 20px;
+    height: 60px;
+    padding: 0 24px;
+  }
+
+  .topUl {
+    gap: 4px;
+  }
+
+  .topUl a {
+    font-size: 18px;
+  }
+}

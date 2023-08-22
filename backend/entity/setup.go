@@ -76,10 +76,11 @@ func SetupDatabase() {
 
   MemberA := Member{
     Email:          "Member01@example.com",
-    Firstname:      "กันตพงศ์",
-    Lastname:       "เดชาเกียรติไกร",
+    Firstname:      "ผู้ใช้งาน",
+    Lastname:       "หมายเลขหนึ่ง",
     Password:       string(passwordA),
-    Image:          "https://img.freepik.com/free-icon/group-profile-users_318-41953.jpg?w=2000",
+    Tel:            "0871231212",
+    Address:        "บ้านเลขที่ 69 ซอยถี่ๆ",
     Birthday:       BirthdayA,
     Gender:         GenderA,
   }

@@ -26,7 +26,8 @@ type Member struct {
 	Lastname	string
 	Email		string
 	Password	string
-	Image		string
+	Tel			string
+	Address 	string
 	Birthday	time.Time
 
 	GenderID 	int

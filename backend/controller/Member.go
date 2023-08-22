@@ -12,9 +12,15 @@ import (
 func CreateMember(c *gin.Context) {
 
 	var member entity.Member
+	var gender entity.Gender
 
 	if err := c.ShouldBindJSON(&member); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	if tx := entity.DB().Where("id = ?", member.GenderID).First(&gender); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Gender not found"})
 		return
 	}
 
@@ -26,9 +32,12 @@ func CreateMember(c *gin.Context) {
 
 	mem := entity.Member{
 		Email:			member.Email,
+		Password:		member.Password,
 		Firstname:      member.Firstname,
-		Lastname:   member.Lastname,
-		Image:			member.Image,
+		Lastname:   	member.Lastname,
+		Tel:			member.Tel,
+		Address:		member.Address,
+		Gender:			gender,
 	}
 
 	if err := entity.DB().Create(&mem).Error; err != nil {
@@ -76,9 +85,15 @@ func DeleteMember(c *gin.Context) {
 // PATCH /Member
 func UpdateMember(c *gin.Context) {
 	var member entity.Member
+	var gender entity.Gender
 
 	if err := c.ShouldBindJSON(&member); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	if tx := entity.DB().Where("id = ?", member.GenderID).First(&gender); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Gender not found"})
 		return
 	}
 
@@ -90,9 +105,12 @@ func UpdateMember(c *gin.Context) {
 
 	update := entity.Member{
 		Email:			member.Email,
+		Password:		member.Password,
 		Firstname:      member.Firstname,
 		Lastname:   	member.Lastname,
-		Image:			member.Image,
+		Tel:			member.Tel,
+		Address:		member.Address,
+		Gender:			gender,
 	}
 
 	if err := entity.DB().Where("id = ?", member.ID).Updates(&update).Error; err != nil {

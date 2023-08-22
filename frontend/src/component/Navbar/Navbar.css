@@ -1,0 +1,27 @@
+.navbar-container {
+  display: flex;
+  padding: 0px 36px;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  border-bottom: 2px solid var(--gray-line-boarder);
+}
+
+.navbar-container a {
+  font-size: 24px;
+  color: var(--primary-blue-main);
+  text-decoration: none;
+}
+
+.navbar-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar-name {
+  color: var(--primary-blue-main);
+  font-size: 20px;
+  font-weight: 400;
+}

@@ -22,7 +22,8 @@ type Gender struct {
 
 type Member struct {
 	gorm.Model
-	Name 		string
+	Firstname 	string
+	Lastname	string
 	Email		string
 	Password	string
 	Image		string

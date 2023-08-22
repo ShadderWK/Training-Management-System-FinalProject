@@ -75,12 +75,13 @@ func SetupDatabase() {
   BirthdayA := time.Date(2017, time.November, 4, 9, 15, 0, 0, time.UTC)
 
   MemberA := Member{
-    Email:    "Member01@example.com",
-    Name:     "สมาชิก01",
-    Password: string(passwordA),
-    Image:    "https://img.freepik.com/free-icon/group-profile-users_318-41953.jpg?w=2000",
-    Birthday: BirthdayA,
-    Gender:   GenderA,
+    Email:          "Member01@example.com",
+    Firstname:      "กันตพงศ์",
+    Lastname:       "เดชาเกียรติไกร",
+    Password:       string(passwordA),
+    Image:          "https://img.freepik.com/free-icon/group-profile-users_318-41953.jpg?w=2000",
+    Birthday:       BirthdayA,
+    Gender:         GenderA,
   }
   db.Model(&Member{}).Create(&MemberA)
 

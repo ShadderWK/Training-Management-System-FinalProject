@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import { MemberLogin } from "../../service/HttpClientService";
 
 import SignInMember from "../../component/SignIn/SignInMember";
-import Navbar from "../../component/Navbar";
-import TopbarAdmin from "../../component/TopBar/TopbarNoDec";
+import TopbarNoDec from "../../component/TopBar/TopbarNoDec";
+import Navbar from "../../component/Navbar/Navbar";
+import Sidebar from "../../component/Sidebar/Sidebar";
 
 function Member() {
   const [token, setToken] = useState<String>("");
@@ -19,7 +20,9 @@ function Member() {
   if (!token) {
     return (
       <div>
-        <TopbarAdmin />
+        <header>
+          <TopbarNoDec />
+        </header>
         <SignInMember loginRole={MemberLogin} />
       </div>
     );
@@ -28,6 +31,7 @@ function Member() {
   return (
     <div>
       <Navbar />
+      <Sidebar />
     </div>
   );
 }

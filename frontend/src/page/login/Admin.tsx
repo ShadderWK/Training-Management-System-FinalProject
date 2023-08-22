@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import { AdminLogin } from "../../service/HttpClientService";
 
 import SignInAdmin from "../../component/SignIn/SignInAdmin";
-import TopbarAdmin from "../../component/TopBar/TopbarNoDec";
-import Navbar from "../../component/Navbar";
+import TopbarNoDec from "../../component/TopBar/TopbarNoDec";
 
 function Admin() {
   const [token, setToken] = useState<String>("");
@@ -19,17 +18,15 @@ function Admin() {
   if (!token) {
     return (
       <div>
-        <TopbarAdmin />
+        <header>
+          <TopbarNoDec />
+        </header>
         <SignInAdmin loginRole={AdminLogin} />
       </div>
     );
   }
 
-  return (
-    <div>
-      <Navbar />
-    </div>
-  );
+  return <div></div>;
 }
 
 export default Admin;

@@ -26,7 +26,8 @@ func CreateMember(c *gin.Context) {
 
 	mem := entity.Member{
 		Email:			member.Email,
-		Name:          	member.Name,
+		Firstname:      member.Firstname,
+		Lastname:   member.Lastname,
 		Image:			member.Image,
 	}
 
@@ -89,7 +90,8 @@ func UpdateMember(c *gin.Context) {
 
 	update := entity.Member{
 		Email:			member.Email,
-		Name:          	member.Name,
+		Firstname:      member.Firstname,
+		Lastname:   	member.Lastname,
 		Image:			member.Image,
 	}
 

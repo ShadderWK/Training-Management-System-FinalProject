@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Router, Routes, Route, Link } from "react-router-dom";
 
 //Page
@@ -9,13 +9,26 @@ import Register from "./page/register/Register";
 import Topbar from "./component/TopBar/Topbar";
 
 function App() {
+  const [token, setToken] = useState<String>("");
+  const [open, setOpen] = React.useState(true);
+
+  const toggleDrawer = () => {
+    setOpen(!open);
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setToken(token);
+    }
+  }, []);
   return (
     <div>
       <Routes>
-        <Route path="" element={<Topbar />} />
+        <Route path="/" element={<Topbar />} />
+        <Route path="/register" element={<Register />} />
         <Route path="member" element={<Member />} />
         <Route path="admin" element={<Admin />} />
-        <Route path="register" element={<Register />} />
       </Routes>
     </div>
   );

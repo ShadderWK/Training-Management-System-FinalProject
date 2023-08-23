@@ -8,8 +8,9 @@
 }
 
 .img-login {
-  display: flex;
   height: auto;
+  display: flex;
+  margin: 0;
 }
 
 .form-login {

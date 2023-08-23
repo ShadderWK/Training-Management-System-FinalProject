@@ -35,6 +35,8 @@ async function MemberLogin(data: SignInInterface) {
       if (res.data) {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("uid", res.data.id);
+        localStorage.setItem("Firstname", res.data.firstname);
+        localStorage.setItem("Lastname", res.data.lastname);
         return res.data;
       } else {
         return false;

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./SignIn.css";
 
 import { SignInInterface } from "../../interfaces/ISignIn";
@@ -14,9 +14,20 @@ type Prop = {
 
 function SignInMember({ loginRole }: Prop) {
   const [signin, setSignin] = useState<Partial<SignInInterface>>({});
+  const [openMember, setOpenMember] = useState(false);
   const [emailerror, setEmailError] = useState(false);
   const [passworderror, setPasswordError] = useState(false);
   const [error, setError] = useState(false);
+
+  const location = useLocation();
+
+  const checkLocation = () => {
+    location.pathname === "/member" && setOpenMember(!openMember);
+  };
+
+  useEffect(() => {
+    checkLocation();
+  }, []);
 
   const handleInputChange = (
     event: React.ChangeEvent<{ id?: string; value: any }>

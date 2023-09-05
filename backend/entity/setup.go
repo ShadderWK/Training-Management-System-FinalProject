@@ -1,7 +1,7 @@
 package entity
 
 import (
-	"time"
+	"fmt"
 
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/driver/sqlite"
@@ -18,10 +18,12 @@ func DB() *gorm.DB {
 
 func SetupDatabase() {
 
-	database, err := gorm.Open(sqlite.Open("TMS.db"), &gorm.Config{})
+	database, err := gorm.Open(sqlite.Open("backup.db"), &gorm.Config{})
+
+	fmt.Print(database)
 
 	if err != nil {
-
+		// fmt.Print(err)
 		panic("failed to connect database")
 
 	}
@@ -70,31 +72,19 @@ func SetupDatabase() {
 	}
 	db.Model(&Gender{}).Create(&GenderC)
 
-	BirthdayA := time.Date(2017, time.November, 4, 9, 15, 0, 0, time.UTC)
+	// BirthdayA := time.Date(2017, time.November, 4, 9, 15, 0, 0, time.UTC)
 
-<<<<<<< HEAD
 	MemberA := Member{
-		Email:    "Member01@example.com",
-		Name:     "สมาชิก01",
-		Password: string(passwordA),
-		Image:    "https://img.freepik.com/free-icon/group-profile-users_318-41953.jpg?w=2000",
-		Birthday: BirthdayA,
-		Gender:   GenderA,
+		Email:     "Member01@example.com",
+		Firstname: "ผู้ใช้งาน",
+		Lastname:  "หมายเลขหนึ่ง",
+		Password:  string(passwordA),
+		Tel:       "0871231212",
+		Address:   "บ้านเลขที่ 69 ซอยถี่ๆ",
+		Birthday:  "BirthdayA",
+		Gender:    GenderA,
 	}
 	db.Model(&Member{}).Create(&MemberA)
-=======
-  MemberA := Member{
-    Email:          "Member01@example.com",
-    Firstname:      "ผู้ใช้งาน",
-    Lastname:       "หมายเลขหนึ่ง",
-    Password:       string(passwordA),
-    Tel:            "0871231212",
-    Address:        "บ้านเลขที่ 69 ซอยถี่ๆ",
-    Birthday:       BirthdayA,
-    Gender:         GenderA,
-  }
-  db.Model(&Member{}).Create(&MemberA)
->>>>>>> ee6b1943fca8277b0a6b9b43d5df92f6d3d36917
 
 	EmployeeA := Employee{
 		Email:    "Employee01@example.com",

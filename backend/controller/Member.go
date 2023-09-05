@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	// "github.com/asaskevich/govalidator"
-	"github.com/gin-gonic/gin"
 	"github.com/ShadderWK/Training-Management-System-FinalProject/entity"
+	"github.com/gin-gonic/gin"
 )
 
 // POST /Member
@@ -31,13 +31,14 @@ func CreateMember(c *gin.Context) {
 	// }
 
 	mem := entity.Member{
-		Email:			member.Email,
-		Password:		member.Password,
-		Firstname:      member.Firstname,
-		Lastname:   	member.Lastname,
-		Tel:			member.Tel,
-		Address:		member.Address,
-		Gender:			gender,
+		Email:     member.Email,
+		Password:  member.Password,
+		Firstname: member.Firstname,
+		Lastname:  member.Lastname,
+		Tel:       member.Tel,
+		Address:   member.Address,
+		Gender:    gender,
+		Birthday:  member.Birthday,
 	}
 
 	if err := entity.DB().Create(&mem).Error; err != nil {
@@ -104,13 +105,14 @@ func UpdateMember(c *gin.Context) {
 	// }
 
 	update := entity.Member{
-		Email:			member.Email,
-		Password:		member.Password,
-		Firstname:      member.Firstname,
-		Lastname:   	member.Lastname,
-		Tel:			member.Tel,
-		Address:		member.Address,
-		Gender:			gender,
+		Email:     member.Email,
+		Password:  member.Password,
+		Firstname: member.Firstname,
+		Lastname:  member.Lastname,
+		Tel:       member.Tel,
+		Address:   member.Address,
+		Gender:    gender,
+		Birthday:  member.Birthday,
 	}
 
 	if err := entity.DB().Where("id = ?", member.ID).Updates(&update).Error; err != nil {

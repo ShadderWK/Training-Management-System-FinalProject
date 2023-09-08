@@ -2,6 +2,7 @@ package entity
 
 import (
 	"fmt"
+	"time"
 
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/driver/sqlite"
@@ -72,7 +73,7 @@ func SetupDatabase() {
 	}
 	db.Model(&Gender{}).Create(&GenderC)
 
-	// BirthdayA := time.Date(2017, time.November, 4, 9, 15, 0, 0, time.UTC)
+	BirthdayA := time.Date(2017, time.November, 4, 9, 15, 0, 0, time.UTC)
 
 	MemberA := Member{
 		Email:     "Member01@example.com",
@@ -81,7 +82,7 @@ func SetupDatabase() {
 		Password:  string(passwordA),
 		Tel:       "0871231212",
 		Address:   "บ้านเลขที่ 69 ซอยถี่ๆ",
-		Birthday:  "BirthdayA",
+		Birthday:  BirthdayA,
 		Gender:    GenderA,
 	}
 	db.Model(&Member{}).Create(&MemberA)

@@ -1,6 +1,8 @@
 package entity
 
 import (
+	"time"
+
 	"gorm.io/gorm"
 )
 
@@ -26,7 +28,7 @@ type Member struct {
 	Password  string
 	Tel       string
 	Address   string
-	Birthday  string
+	Birthday  time.Time
 
 	GenderID int
 	Gender   Gender

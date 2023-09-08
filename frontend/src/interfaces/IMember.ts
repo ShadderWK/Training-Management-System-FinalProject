@@ -4,11 +4,11 @@ export interface MemberInterface {
   ID?: number;
   Email?: string;
   Firstname?: string;
-  Lastname: string;
+  Lastname?: string;
   Password?: string;
-	Tel:			string;
-	Address: 	string;
-	Birthday:	string;
+	Tel?:			string;
+	Address?: 	string;
+	Birthday?:	Date;
 
   Gender?: GenderInterface;
   GenderID?: number;

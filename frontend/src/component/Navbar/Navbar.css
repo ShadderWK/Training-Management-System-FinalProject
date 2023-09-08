@@ -3,7 +3,7 @@
   padding: 0px 36px;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 72px;
   border-bottom: 2px solid var(--gray-line-boarder);
 }
 
@@ -24,4 +24,38 @@
   color: var(--primary-blue-main);
   font-size: 20px;
   font-weight: 400;
+}
+
+.navbar-img {
+  width: 40px;
+  height: 51.714px;
+}
+
+.navbar-logo {
+  display: flex;
+  padding: 36px 0px;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar-logo a {
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0px 16px;
+  }
+
+  .navbar-container a {
+    font-size: 20px;
+  }
+
+  .navbar-name {
+    font-size: 16px;
+  }
+
+  .navbar-logo a {
+    font-size: 16px;
+  }
 }

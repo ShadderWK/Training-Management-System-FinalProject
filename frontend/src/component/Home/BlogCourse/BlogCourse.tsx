@@ -1,0 +1,22 @@
+import React, { useEffect, useState } from "react";
+
+import "./BlogCourse.css";
+
+type Props = {
+  id: number;
+  name: string;
+  image: string;
+};
+
+function BlogCourse({ id, name, image }: Props) {
+  return (
+    <div className="blog-course-container">
+      <div className="blog-course-img">
+        <img src={image} />
+      </div>
+      <div className="blog-course-title">{name}</div>
+    </div>
+  );
+}
+
+export default BlogCourse;

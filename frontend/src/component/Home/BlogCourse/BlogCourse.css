@@ -1,0 +1,32 @@
+.blog-course-container {
+  width: 240px;
+  height: 260px;
+  flex-direction: column;
+  gap: 4px;
+  background-color: white;
+}
+
+.blog-course-title {
+  font-family: IBM Plex Sans Thai;
+  padding: 8px;
+  font-size: 18px;
+  font-weight: 400;
+  max-height: 3.6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.8em;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.blog-course-img {
+  height: 70%;
+  overflow: "hidden";
+}
+
+.blog-course-img img {
+  height: 100%;
+  width: 100%;
+}

@@ -5,6 +5,7 @@ import { Router, Routes, Route, Link } from "react-router-dom";
 import Member from "./page/login/Member";
 import Admin from "./page/login/Admin";
 import Register from "./page/register/Register";
+import Home from "./component/Home/Home";
 //Component
 import Topbar from "./component/TopBar/Topbar";
 
@@ -28,6 +29,8 @@ function App() {
         <Route path="/" element={<Topbar />} />
         <Route path="/register" element={<Register />} />
         <Route path="member" element={<Member />} />
+        <Route path="member/home" element={<Home />} />
+
         <Route path="admin" element={<Admin />} />
       </Routes>
     </div>

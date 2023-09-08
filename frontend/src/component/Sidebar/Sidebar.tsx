@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import {
-  DesktopOutlined,
-  PieChartOutlined,
-  QuestionCircleOutlined,
+  HomeOutlined,
+  FolderOutlined,
+  ShoppingCartOutlined,
+  CommentOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu } from "antd";
+import { Link } from "react-router-dom";
 
 import "./Sidebar.css";
-
-import LogoImg from "../../assets/Logo.png";
 
 const { Sider } = Layout;
 
@@ -19,19 +20,59 @@ function getItem(
   label: React.ReactNode,
   key: React.Key,
   icon?: React.ReactNode,
-  children?: MenuItem[]
+  children?: MenuItem[],
+  onClick?: () => void
 ): MenuItem {
   return {
     key,
     icon,
     children,
     label,
+    onClick,
   } as MenuItem;
 }
 
+const signout = () => {
+  localStorage.clear();
+  window.location.href = "/";
+};
+
 const items: MenuItem[] = [
-  getItem("Q&A", "1", <QuestionCircleOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
+  getItem(
+    "หน้าหลัก",
+    "1",
+    <Link to="/member/home">
+      <HomeOutlined style={{ color: "#2B56BA" }} />
+    </Link>
+  ),
+  getItem(
+    "คอร์สเรียนของฉัน",
+    "2",
+    <Link to="/member/course">
+      <FolderOutlined style={{ color: "#2B56BA" }} />
+    </Link>
+  ),
+  getItem(
+    "การชำระเงิน",
+    "3",
+    <Link to="/member/payment">
+      <ShoppingCartOutlined style={{ color: "#2B56BA" }} />
+    </Link>
+  ),
+  getItem(
+    "ติดต่อเจ้าหน้าที่",
+    "4",
+    <Link to="/member/question">
+      <CommentOutlined style={{ color: "#2B56BA" }} />
+    </Link>
+  ),
+  getItem(
+    "ออกจากระบบ",
+    "5",
+    <LogoutOutlined style={{ color: "#2B56BA" }} />,
+    undefined,
+    signout
+  ),
 ];
 
 function Sidebar() {
@@ -39,24 +80,28 @@ function Sidebar() {
 
   return (
     <Sider
-      style={{ backgroundColor: "#fff" }}
+      style={{
+        backgroundColor: "#fff",
+        paddingTop: "24px",
+      }}
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
+      theme="dark"
+      width={220}
     >
-      <div className="sidebar-title">
-        <img className="sidebar-logo" src={LogoImg} />
-        {!collapsed ? (
-          <div className="sidebar-title-text">
-            <p>สถาบันวิจัย</p>
-            <p>และพัฒนา</p>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="sidebar-menu">
-        <Menu defaultSelectedKeys={["1"]} mode="inline" items={items} />
+      <div>
+        <Menu
+          defaultSelectedKeys={["1"]}
+          mode="inline"
+          items={items}
+          style={{
+            color: "#2B56BA",
+            fontWeight: "400",
+            fontSize: "20px",
+            fontFamily: "IBM Plex Sans Thai",
+          }}
+        />
       </div>
     </Sider>
   );

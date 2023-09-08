@@ -7,15 +7,19 @@ import TopbarNoDec from "../../component/TopBar/TopbarNoDec";
 import Navbar from "../../component/Navbar/Navbar";
 import Sidebar from "../../component/Sidebar/Sidebar";
 
+import { useNavigate } from "react-router-dom";
+
 function Member() {
   const [token, setToken] = useState<String>("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       setToken(token);
+      navigate("/member/home");
     }
-  }, []);
+  }, [navigate]);
 
   if (!token) {
     return (
@@ -28,12 +32,7 @@ function Member() {
     );
   }
 
-  return (
-    <div>
-      <Navbar />
-      <Sidebar />
-    </div>
-  );
+  return <div></div>;
 }
 
 export default Member;

@@ -55,6 +55,10 @@
   color: var(--neutral-black-main);
 }
 
+.input-login:focus {
+  outline: none;
+}
+
 .btn-form {
   display: flex;
   flex-direction: column;

@@ -77,8 +77,8 @@ func SetupDatabase() {
 
 	MemberA := Member{
 		Email:     "Member01@example.com",
-		Firstname: "ผู้ใช้งาน",
-		Lastname:  "หมายเลขหนึ่ง",
+		Firstname: "กันตพงศ์",
+		Lastname:  "เดชาเกียรติไกร",
 		Password:  string(passwordA),
 		Tel:       "0871231212",
 		Address:   "บ้านเลขที่ 69 ซอยถี่ๆ",
@@ -96,13 +96,49 @@ func SetupDatabase() {
 	db.Model(&Employee{}).Create(&EmployeeA)
 
 	CourseA := Course{
-		Name:     "คอร์สทดสอบ",
+		Name:     "แนวโน้มนวัตกรรมและเทคโนโลยีการศึกษาสำหรับการจัดการการศึกษาทุกช่วงวัย",
 		Detail:   "test test test",
 		Price:    1000,
-		Image:    "https://tipa.in/wp-content/uploads/2021/05/Online-courses.jpg",
+		Image:    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
 		Employee: EmployeeA,
 	}
 	db.Model(&Course{}).Create(&CourseA)
+
+	CourseB := Course{
+		Name:     "ชีวอนามัยและความปลอดภัย",
+		Detail:   "test test test",
+		Price:    1000,
+		Image:    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Employee: EmployeeA,
+	}
+	db.Model(&Course{}).Create(&CourseB)
+
+	CourseC := Course{
+		Name:     "แนวโน้มนวัตกรรมและเทคโนโลยีการศึกษาสำหรับการจัดการการศึกษาทุกช่วงวัย",
+		Detail:   "test test test",
+		Price:    1000,
+		Image:    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+		Employee: EmployeeA,
+	}
+	db.Model(&Course{}).Create(&CourseC)
+
+	CourseD := Course{
+		Name:     "ทดสอบครับทดสอบบบบ",
+		Detail:   "test test test",
+		Price:    1000,
+		Image:    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Employee: EmployeeA,
+	}
+	db.Model(&Course{}).Create(&CourseD)
+
+	CourseE := Course{
+		Name:     "แนวโน้มนวัตกรรมและเทคโนโลยีการศึกษาสำหรับการจัดการการศึกษาทุกช่วงวัย",
+		Detail:   "test test test",
+		Price:    1000,
+		Image:    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+		Employee: EmployeeA,
+	}
+	db.Model(&Course{}).Create(&CourseE)
 
 	CourseRegistrationA := CourseRegistration{
 		Receipt: "https://img.freepik.com/free-vector/realistic-receipt-template_23-2147938550.jpg?w=2000",

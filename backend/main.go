@@ -113,6 +113,6 @@ func main() {
 	r.POST("/employeeLogin", controller.LoginEmployee)
 
 	// Run the server
-	r.Run(":5000")
+	r.Run(":8080")
 
 }

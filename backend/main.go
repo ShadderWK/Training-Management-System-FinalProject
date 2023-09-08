@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/ShadderWK/Training-Management-System-FinalProject/entity"
+	"os"
+
 	"github.com/ShadderWK/Training-Management-System-FinalProject/controller"
+	"github.com/ShadderWK/Training-Management-System-FinalProject/entity"
 	"github.com/ShadderWK/Training-Management-System-FinalProject/middlewares"
 	"github.com/gin-gonic/gin"
-
-	"os"
 )
 
 func CORSMiddleware() gin.HandlerFunc {
@@ -113,6 +113,6 @@ func main() {
 	r.POST("/employeeLogin", controller.LoginEmployee)
 
 	// Run the server
-	r.Run()
+	r.Run(":5000")
 
 }

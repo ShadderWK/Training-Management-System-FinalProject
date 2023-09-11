@@ -48,7 +48,7 @@ const items: MenuItem[] = [
   getItem(
     "คอร์สเรียนของฉัน",
     "2",
-    <Link to="/member/course">
+    <Link to="/member/mycourse">
       <FolderOutlined style={{ color: "#2B56BA" }} />
     </Link>
   ),
@@ -76,7 +76,7 @@ const items: MenuItem[] = [
 ];
 
 function Sidebar() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   return (
     <Sider

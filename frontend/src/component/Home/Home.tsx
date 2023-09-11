@@ -51,7 +51,6 @@ function Home() {
         <Sidebar />
         <div className="home-container">
           <img src={prElearningPic} />
-
           <div className="home-title-search">
             <h1>การอบรมและสัมนา</h1>
             <div className="home-search-container">
@@ -62,6 +61,7 @@ function Home() {
                 onChange={(e) => setSearch(e.target.value)}
               />
               <SearchOutlined
+                className="home-search-icon"
                 style={{ color: "#2B56BA", width: "24px", height: "24px" }}
               />
             </div>

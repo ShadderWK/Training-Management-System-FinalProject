@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./BlogCourse.css";
 
@@ -9,8 +10,13 @@ type Props = {
 };
 
 function BlogCourse({ id, name, image }: Props) {
+  let navigate = useNavigate();
+
   return (
-    <div className="blog-course-container">
+    <div
+      className="blog-course-container"
+      onClick={() => navigate(`/member/course/${id}`)}
+    >
       <div className="blog-course-img">
         <img src={image} />
       </div>

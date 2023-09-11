@@ -140,6 +140,24 @@ func SetupDatabase() {
 	}
 	db.Model(&Course{}).Create(&CourseE)
 
+	CourseF := Course{
+		Name:     "course testๆ",
+		Detail:   "test test test",
+		Price:    1000,
+		Image:    "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+		Employee: EmployeeA,
+	}
+	db.Model(&Course{}).Create(&CourseF)
+
+	CourseG := Course{
+		Name:     "course testๆ 22",
+		Detail:   "test test test",
+		Price:    1000,
+		Image:    "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+		Employee: EmployeeA,
+	}
+	db.Model(&Course{}).Create(&CourseG)
+
 	CourseRegistrationA := CourseRegistration{
 		Receipt: "https://img.freepik.com/free-vector/realistic-receipt-template_23-2147938550.jpg?w=2000",
 		Member:  MemberA,

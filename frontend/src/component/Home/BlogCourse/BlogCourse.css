@@ -1,9 +1,13 @@
 .blog-course-container {
-  width: 240px;
   height: 260px;
   flex-direction: column;
   gap: 4px;
   background-color: white;
+  margin-left: 5px;
+}
+
+.blog-course-container:hover {
+  cursor: pointer;
 }
 
 .blog-course-title {
@@ -21,12 +25,29 @@
   -webkit-line-clamp: 2;
 }
 
+.blog-course-title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .blog-course-img {
   height: 70%;
-  overflow: "hidden";
 }
 
 .blog-course-img img {
   height: 100%;
   width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .blog-course-container {
+    width: calc(30% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-course-container {
+    width: calc(100% - 10px);
+    margin-left: 0;
+  }
 }

@@ -1,201 +1,200 @@
 .wrapper-reg {
-    align-items: center;
-    display: flex;
-    min-height: 100vh;
-    justify-content: center;
+  align-items: center;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
 }
 
 .wrapper-reg2 {
-    align-items: center;
-    display: flex;
-    gap: 92px;
-    justify-content: space-between;
+  align-items: center;
+  display: flex;
+  gap: 92px;
+  justify-content: space-between;
+  padding: 0 48px;
 }
 
 .photo-reg {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
 .from-reg {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 50px;
 }
 
 .header-reg {
-    font-size: 32px;
-    color: var(--primary-blue-main);
-    margin: 0;
+  font-size: 32px;
+  color: var(--primary-blue-main);
+  margin: 0;
 }
 
 .input-namereg {
-    display: flex;
-    gap: 24px;
-    height: 35px;
+  display: flex;
+  gap: 24px;
+  height: 35px;
 }
 
 .input-allreg {
-    gap: 16px;
-    display: flex;
-    flex-direction: column;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .input-allin {
-    height: 35px;
-    border-radius: 8px;
-    border: 1px solid var(--gray-gd);
-    color: #000;
-    font-size: 16px;
-    font-family: "IBM Plex Sans Thai", "sans-serif";
-    padding: 0px 8px;
+  height: 35px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-gd);
+  color: #000;
+  font-size: 16px;
+  font-family: "IBM Plex Sans Thai", "sans-serif";
+  padding: 0px 8px;
 }
 
 .input-namereg-text {
-    border-radius: 8px;
-    border: 1px solid var(--gray-gd);
-    color: #000;
-    font-size: 16px;
-    font-family: "IBM Plex Sans Thai", "sans-serif";
-    padding: 0px 8px;
-    width: 188px;
-    flex-direction: row;
-} 
+  border-radius: 8px;
+  border: 1px solid var(--gray-gd);
+  color: #000;
+  font-size: 16px;
+  font-family: "IBM Plex Sans Thai", "sans-serif";
+  padding: 0px 8px;
+  width: 188px;
+  flex-direction: row;
+}
 
 .layout-sexdate {
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
 }
 
 .form-sexreg {
-    display: flex;
-    gap: 24px;
-    font-family: "IBM Plex Sans Thai", "sans-serif";
-    font-size: 14px;
-    font-weight: 400;
-    width: 188px;
-    color: var(--neutral-black-l);
+  display: flex;
+  gap: 24px;
+  font-family: "IBM Plex Sans Thai", "sans-serif";
+  font-size: 14px;
+  font-weight: 400;
+  width: 188px;
+  color: var(--neutral-black-l);
 }
 
 .Date-sex-reg {
-    display: flex;
-    gap: 24px;
-} 
+  display: flex;
+  gap: 24px;
+}
 
 .input-sexreg {
-    font-family: "IBM Plex Sans Thai", "sans-serif";
-    font-size: 14px;
-    font-weight: 400;
-    width: 188px;
-    color: var(--neutral-black-main);
-    gap: 16px;
+  font-family: "IBM Plex Sans Thai", "sans-serif";
+  font-size: 14px;
+  font-weight: 400;
+  width: 188px;
+  color: var(--neutral-black-main);
+  gap: 16px;
 }
 
 .container-reg {
-    cursor: pointer;
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 10px;
+  cursor: pointer;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
 }
 
 .container-reg input {
-    position: absolute;
-    opacity: 0;
+  position: absolute;
+  opacity: 0;
 }
 
 .checkmark-reg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 16px;
-    height: 16px;
-    background-color: #fff;
-    border-style: solid ;
-    border-width: 1px;
-    border-color: var(--primary-blue-l2);
-    border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--primary-blue-l2);
+  border-radius: 50%;
 }
 
 .container-reg:hover input ~ .checkmark-reg {
-    background-color: #ccc;
+  background-color: #ccc;
 }
 
 .checkmark-reg:after {
-    content: "";
-    position: absolute;
-    display: none;
+  content: "";
+  position: absolute;
+  display: none;
 }
 
 .container-reg input:checked ~ .checkmark-reg:after {
-    display: block;
+  display: block;
 }
 
 .container-reg .checkmark-reg:after {
-    top: 3px;
-   left: 3px;
-   width: 8px;
-   height: 8px;
-   border-radius: 50%;
-   background: var(  --primary-blue-main);
-}
- 
-.input-datereg {
-    display: flex;
-    font-size: 14px;
-    font-weight: 400;
-    font-family: "IBM Plex Sans Thai", "sans-serif";
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-blue-main);
 }
 
-.input-datereg input[type="date"]{
-    color: var(--neutral-black-main);
-    background-color: #fff;
-    padding: 15px;
-    width: 188px;
-    padding: 0px 8px;
-    border-radius: 5px;
-    border-style: solid ;
-    border-width: 1px;
+.input-datereg {
+  display: flex;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "IBM Plex Sans Thai", "sans-serif";
+}
+
+.input-datereg input[type="date"] {
+  color: var(--neutral-black-main);
+  background-color: #fff;
+  padding: 15px;
+  width: 188px;
+  padding: 0px 8px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
 }
 
 .form-bntreg {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin: 0;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
 }
 
 .input-bntreg {
-    display: flex;
-    margin: 0;
-    width: 400px;
-    justify-content: center;
-    border-radius: 8px;
-    background: var(--primary-blue-main);
-    font-family: "IBM Plex Sans Thai", "sans-serif";
-    font-size: 24px;
-    font-weight: 400;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+  display: flex;
+  margin: 0;
+  width: 400px;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--primary-blue-main);
+  font-family: "IBM Plex Sans Thai", "sans-serif";
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 .input-bntreg:hover {
-    background: var(--primary-blue-pressed);
+  background: var(--primary-blue-pressed);
 }
 
 .input-sexreg {
-    display: flex;
+  display: flex;
 }
 
 @media screen and (max-width: 1200px) {
-    .wrapper-reg {
-      flex-direction: column;
-      gap: 24px;
-      padding: 24px;
-      justify-content: center;
-    }
+  .wrapper-reg {
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    justify-content: center;
+  }
 }
-    

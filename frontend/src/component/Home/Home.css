@@ -120,6 +120,8 @@
 @media (max-width: 768px) {
   .home-container {
     padding: 16px;
+    margin-left: 80px;
+    margin-top: 70px;
   }
 
   .home-title-search {

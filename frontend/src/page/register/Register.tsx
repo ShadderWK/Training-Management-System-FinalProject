@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Register.css";
-import MemberReg1 from "../../assets/MemberLogin1.png"
+import MemberReg1 from "../../assets/MemberLogin1.png";
 import TopbarReg from "../../component/TopBar/TopbarReg";
 import Alert from "../../component/Alert/Alert";
 import { MemberInterface } from "../../interfaces/IMember";
@@ -9,7 +9,6 @@ import { CreateMember } from "../../service/HttpClientService";
 import { SelectChangeEvent } from "@mui/material/Select";
 
 function Register() {
-
   const [member, setMember] = useState<MemberInterface>({});
   const [gender, setGender] = useState<GenderInterface[]>([]);
 
@@ -21,19 +20,19 @@ function Register() {
     showPassword: false,
   });
 
-  const [radio, setRadio] = React.useState('');
+  const [radio, setRadio] = React.useState("");
 
   interface State {
     password: string;
     showPassword: boolean;
   }
 
-   const handlePassword =
+  const handlePassword =
     (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
       setPass({ ...pass, [prop]: event.target.value });
     };
 
-    // ==============================(handle ShowPassword)=====================================
+  // ==============================(handle ShowPassword)=====================================
   const handleClickShowPassword = () => {
     setPass({
       ...pass,
@@ -87,7 +86,6 @@ function Register() {
     setMember({ ...member, [name]: e.target.value });
   };
 
-
   // =========================(Fetch API)====================================================
 
   const apiUrl = "http://localhost:8080";
@@ -113,19 +111,19 @@ function Register() {
     return val;
   };
 
-  console.log(member)
+  console.log(member);
 
   // เพิ่มข้อมูลเข้า Database
   const submit = async () => {
     let data = {
-    Firstname: member.Firstname,
-    Lastname: member.Lastname,
-    Password: pass.password,
-    Email: member.Email,
-    Tel:			member.Tel,
-	  Address: 	member.Address,
-	  Birthday:	member.Birthday,
-    GenderID: convertType(member.GenderID),
+      Firstname: member.Firstname,
+      Lastname: member.Lastname,
+      Password: pass.password,
+      Email: member.Email,
+      Tel: member.Tel,
+      Address: member.Address,
+      Birthday: member.Birthday,
+      GenderID: convertType(member.GenderID),
     };
     // window.location.href = "/members"
     let res = await CreateMember(data);
@@ -148,53 +146,99 @@ function Register() {
         <div className="from-reg">
           <h3 className="header-reg">ลงทะเบียน</h3>
           <div className="input-namereg">
-            <input className="input-namereg-text" placeholder="ชื่อ" onChange={handleInputChange}></input>
-            <input className="input-namereg-text" placeholder="สกุล" onChange={handleInputChange}></input>
+            <input
+              className="input-namereg-text"
+              placeholder="ชื่อ"
+              onChange={handleInputChange}
+            ></input>
+            <input
+              className="input-namereg-text"
+              placeholder="สกุล"
+              onChange={handleInputChange}
+            ></input>
           </div>
           <div className="input-allreg">
-            <input className="input-allin" placeholder="อีเมล" onChange={handleInputChange}></input>
-            <input className="input-allin" placeholder="รหัสผ่าน" onChange={handleInputChange}></input>
-            <input className="input-allin" placeholder="ยืนยันรหัสผ่าน" onChange={handleInputChange}></input>
-            <input className="input-allin" placeholder="เบอร์โทรศัพท์" onChange={handleInputChange}></input>
-            <input className="input-allin" placeholder="ที่อยู่" onChange={handleInputChange}></input>
+            <input
+              className="input-allin"
+              placeholder="อีเมล"
+              onChange={handleInputChange}
+            ></input>
+            <input
+              className="input-allin"
+              placeholder="รหัสผ่าน"
+              onChange={handleInputChange}
+            ></input>
+            <input
+              className="input-allin"
+              placeholder="ยืนยันรหัสผ่าน"
+              onChange={handleInputChange}
+            ></input>
+            <input
+              className="input-allin"
+              placeholder="เบอร์โทรศัพท์"
+              onChange={handleInputChange}
+            ></input>
+            <input
+              className="input-allin"
+              placeholder="ที่อยู่"
+              onChange={handleInputChange}
+            ></input>
           </div>
           <div>
-          <div className="layout-sexdate">
-            <div className="form-sexreg">
-              เพศ
+            <div className="layout-sexdate">
+              <div className="form-sexreg">เพศ</div>
+              <div className="form-sexreg">วันเกิด</div>
             </div>
-            <div className="form-sexreg">
-              วันเกิด
+            <div className="Date-sex-reg">
+              <div className="input-sexreg">
+                <label className="container-reg">
+                  หญิง
+                  <input
+                    type="radio"
+                    name="radio"
+                    value={2}
+                    onChange={handleInputRadioChange}
+                  />
+                  <span className="checkmark-reg"></span>
+                </label>
+                <label className="container-reg">
+                  ชาย
+                  <input
+                    type="radio"
+                    name="radio"
+                    value={1}
+                    onChange={handleInputRadioChange}
+                  />
+                  <span className="checkmark-reg"></span>
+                </label>
+                <label className="container-reg">
+                  ไม่ระบุ
+                  <input
+                    type="radio"
+                    name="radio"
+                    value={3}
+                    onChange={handleInputRadioChange}
+                  />
+                  <span className="checkmark-reg"></span>
+                </label>
+              </div>
+              <div className="input-datereg">
+                <input
+                  type="date"
+                  name="date-reg"
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
-          </div>
-          <div className="Date-sex-reg">
-            <div className="input-sexreg">
-              <label className="container-reg">หญิง
-                <input type="radio" name="radio" value={2} onChange={handleInputRadioChange}/>
-                <span className="checkmark-reg"></span>
-              </label>
-              <label className="container-reg">ชาย
-                <input type="radio" name="radio" value={1} onChange={handleInputRadioChange}/>
-                <span className="checkmark-reg"></span>
-              </label>
-              <label className="container-reg">ไม่ระบุ
-                <input type="radio" name="radio" value={3} onChange={handleInputRadioChange}/>
-                <span className="checkmark-reg"></span>
-              </label>
-            </div>
-            <div className="input-datereg">
-              <input type="date" name="date-reg" onChange={handleInputChange} />
-            </div>
-          </div>
           </div>
           <div className="form-bntreg">
-            <button className="input-bntreg" onClick={submit} >
-              ยืนยันการลงทะเบียน   
+            <button className="input-bntreg" onClick={submit}>
+              ยืนยันการลงทะเบียน
             </button>
           </div>
         </div>
       </div>
-      </div>
+    </div>
     // </div>
   );
 }

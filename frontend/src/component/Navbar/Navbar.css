@@ -45,6 +45,9 @@
 @media (max-width: 768px) {
   .navbar-container {
     padding: 0px 20px;
+    position: fixed;
+    background-color: white;
+    width: 100vw;
   }
 
   .navbar-name {

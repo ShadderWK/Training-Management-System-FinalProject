@@ -74,6 +74,7 @@ function Home() {
                   ? item
                   : item.Name?.toLowerCase().includes(search);
               })
+              .sort((a, b) => (b?.ID ?? 0) - (a?.ID ?? 0))
               .map((item) => {
                 return (
                   <BlogCourse

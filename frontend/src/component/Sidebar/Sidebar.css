@@ -1,3 +1,26 @@
+.ant-layout-sider {
+  background-color: transparent !important;
+}
+
+.ant-layout-sider-children {
+  margin-top: 47px !important;
+  position: fixed !important;
+  border: none !important;
+  height: 100vh !important;
+  background-color: #fff !important;
+}
+
+.ant-menu.ant-menu-inline-collapsed {
+  width: 80px !important;
+  transition-duration: 0.2s;
+}
+
+.ant-menu-inline {
+  border: none !important;
+  width: 220px !important;
+  transition-duration: 0.2s;
+}
+
 .ant-layout-sider-trigger {
   background: var(--primary-blue-main) !important;
 }
@@ -5,7 +28,5 @@
 @media (max-width: 768px) {
   .ant-layout-sider {
     position: fixed !important;
-    height: 100%;
-    margin-top: 70px;
   }
 }

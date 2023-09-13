@@ -8,5 +8,12 @@
 
 ### จัดทำโดย
 
-https://github.com/ShadderWK/Training-Management-System-FinalProject/labels/B6311506 `นายกันตพงศ์ เดชาเกียรติไกร`
-https://github.com/ShadderWK/Training-Management-System-FinalProject/labels/B6307554 `ณัฐดนัย เบ้าทอง`
+<ul>
+    <li>
+    https://github.com/ShadderWK/Training-Management-System-FinalProject/labels/B6311506 `นายกันตพงศ์ เดชาเกียรติไกร`
+    </li>
+    
+    <li>
+    https://github.com/ShadderWK/Training-Management-System-FinalProject/labels/B6307554 `ณัฐดนัย เบ้าทอง`
+    </li>
+</li>

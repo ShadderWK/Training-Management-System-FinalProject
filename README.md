@@ -13,8 +13,10 @@
     https://github.com/ShadderWK/Training-Management-System-FinalProject/labels/B6311506 นายกันตพงศ์ เดชาเกียรติไกร
     </li>
 
+</ul>
+
+<ul>
     <li>
     https://github.com/ShadderWK/Training-Management-System-FinalProject/labels/B6307554 ณัฐดนัย เบ้าทอง
     </li>
-
 </ul>

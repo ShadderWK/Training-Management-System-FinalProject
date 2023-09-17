@@ -10,7 +10,6 @@ import { SelectChangeEvent } from "@mui/material/Select";
 
 function Register() {
   const [member, setMember] = useState<MemberInterface>({});
-  const [gender, setGender] = useState<GenderInterface[]>([]);
 
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -75,14 +74,12 @@ function Register() {
 
   const handleInputRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
-    console.log(name);
     setMember({ ...member, [name]: e.target.value });
   };
 
   // =========================(HandleInputChange)====================================================
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
-    console.log(name);
     setMember({ ...member, [name]: e.target.value });
   };
 
@@ -93,18 +90,6 @@ function Register() {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   };
-
-  const fetchGender = async () => {
-    fetch(`${apiUrl}/genders`, requestOptionsGet)
-      .then((response) => response.json())
-      .then((result) => {
-        setGender(result.data);
-      });
-  };
-
-  useEffect(() => {
-    fetchGender();
-  }, []);
 
   const convertType = (data: string | number | undefined) => {
     let val = typeof data === "string" ? parseInt(data) : data;
@@ -123,7 +108,7 @@ function Register() {
       Tel: member.Tel,
       Address: member.Address,
       Birthday: member.Birthday,
-      GenderID: convertType(member.GenderID),
+      GenderID: member.GenderID,
     };
     // window.location.href = "/members"
     let res = await CreateMember(data);
@@ -149,11 +134,15 @@ function Register() {
             <input
               className="input-namereg-text"
               placeholder="ชื่อ"
+              name="Firstname"
+              value={member.Firstname}
               onChange={handleInputChange}
             ></input>
             <input
               className="input-namereg-text"
               placeholder="สกุล"
+              name="Lastname"
+              value={member.Lastname}
               onChange={handleInputChange}
             ></input>
           </div>
@@ -161,26 +150,36 @@ function Register() {
             <input
               className="input-allin"
               placeholder="อีเมล"
+              name="Email"
+              value={member.Email}
               onChange={handleInputChange}
             ></input>
             <input
               className="input-allin"
+              name="Password1"
+              value={member.Password}
               placeholder="รหัสผ่าน"
               onChange={handleInputChange}
             ></input>
             <input
               className="input-allin"
               placeholder="ยืนยันรหัสผ่าน"
+              name="Password2"
+              value={member.Password}
               onChange={handleInputChange}
             ></input>
             <input
               className="input-allin"
               placeholder="เบอร์โทรศัพท์"
+              name="Tel"
+              value={member.Tel}
               onChange={handleInputChange}
             ></input>
             <input
               className="input-allin"
               placeholder="ที่อยู่"
+              name="Address"
+              value={member.Address}
               onChange={handleInputChange}
             ></input>
           </div>
@@ -195,8 +194,8 @@ function Register() {
                   หญิง
                   <input
                     type="radio"
-                    name="radio"
-                    value={2}
+                    name="Gender"
+                    value={member.GenderID+"2"}
                     onChange={handleInputRadioChange}
                   />
                   <span className="checkmark-reg"></span>
@@ -205,8 +204,8 @@ function Register() {
                   ชาย
                   <input
                     type="radio"
-                    name="radio"
-                    value={1}
+                    name="Gender"
+                    value={member.GenderID+"1"}
                     onChange={handleInputRadioChange}
                   />
                   <span className="checkmark-reg"></span>
@@ -215,8 +214,8 @@ function Register() {
                   ไม่ระบุ
                   <input
                     type="radio"
-                    name="radio"
-                    value={3}
+                    name="Gender"
+                    value={member.GenderID+"3"}
                     onChange={handleInputRadioChange}
                   />
                   <span className="checkmark-reg"></span>
@@ -239,7 +238,6 @@ function Register() {
         </div>
       </div>
     </div>
-    // </div>
   );
 }
 

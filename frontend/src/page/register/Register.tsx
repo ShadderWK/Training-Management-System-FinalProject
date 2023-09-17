@@ -72,9 +72,22 @@ function Register() {
     console.log(member);
   };
 
+  // ทำให้ ID ของ Gender เป็น Parameter แล้วเก็บไว้ แล้วพอกดเลือกค่าใน Value ให้เอา Parameter พวกนี้ไปใส่เลย
+  enum GenderOptions {
+    Female = 2,
+    Male = 1,
+    Unspecified = 3,
+  }
+
   const handleInputRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
-    setMember({ ...member, [name]: e.target.value });
+    const genderValue = e.target.value as keyof typeof GenderOptions;
+
+    setMember({
+      ...member,
+      [name]: genderValue,
+      GenderID: GenderOptions[genderValue], //เพิ่มตรงส่วนนี้ให้เก็บ GenderID ที่ได้มาจาก Parameter ของ Radio ที่เลือกไว้เลย
+    });
   };
 
   // =========================(HandleInputChange)====================================================
@@ -195,7 +208,7 @@ function Register() {
                   <input
                     type="radio"
                     name="Gender"
-                    value={member.GenderID+"2"}
+                    value="Female" // ใส่ข้อความแบบนี้ให้ตรง Parameter ที่เรากำหนดไว้
                     onChange={handleInputRadioChange}
                   />
                   <span className="checkmark-reg"></span>
@@ -205,7 +218,7 @@ function Register() {
                   <input
                     type="radio"
                     name="Gender"
-                    value={member.GenderID+"1"}
+                    value="Male" // ใส่ข้อความแบบนี้ให้ตรง Parameter ที่เรากำหนดไว้
                     onChange={handleInputRadioChange}
                   />
                   <span className="checkmark-reg"></span>
@@ -215,7 +228,7 @@ function Register() {
                   <input
                     type="radio"
                     name="Gender"
-                    value={member.GenderID+"3"}
+                    value="Unspecified" // ใส่ข้อความแบบนี้ให้ตรง Parameter ที่เรากำหนดไว้
                     onChange={handleInputRadioChange}
                   />
                   <span className="checkmark-reg"></span>

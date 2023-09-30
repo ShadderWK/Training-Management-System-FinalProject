@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"golang.org/x/crypto/bcrypt"
-	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+	"gorm.io/driver/postgres"
 )
 
 var db *gorm.DB
@@ -19,7 +19,8 @@ func DB() *gorm.DB {
 
 func SetupDatabase() {
 
-	database, err := gorm.Open(sqlite.Open("backup.db"), &gorm.Config{})
+	dsn := "user=postgres dbname=TMS sslmode=disable password=123456"
+    database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	fmt.Print(database)
 

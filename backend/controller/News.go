@@ -30,8 +30,7 @@ func CreateNews(c *gin.Context) {
 	// }
 
 	newsc := entity.News{
-		Title:			news.Title,
-		Detail:			news.Detail,
+		Image:			news.Image,
 		Admin: 			admin,
 	}
 
@@ -100,8 +99,7 @@ func UpdateNews(c *gin.Context) {
 	// }
 
 	update := entity.News{
-		Title:			news.Title,
-		Detail:			news.Detail,
+		Image:			news.Image,
 		Admin: 			admin,
 	}
 

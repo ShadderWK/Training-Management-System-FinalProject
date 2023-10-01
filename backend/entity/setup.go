@@ -195,10 +195,21 @@ func SetupDatabase() {
 	db.Model(&Reply{}).Create(&ReplyA)
 
 	NewsA := News{
-		Title:  "ฟังก์ชันใหม่",
-		Detail: "ตอนนี้ทางเว็บเรามีฟังก์ชันใหม่แล้วนะครับ",
+		Image:  "https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
 		Admin:  AdminA,
 	}
 	db.Model(&News{}).Create(&NewsA)
+
+	NewsB := News{
+		Image:  "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+		Admin:  AdminA,
+	}
+	db.Model(&News{}).Create(&NewsB)
+
+	NewsC := News{
+		Image:  "https://plus.unsplash.com/premium_photo-1677215210940-99dc9abd546b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Admin:  AdminA,
+	}
+	db.Model(&News{}).Create(&NewsC)
 
 }

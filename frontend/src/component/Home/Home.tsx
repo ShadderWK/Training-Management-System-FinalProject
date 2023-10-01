@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Layout } from "antd";
+import { Carousel } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
 import { CourseInterface } from "../../interfaces/ICourse";
+import { NewsInterface } from "../../interfaces/INews";
 
-import { GetCourses } from "../../service/HttpClientService";
+import { GetCourses, GetNews } from "../../service/HttpClientService";
 
 import "./Home.css";
 
@@ -13,11 +15,14 @@ import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import BlogCourse from "./BlogCourse/BlogCourse";
 
+import NewsImg from "../../assets/NewsImg1.jpg";
 import prElearningPic from "../../assets/pr-elearning.png";
+import Logo from "../../assets/MemberLogin1.png";
 
 function Home() {
   const [token, setToken] = useState<String>("");
   const [search, setSearch] = useState("");
+  const [news, setNews] = useState<NewsInterface[]>([]);
   const [courses, setCourses] = useState<CourseInterface[]>([]);
   const navigate = useNavigate();
 
@@ -28,6 +33,11 @@ function Home() {
     res && setCourses(res);
   };
 
+  const fetchNews = async () => {
+    let res = await GetNews();
+    res && setNews(res);
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -36,6 +46,7 @@ function Home() {
       navigate("/member");
     }
 
+    fetchNews();
     fetchCourses();
   }, [navigate]);
 
@@ -44,13 +55,37 @@ function Home() {
       <Navbar />
       <Layout
         style={{
+          maxWidth: "100vw",
           minHeight: "100vh",
           backgroundColor: "#EAEFFA",
         }}
       >
         <Sidebar />
+
         <div className="home-container">
-          <img src={prElearningPic} />
+          <div className="carousel-container">
+            <Carousel
+              autoplay
+              style={{
+                width: "100%",
+                maxWidth: "80vw",
+              }}
+            >
+              <div>
+                <img className="img-carousel" src={NewsImg} />
+              </div>
+              {news.map((item, index) => (
+                <div key={index}>
+                  <img
+                    className="img-carousel"
+                    src={item.Image}
+                    alt={`News ${index}`}
+                  />
+                </div>
+              ))}
+            </Carousel>
+          </div>
+
           <div className="home-title-search">
             <h1>การอบรมและสัมนา</h1>
             <div className="home-search-container">

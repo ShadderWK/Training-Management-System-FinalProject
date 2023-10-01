@@ -117,8 +117,7 @@ type Reply struct {
 
 type News struct {
 	gorm.Model
-	Title  string
-	Detail string
+	Image  string
 
 	AdminID *uint
 	Admin   Admin

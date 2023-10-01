@@ -12,7 +12,8 @@ type Admin struct {
 	Name     string
 	Password string
 
-	News []News `gorm:"foreignKey:AdminID"`
+	News 		[]News `gorm:"foreignKey:AdminID"`
+	Question 	[]Question `gorm:"foreignKey:AdminID"`
 }
 
 type Gender struct {
@@ -34,7 +35,6 @@ type Member struct {
 	Gender   Gender
 
 	CourseRegistration []CourseRegistration `gorm:"foreignKey:MemberID"`
-	Question           []Question           `gorm:"foreignKey:MemberID"`
 }
 
 type Employee struct {
@@ -46,7 +46,6 @@ type Employee struct {
 
 	Course       []Course       `gorm:"foreignKey:EmployeeID"`
 	PaymentCheck []PaymentCheck `gorm:"foreignKey:EmployeeID"`
-	Reply        []Reply        `gorm:"foreignKey:EmployeeID"`
 }
 
 type Course struct {
@@ -96,23 +95,10 @@ type Question struct {
 	gorm.Model
 	Title  string
 	Detail string
+	Reply  string
 
-	MemberID *uint
-	Member   Member
-
-	Reply []Reply `gorm:"foreignKey:QuestionID"`
-}
-
-type Reply struct {
-	gorm.Model
-	Title  string
-	Detail string
-
-	QuestionID *uint
-	Question   Question
-
-	EmployeeID *uint
-	Employee   Employee
+	AdminID *uint
+	Admin   Admin
 }
 
 type News struct {

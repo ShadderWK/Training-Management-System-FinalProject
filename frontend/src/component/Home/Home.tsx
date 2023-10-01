@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Layout } from "antd";
-import { Carousel } from "antd";
+import { Layout, Carousel } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
 import { CourseInterface } from "../../interfaces/ICourse";
@@ -16,17 +15,15 @@ import Sidebar from "../Sidebar/Sidebar";
 import BlogCourse from "./BlogCourse/BlogCourse";
 
 import NewsImg from "../../assets/NewsImg1.jpg";
-import prElearningPic from "../../assets/pr-elearning.png";
-import Logo from "../../assets/MemberLogin1.png";
 
 function Home() {
   const [token, setToken] = useState<String>("");
+  const [role, setRole] = useState<String>("");
   const [search, setSearch] = useState("");
   const [news, setNews] = useState<NewsInterface[]>([]);
   const [courses, setCourses] = useState<CourseInterface[]>([]);
   const navigate = useNavigate();
-
-  console.log(search);
+  const defaultSelectedKeys = ["1"];
 
   const fetchCourses = async () => {
     let res = await GetCourses();
@@ -46,6 +43,13 @@ function Home() {
       navigate("/member");
     }
 
+    const role = localStorage.getItem("Role");
+    if (role === "member") {
+      setRole(role);
+    } else {
+      localStorage.clear();
+    }
+
     fetchNews();
     fetchCourses();
   }, [navigate]);
@@ -60,7 +64,7 @@ function Home() {
           backgroundColor: "#EAEFFA",
         }}
       >
-        <Sidebar />
+        <Sidebar defaultSelectedKeys={defaultSelectedKeys} />
 
         <div className="home-container">
           <div className="carousel-container">

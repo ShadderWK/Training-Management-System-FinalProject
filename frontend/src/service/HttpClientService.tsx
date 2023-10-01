@@ -35,6 +35,7 @@ async function MemberLogin(data: SignInInterface) {
       if (res.data) {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("uid", res.data.id);
+        localStorage.setItem("Role", "member");
         localStorage.setItem("Firstname", res.data.firstname);
         localStorage.setItem("Lastname", res.data.lastname);
         return res.data;
@@ -60,6 +61,7 @@ const AdminLogin = async (data: AdminInterface) => {
       if (res.data) {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("uid", res.data.id);
+        localStorage.setItem("Role", "admin");
         return res.data;
       } else {
         return false;

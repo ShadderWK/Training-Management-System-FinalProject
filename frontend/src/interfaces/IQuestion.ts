@@ -1,10 +1,11 @@
-import { MemberInterface } from "./IMember";
+import { AdminInterface } from "./IAdmin";
 
 export interface QuestionInterface {
   ID?: number;
   Title?: string;
   Detail?: string;
+  Reply?: string;
 
-  MemberID?: number;
-  Member?: MemberInterface;
+  AdminID?: number;
+  Admin?: AdminInterface;
 }

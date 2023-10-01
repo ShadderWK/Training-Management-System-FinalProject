@@ -11,15 +11,15 @@ import (
 // POST /Question
 func CreateQuestion(c *gin.Context) {
 	var question		entity.Question
-	var member			entity.Member
+	var admin			entity.Admin
 
 	if err := c.ShouldBindJSON(&question); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	if tx := entity.DB().Where("id = ?", question.MemberID).First(&member); tx.RowsAffected == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Member not found"})
+	if tx := entity.DB().Where("id = ?", question.AdminID).First(&admin); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Admin not found"})
 		return
 	}
 
@@ -32,7 +32,8 @@ func CreateQuestion(c *gin.Context) {
 	qus := entity.Question{
 		Title:			question.Title,
 		Detail:			question.Detail,
-		Member: 		member,
+		Reply:			question.Reply,
+		Admin: 			admin,
 	}
 
 	if err := entity.DB().Create(&qus).Error; err != nil {
@@ -47,7 +48,7 @@ func GetQuestion(c *gin.Context) {
 	var question entity.Question
 	id := c.Param("id")
 
-	if tx := entity.DB().Preload("Member").Where("id = ?", id).First(&question); tx.RowsAffected == 0 {
+	if tx := entity.DB().Preload("Admin").Where("id = ?", id).First(&question); tx.RowsAffected == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Question not found"})
 		return
 	}
@@ -58,7 +59,7 @@ func GetQuestion(c *gin.Context) {
 // GET /Questions
 func ListQuestions(c *gin.Context) {
 	var questions []entity.Question
-	if err := entity.DB().Preload("Member").Raw("SELECT * FROM questions").Find(&questions).Error; err != nil {
+	if err := entity.DB().Preload("Admin").Raw("SELECT * FROM questions").Find(&questions).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -81,15 +82,15 @@ func DeleteQuestion(c *gin.Context) {
 // PATCH /Question
 func UpdateQuestion(c *gin.Context) {
 	var question		entity.Question
-	var member			entity.Member
+	var admin			entity.Admin
 
 	if err := c.ShouldBindJSON(&question); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	if tx := entity.DB().Where("id = ?", question.MemberID).First(&member); tx.RowsAffected == 0 {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Member not found"})
+	if tx := entity.DB().Where("id = ?", question.AdminID).First(&admin); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Admin not found"})
 		return
 	}
 
@@ -102,7 +103,8 @@ func UpdateQuestion(c *gin.Context) {
 	update := entity.Question{
 		Title:			question.Title,
 		Detail:			question.Detail,
-		Member: 		member,
+		Reply:			question.Reply,
+		Admin: 			admin,
 	}
 
 	if err := entity.DB().Where("id = ?", question.ID).Updates(&update).Error; err != nil {

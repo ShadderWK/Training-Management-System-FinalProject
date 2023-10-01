@@ -44,7 +44,6 @@ func SetupDatabase() {
 		&PaymentStatus{},
 		&PaymentCheck{},
 		&Question{},
-		&Reply{},
 		&News{},
 	)
 
@@ -181,18 +180,19 @@ func SetupDatabase() {
 
 	QuestionA := Question{
 		Title:  "จ่ายเงินอย่างไร",
-		Detail: "ผมสงสัยมากช่วยผมหน่อย",
-		Member: MemberA,
+		Detail: "ถ้าคุณสงสัยนี่ดูนี่เลย",
+		Reply:	"กดปุ่มชำระเงิน",
+		Admin: AdminA,
 	}
 	db.Model(&Question{}).Create(&QuestionA)
 
-	ReplyA := Reply{
-		Title:    "จ่ายเงินแบบนี้",
-		Detail:   "ต้องไปจ่ายในระบบจ่ายเงิน",
-		Question: QuestionA,
-		Employee: EmployeeA,
+	QuestionB := Question{
+		Title:  "ต้องการติดต่อพูดคุยทำได้ตรงไหน",
+		Detail: "คุณสงสัยว่าอยากคุยทำอย่างไรงั้นเหรอ",
+		Reply: 	"Add Line มาสิ!!",
+		Admin: AdminA,
 	}
-	db.Model(&Reply{}).Create(&ReplyA)
+	db.Model(&Question{}).Create(&QuestionB)
 
 	NewsA := News{
 		Image:  "https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",

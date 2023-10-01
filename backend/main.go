@@ -94,12 +94,6 @@ func main() {
 			router.DELETE("/delete-question/:id", controller.DeleteQuestion)
 			router.PATCH("/update-question", controller.UpdateQuestion)
 
-			//Reply
-			router.POST("/reply", controller.CreateReply)
-			router.GET("/reply/:id", controller.GetReply)
-			router.GET("/replies", controller.ListReplies)
-			router.DELETE("/delete-reply/:id", controller.DeleteReply)
-			router.PATCH("/update-reply", controller.UpdateReply)
 		}
 	}
 

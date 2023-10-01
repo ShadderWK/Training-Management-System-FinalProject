@@ -62,7 +62,7 @@ const items: MenuItem[] = [
   getItem(
     "ติดต่อเจ้าหน้าที่",
     "4",
-    <Link to="/member/question">
+    <Link to="/member/faq">
       <CommentOutlined style={{ color: "#2B56BA" }} />
     </Link>
   ),
@@ -75,7 +75,11 @@ const items: MenuItem[] = [
   ),
 ];
 
-function Sidebar() {
+interface SidebarProps {
+  defaultSelectedKeys?: string[]; // Define the prop
+}
+
+function Sidebar({ defaultSelectedKeys }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(true);
 
   return (
@@ -92,7 +96,7 @@ function Sidebar() {
     >
       <div>
         <Menu
-          defaultSelectedKeys={["1"]}
+          defaultSelectedKeys={defaultSelectedKeys}
           mode="inline"
           items={items}
           style={{

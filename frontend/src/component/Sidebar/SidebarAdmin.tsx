@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import {
   HomeOutlined,
-  FolderOutlined,
-  ShoppingCartOutlined,
-  CommentOutlined,
+  PictureOutlined,
+  QuestionCircleOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
@@ -41,34 +40,30 @@ const items: MenuItem[] = [
   getItem(
     "หน้าหลัก",
     "1",
-    <Link to="/member/home">
+    <Link to="/admin/home">
       <HomeOutlined style={{ color: "#2B56BA" }} />
     </Link>
   ),
+
   getItem(
-    "คอร์สเรียนของฉัน",
+    "แก้ไขข่าวสาร",
     "2",
-    <Link to="/member/mycourse">
-      <FolderOutlined style={{ color: "#2B56BA" }} />
+    <Link to="/admin/edit-news">
+      <PictureOutlined style={{ color: "#2B56BA" }} />
     </Link>
   ),
+
   getItem(
-    "การชำระเงิน",
+    "แก้ไข FAQ",
     "3",
-    <Link to="/member/payment">
-      <ShoppingCartOutlined style={{ color: "#2B56BA" }} />
+    <Link to="/admin/edit-faq">
+      <QuestionCircleOutlined style={{ color: "#2B56BA" }} />
     </Link>
   ),
-  getItem(
-    "ติดต่อเจ้าหน้าที่",
-    "4",
-    <Link to="/member/faq">
-      <CommentOutlined style={{ color: "#2B56BA" }} />
-    </Link>
-  ),
+
   getItem(
     "ออกจากระบบ",
-    "5",
+    "4",
     <LogoutOutlined style={{ color: "#2B56BA" }} />,
     undefined,
     signout
@@ -79,7 +74,7 @@ interface SidebarProps {
   defaultSelectedKeys?: string[];
 }
 
-function Sidebar({ defaultSelectedKeys }: SidebarProps) {
+function SidebarAdmin({ defaultSelectedKeys }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(true);
 
   return (
@@ -111,4 +106,4 @@ function Sidebar({ defaultSelectedKeys }: SidebarProps) {
   );
 }
 
-export default Sidebar;
+export default SidebarAdmin;

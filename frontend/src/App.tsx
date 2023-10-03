@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { Router, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-//Page
-import Member from "./page/login/Member";
-import Admin from "./page/login/Admin";
+//Page Register
 import Register from "./page/register/Register";
+
+//Page Member
+import Member from "./page/login/Member";
 import Home from "./component/Home/Home";
 import Course from "./component/Course/Course";
 import FAQ from "./component/FAQ/FAQ";
+
+//Page Admin
+import Admin from "./page/login/Admin";
+import AdminHome from "./component/Home/AdminHome";
+import News from "./component/News/News";
+import AddNews from "./component/News/AddNews";
+import EditFAQ from "./component/FAQ/EditFAQ";
+import AddFAQ from "./component/FAQ/AddFAQ";
+import UpdateFAQ from "./component/FAQ/UpdateFAQ";
+
 //Component
 import Topbar from "./component/TopBar/Topbar";
 
@@ -37,6 +48,12 @@ function App() {
         <Route path="member/faq" element={<FAQ />} />
 
         <Route path="admin" element={<Admin />} />
+        <Route path="admin/home" element={<AdminHome />} />
+        <Route path="admin/edit-news" element={<News />} />
+        <Route path="admin/add-news" element={<AddNews />} />
+        <Route path="admin/edit-faq" element={<EditFAQ />} />
+        <Route path="admin/add-faq" element={<AddFAQ />} />
+        <Route path="admin/update-faq/:id" element={<UpdateFAQ />} />
       </Routes>
     </div>
   );

@@ -7,7 +7,8 @@ import Register from "./page/register/Register";
 //Page Member
 import Member from "./page/login/Member";
 import Home from "./component/Home/Home";
-import Course from "./component/Course/Course";
+import CourseReg from "./component/CourseReg/CourseReg";
+import CoursePurchase from "./component/CourseReg/CoursePurchase";
 import FAQ from "./component/FAQ/FAQ";
 
 //Page Admin
@@ -42,11 +43,14 @@ function App() {
         <Route path="/" element={<Topbar />} />
         <Route path="/register" element={<Register />} />
 
+        {/* Member */}
         <Route path="member" element={<Member />} />
         <Route path="member/home" element={<Home />} />
-        <Route path="member/course/:id" element={<Course />} />
+        <Route path="member/course/:id" element={<CourseReg />} />
+        <Route path="member/course-purchase/:id" element={<CoursePurchase />} />
         <Route path="member/faq" element={<FAQ />} />
 
+        {/* Admin */}
         <Route path="admin" element={<Admin />} />
         <Route path="admin/home" element={<AdminHome />} />
         <Route path="admin/edit-news" element={<News />} />

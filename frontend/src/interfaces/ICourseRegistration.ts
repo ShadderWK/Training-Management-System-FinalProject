@@ -1,5 +1,6 @@
 import { MemberInterface } from "./IMember";
 import { CourseInterface } from "./ICourse";
+import { PaymentStatusInterface } from "./IPaymentStatus";
 
 export interface CourseRegistrationInterface {
   ID?: number;
@@ -10,4 +11,7 @@ export interface CourseRegistrationInterface {
 
   CourseID?: number;
   Course?: CourseInterface;
+
+  PaymentStatusID?: number;
+  PaymentStatus?: PaymentStatusInterface;
 }

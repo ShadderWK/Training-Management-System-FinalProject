@@ -36,13 +36,11 @@ func SetupDatabase() {
 		// Actor
 		&Admin{},
 		&Member{},
-		&Employee{},
 		// Main Entity
 		&Gender{},
 		&Course{},
 		&CourseRegistration{},
 		&PaymentStatus{},
-		&PaymentCheck{},
 		&Question{},
 		&News{},
 	)
@@ -87,96 +85,93 @@ func SetupDatabase() {
 	}
 	db.Model(&Member{}).Create(&MemberA)
 
-	EmployeeA := Employee{
-		Email:    "Employee01@example.com",
-		Name:     "พนักงาน01",
-		Password: string(passwordA),
-		Image:    "https://cdn-icons-png.flaticon.com/512/3789/3789820.png",
-	}
-	db.Model(&Employee{}).Create(&EmployeeA)
-
 	CourseA := Course{
 		Name:     "แนวโน้มนวัตกรรมและเทคโนโลยีการศึกษาสำหรับการจัดการการศึกษาทุกช่วงวัย",
 		Detail:   "test test test",
-		Price:    1000,
+		Price:    10100,
 		Image:    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-		Employee: EmployeeA,
+		Admin:	  AdminA,
 	}
 	db.Model(&Course{}).Create(&CourseA)
 
 	CourseB := Course{
 		Name:     "ชีวอนามัยและความปลอดภัย",
-		Detail:   "test test test",
-		Price:    1000,
+		Detail:   "ทดสอบๆ",
+		Price:    2000,
 		Image:    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-		Employee: EmployeeA,
+		Admin:	  AdminA,
 	}
 	db.Model(&Course{}).Create(&CourseB)
 
 	CourseC := Course{
 		Name:     "แนวโน้มนวัตกรรมและเทคโนโลยีการศึกษาสำหรับการจัดการการศึกษาทุกช่วงวัย",
 		Detail:   "test test test",
-		Price:    1000,
+		Price:    3000,
 		Image:    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-		Employee: EmployeeA,
+		Admin:	  AdminA,
 	}
 	db.Model(&Course{}).Create(&CourseC)
 
 	CourseD := Course{
 		Name:     "ทดสอบครับทดสอบบบบ",
-		Detail:   "test test test",
-		Price:    1000,
+		Detail:   "ทดสอบๆ",
+		Price:    5000,
 		Image:    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-		Employee: EmployeeA,
+		Admin:	  AdminA,
 	}
 	db.Model(&Course{}).Create(&CourseD)
 
 	CourseE := Course{
 		Name:     "แนวโน้มนวัตกรรมและเทคโนโลยีการศึกษาสำหรับการจัดการการศึกษาทุกช่วงวัย",
 		Detail:   "test test test",
-		Price:    1000,
+		Price:    9000,
 		Image:    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
-		Employee: EmployeeA,
+		Admin:	  AdminA,
 	}
 	db.Model(&Course{}).Create(&CourseE)
 
 	CourseF := Course{
 		Name:     "course testๆ",
-		Detail:   "test test test",
-		Price:    1000,
+		Detail:   "ทดสอบๆ",
+		Price:    3000,
 		Image:    "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
-		Employee: EmployeeA,
+		Admin:	  AdminA,
 	}
 	db.Model(&Course{}).Create(&CourseF)
 
 	CourseG := Course{
 		Name:     "course testๆ 22",
 		Detail:   "test test test",
-		Price:    1000,
+		Price:    6000,
 		Image:    "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
-		Employee: EmployeeA,
+		Admin:	  AdminA,
 	}
 	db.Model(&Course{}).Create(&CourseG)
+
+	
+
+	PaymentStatusA := PaymentStatus{
+		Status: "รอการตรวจสอบ",
+	}
+	db.Model(&PaymentStatus{}).Create(&PaymentStatusA)
+
+	PaymentStatusB := PaymentStatus{
+		Status: "ผ่านการตรวจสอบ",
+	}
+	db.Model(&PaymentStatus{}).Create(&PaymentStatusB)
+
+	PaymentStatusC := PaymentStatus{
+		Status: "จำนวนเงินไม่ถูกต้อง",
+	}
+	db.Model(&PaymentStatus{}).Create(&PaymentStatusC)
 
 	CourseRegistrationA := CourseRegistration{
 		Receipt: "https://img.freepik.com/free-vector/realistic-receipt-template_23-2147938550.jpg?w=2000",
 		Member:  MemberA,
 		Course:  CourseA,
+		PaymentStatus: PaymentStatusA,
 	}
 	db.Model(&CourseRegistration{}).Create(&CourseRegistrationA)
-
-	PaymentStatusA := PaymentStatus{
-		Status: "จ่ายเงินแล้ว",
-	}
-	db.Model(&PaymentStatus{}).Create(&PaymentStatusA)
-
-	PaymentCheckA := PaymentCheck{
-		Comment:            "จ่ายเงินถูกต้อง",
-		Employee:           EmployeeA,
-		PaymentStatus:      PaymentStatusA,
-		CourseRegistration: CourseRegistrationA,
-	}
-	db.Model(&PaymentCheck{}).Create(&PaymentCheckA)
 
 	QuestionA := Question{
 		Title:  "จ่ายเงินอย่างไร",

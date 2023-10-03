@@ -2,13 +2,10 @@ import { useState } from "react";
 import { SignInInterface } from "../interfaces/ISignIn";
 import { AdminInterface } from "../interfaces/IAdmin";
 import { MemberInterface } from "../interfaces/IMember";
-import { EmployeeInterface } from "../interfaces/IEmployee";
 import { CourseInterface } from "../interfaces/ICourse";
 import { CourseRegistrationInterface } from "../interfaces/ICourseRegistration";
 import { NewsInterface } from "../interfaces/INews";
-import { PaymentCheckInterface } from "../interfaces/IPaymentCheck";
 import { QuestionInterface } from "../interfaces/IQuestion";
-import { ReplyInterface } from "../interfaces/IReply";
 
 const apiUrl = `http://localhost:8080`;
 
@@ -62,29 +59,6 @@ const AdminLogin = async (data: AdminInterface) => {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("uid", res.data.id);
         localStorage.setItem("Role", "admin");
-        return res.data;
-      } else {
-        return false;
-      }
-    });
-
-  return res;
-};
-
-// Employee Login
-const EmployeeLogin = async (data: EmployeeInterface) => {
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  };
-
-  let res = await fetch(`${apiUrl}/employeeLogin`, requestOptions)
-    .then((response) => response.json())
-    .then((res) => {
-      if (res.data) {
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("uid", res.data.id);
         return res.data;
       } else {
         return false;
@@ -192,91 +166,6 @@ const DeleteMember = async (id: string) => {
   };
 
   let res = await fetch(`${apiUrl}/delete-member/${id}`, requestOptions)
-    .then((response) => response.json())
-    .then((result) => {
-      return result.data ? result.data : false;
-    });
-
-  return res;
-};
-
-// ===== Employee =====
-const CreateEmployee = async (data: EmployeeInterface) => {
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
-
-  let res = await fetch(`${apiUrl}/employee`, requestOptions)
-    .then((response) => response.json())
-    .then((res) => {
-      if (res.data) {
-        return { status: true, message: res.data };
-      } else {
-        return { status: false, message: res.error };
-      }
-    });
-
-  return res;
-};
-
-const GetEmployees = async () => {
-  let res = await fetch(`${apiUrl}/employees`, requestOptionsGet)
-    .then((response) => response.json())
-    .then((result) => {
-      return result.data ? result.data : false;
-    });
-
-  return res;
-};
-
-const GetEmployeeByID = async (id: string) => {
-  let res = await fetch(`${apiUrl}/employee/${id}`, requestOptionsGet)
-    .then((response) => response.json())
-    .then((result) => {
-      return result.data ? result.data : false;
-    });
-
-  return res;
-};
-
-const UpdateEmployee = async (data: EmployeeInterface) => {
-  const requestOptions = {
-    method: "PATCH",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
-
-  let res = await fetch(`${apiUrl}/update-employee`, requestOptions)
-    .then((response) => response.json())
-    .then((res) => {
-      if (res.data) {
-        return { status: true, message: res.data };
-      } else {
-        return { status: false, message: res.error };
-      }
-    });
-
-  return res;
-};
-
-const DeleteEmployee = async (id: string) => {
-  const requestOptions = {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-  };
-
-  let res = await fetch(`${apiUrl}/delete-employee/${id}`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
       return result.data ? result.data : false;
@@ -466,176 +355,6 @@ const DeleteQuestion = async (id: string) => {
   return res;
 };
 
-// ===== Reply =====
-const CreateReply = async (data: ReplyInterface) => {
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
-
-  let res = await fetch(`${apiUrl}/reply`, requestOptions)
-    .then((response) => response.json())
-    .then((res) => {
-      if (res.data) {
-        return { status: true, message: res.data };
-      } else {
-        return { status: false, message: res.error };
-      }
-    });
-
-  return res;
-};
-
-const GetReplies = async () => {
-  let res = await fetch(`${apiUrl}/replies`, requestOptionsGet)
-    .then((response) => response.json())
-    .then((result) => {
-      return result.data ? result.data : false;
-    });
-
-  return res;
-};
-
-const GetReplyByID = async (id: string) => {
-  let res = await fetch(`${apiUrl}/reply/${id}`, requestOptionsGet)
-    .then((response) => response.json())
-    .then((result) => {
-      return result.data ? result.data : false;
-    });
-
-  return res;
-};
-
-const UpdateReply = async (data: ReplyInterface) => {
-  const requestOptions = {
-    method: "PATCH",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
-
-  let res = await fetch(`${apiUrl}/update-reply`, requestOptions)
-    .then((response) => response.json())
-    .then((res) => {
-      if (res.data) {
-        return { status: true, message: res.data };
-      } else {
-        return { status: false, message: res.error };
-      }
-    });
-
-  return res;
-};
-
-const DeleteReply = async (id: string) => {
-  const requestOptions = {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-  };
-
-  let res = await fetch(`${apiUrl}/delete-reply/${id}`, requestOptions)
-    .then((response) => response.json())
-    .then((result) => {
-      return result.data ? result.data : false;
-    });
-
-  return res;
-};
-
-// ===== PaymentCheck =====
-const CreatePaymentCheck = async (data: PaymentCheckInterface) => {
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
-
-  let res = await fetch(`${apiUrl}/payment_check`, requestOptions)
-    .then((response) => response.json())
-    .then((res) => {
-      if (res.data) {
-        return { status: true, message: res.data };
-      } else {
-        return { status: false, message: res.error };
-      }
-    });
-
-  return res;
-};
-
-const GetPaymentChecks = async () => {
-  let res = await fetch(`${apiUrl}/payment_checks`, requestOptionsGet)
-    .then((response) => response.json())
-    .then((result) => {
-      return result.data ? result.data : false;
-    });
-
-  return res;
-};
-
-const GetPaymentCheckByID = async (id: string) => {
-  let res = await fetch(`${apiUrl}/payment_check/${id}`, requestOptionsGet)
-    .then((response) => response.json())
-    .then((result) => {
-      return result.data ? result.data : false;
-    });
-
-  return res;
-};
-
-const UpdatePaymentCheck = async (data: PaymentCheckInterface) => {
-  const requestOptions = {
-    method: "PATCH",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
-
-  let res = await fetch(`${apiUrl}/update-payment_check`, requestOptions)
-    .then((response) => response.json())
-    .then((res) => {
-      if (res.data) {
-        return { status: true, message: res.data };
-      } else {
-        return { status: false, message: res.error };
-      }
-    });
-
-  return res;
-};
-
-const DeletePaymentCheck = async (id: string) => {
-  const requestOptions = {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-  };
-
-  let res = await fetch(`${apiUrl}/delete-payment_check/${id}`, requestOptions)
-    .then((response) => response.json())
-    .then((result) => {
-      return result.data ? result.data : false;
-    });
-
-  return res;
-};
-
 // ===== News =====
 const CreateNews = async (data: NewsInterface) => {
   const requestOptions = {
@@ -732,7 +451,7 @@ const CreateCourseRegistration = async (data: CourseRegistrationInterface) => {
     body: JSON.stringify(data),
   };
 
-  let res = await fetch(`${apiUrl}/courseregistration`, requestOptions)
+  let res = await fetch(`${apiUrl}/course_registration`, requestOptions)
     .then((response) => response.json())
     .then((res) => {
       if (res.data) {
@@ -816,54 +535,42 @@ export {
   //Login
   MemberLogin,
   AdminLogin,
-  EmployeeLogin,
+
   //Admin
   GetAdmins,
   GetAdminByID,
+
   //Member
   CreateMember,
   GetMembers,
   GetMemberByID,
   UpdateMember,
   DeleteMember,
-  //Employee
-  CreateEmployee,
-  GetEmployees,
-  GetEmployeeByID,
-  UpdateEmployee,
-  DeleteEmployee,
+
   //PaymentStatus
   GetPaymentStatuses,
+
   //Course
   CreateCourse,
   GetCourses,
   GetCourseByID,
   UpdateCourse,
   DeleteCourse,
+
   //Question
   CreateQuestion,
   GetQuestions,
   GetQuestionByID,
   UpdateQuestion,
   DeleteQuestion,
-  //Reply
-  CreateReply,
-  GetReplies,
-  GetReplyByID,
-  UpdateReply,
-  DeleteReply,
-  //PaymentCheck
-  CreatePaymentCheck,
-  GetPaymentChecks,
-  GetPaymentCheckByID,
-  UpdatePaymentCheck,
-  DeletePaymentCheck,
+
   //News
   CreateNews,
   GetNews,
   GetNewsByID,
   UpdateNews,
   DeleteNews,
+
   //CourseRegistration
   CreateCourseRegistration,
   GetCourseRegistrations,

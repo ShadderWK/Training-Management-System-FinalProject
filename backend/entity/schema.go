@@ -12,8 +12,9 @@ type Admin struct {
 	Name     string
 	Password string
 
-	News 		[]News `gorm:"foreignKey:AdminID"`
-	Question 	[]Question `gorm:"foreignKey:AdminID"`
+	News 		[]News 		`gorm:"foreignKey:AdminID"`
+	Question 	[]Question 	`gorm:"foreignKey:AdminID"`
+	Course      []Course    `gorm:"foreignKey:AdminID"`
 }
 
 type Gender struct {
@@ -37,60 +38,6 @@ type Member struct {
 	CourseRegistration []CourseRegistration `gorm:"foreignKey:MemberID"`
 }
 
-type Employee struct {
-	gorm.Model
-	Name     string
-	Email    string
-	Password string
-	Image    string
-
-	Course       []Course       `gorm:"foreignKey:EmployeeID"`
-	PaymentCheck []PaymentCheck `gorm:"foreignKey:EmployeeID"`
-}
-
-type Course struct {
-	gorm.Model
-	Name   string
-	Detail string
-	Price  int
-	Image  string
-
-	EmployeeID *uint
-	Employee   Employee
-
-	CourseRegistration []CourseRegistration `gorm:"foreignKey:CourseID"`
-}
-
-type CourseRegistration struct {
-	gorm.Model
-	Receipt string
-
-	MemberID *uint
-	Member   Member
-
-	CourseID *uint
-	Course   Course
-}
-
-type PaymentStatus struct {
-	gorm.Model
-	Status string
-}
-
-type PaymentCheck struct {
-	gorm.Model
-	Comment string
-
-	EmployeeID *uint
-	Employee   Employee
-
-	PaymentStatusID int
-	PaymentStatus   PaymentStatus
-
-	CourseRegistrationID int
-	CourseRegistration   CourseRegistration
-}
-
 type Question struct {
 	gorm.Model
 	Title  string
@@ -108,3 +55,39 @@ type News struct {
 	AdminID *uint
 	Admin   Admin
 }
+
+type PaymentStatus struct {
+	gorm.Model
+	Status string
+}
+
+type Course struct {
+	gorm.Model
+	Name   string
+	Detail string
+	Price  int
+	Image  string
+
+	AdminID *uint
+	Admin   Admin
+
+	CourseRegistration []CourseRegistration `gorm:"foreignKey:CourseID"`
+}
+
+type CourseRegistration struct {
+	gorm.Model
+	Receipt string
+
+	MemberID *uint
+	Member   Member
+
+	CourseID *uint
+	Course   Course
+
+	PaymentStatusID int
+	PaymentStatus PaymentStatus
+}
+
+
+
+

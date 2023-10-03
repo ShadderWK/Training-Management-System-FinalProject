@@ -1,4 +1,4 @@
-import { EmployeeInterface } from "./IEmployee";
+import { AdminInterface } from "./IAdmin";
 
 export interface CourseInterface {
   ID?: number;
@@ -7,6 +7,6 @@ export interface CourseInterface {
   Price?: number;
   Image?: string;
 
-  EmployeeID?: number;
-  Employee?: EmployeeInterface;
+  AdminID?: number;
+  Admin?: AdminInterface;
 }

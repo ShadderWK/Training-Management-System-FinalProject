@@ -39,12 +39,6 @@ func main() {
 			router.GET("/admin/:id", controller.GetAdmin)
 			router.GET("/admins", controller.ListAdmins)
 
-			//Employee
-			router.GET("/employee/:id", controller.GetEmployee)
-			router.GET("/employees", controller.ListEmployees)
-			router.DELETE("/delete-employee/:id", controller.DeleteEmployee)
-			router.PATCH("/update-employee", controller.UpdateEmployee)
-
 			//Member
 			router.GET("/member/:id", controller.GetMember)
 			router.GET("/members", controller.ListMembers)
@@ -80,13 +74,6 @@ func main() {
 			router.DELETE("/delete-news/:id", controller.DeleteNews)
 			router.PATCH("/update-news", controller.UpdateNews)
 
-			//PaymentCheck
-			router.POST("/payment_check", controller.CreatePaymentCheck)
-			router.GET("/payment_check/:id", controller.GetPaymentCheck)
-			router.GET("/payment_checks", controller.ListPaymentChecks)
-			router.DELETE("/delete-payment_check/:id", controller.DeletePaymentCheck)
-			router.PATCH("/update-payment_check", controller.UpdatePaymentCheck)
-
 			//Question
 			router.POST("/question", controller.CreateQuestion)
 			router.GET("/question/:id", controller.GetQuestion)
@@ -98,13 +85,11 @@ func main() {
 	}
 
 	//Register
-	r.POST("/employee", controller.CreateEmployee)
 	r.POST("/member", controller.CreateMember)
 
 	//Login
 	r.POST("/memberLogin", controller.LoginMember)
 	r.POST("/adminLogin", controller.LoginAdmin)
-	r.POST("/employeeLogin", controller.LoginEmployee)
 
 	// Run the server
 	r.Run(":8080")

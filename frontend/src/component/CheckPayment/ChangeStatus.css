@@ -1,0 +1,35 @@
+.change-status-container {
+  display: flex;
+  padding: 24px 100px;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 70px;
+  width: 100vw;
+}
+
+.select-container {
+  margin-top: 20px;
+}
+
+.custom-select {
+  width: 100%; /* Make the select element full width */
+  padding: 10px; /* Adjust padding as needed */
+  font-size: 16px; /* Adjust font size as needed */
+  border: 1px solid #ccc; /* Add border for styling */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  background-color: #fff; /* Set background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+}
+
+/* Style the select element when it's focused */
+.custom-select:focus {
+  outline: none; /* Remove the default focus outline */
+  border-color: #007bff; /* Change border color when focused */
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3); /* Add focus shadow */
+}
+
+/* Style the options within the select */
+.custom-select option {
+  font-size: 16px; /* Adjust font size as needed */
+}

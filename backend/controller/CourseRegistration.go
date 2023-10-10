@@ -98,7 +98,7 @@ func UpdateCourseRegistration(c *gin.Context) {
 	var course				entity.Course
 	var paymentstatus		entity.PaymentStatus
 
-	if err := c.ShouldBindJSON(&course); err != nil {
+	if err := c.ShouldBindJSON(&courseregistration); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -113,7 +113,7 @@ func UpdateCourseRegistration(c *gin.Context) {
 		return
 	}
 
-	if tx := entity.DB().Where("id = ?", courseregistration.PaymentStatusID).First(&course); tx.RowsAffected == 0 {
+	if tx := entity.DB().Where("id = ?", courseregistration.PaymentStatusID).First(&paymentstatus); tx.RowsAffected == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "PaymentStatus not found"})
 		return
 	}

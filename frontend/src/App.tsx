@@ -19,6 +19,8 @@ import AddNews from "./component/News/AddNews";
 import EditFAQ from "./component/FAQ/EditFAQ";
 import AddFAQ from "./component/FAQ/AddFAQ";
 import UpdateFAQ from "./component/FAQ/UpdateFAQ";
+import CheckPayment from "./component/CheckPayment/CheckPayment";
+import ChangeStatus from "./component/CheckPayment/ChangeStatus";
 
 //Component
 import Topbar from "./component/TopBar/Topbar";
@@ -58,6 +60,8 @@ function App() {
         <Route path="admin/edit-faq" element={<EditFAQ />} />
         <Route path="admin/add-faq" element={<AddFAQ />} />
         <Route path="admin/update-faq/:id" element={<UpdateFAQ />} />
+        <Route path="admin/check-payment" element={<CheckPayment />} />
+        <Route path="admin/change-status/:id" element={<ChangeStatus />} />
       </Routes>
     </div>
   );

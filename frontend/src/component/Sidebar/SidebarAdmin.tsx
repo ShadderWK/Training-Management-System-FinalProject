@@ -3,6 +3,7 @@ import {
   HomeOutlined,
   PictureOutlined,
   QuestionCircleOutlined,
+  MoneyCollectOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
@@ -62,8 +63,16 @@ const items: MenuItem[] = [
   ),
 
   getItem(
-    "ออกจากระบบ",
+    "ตรวจสอบการชำระเงิน",
     "4",
+    <Link to="/admin/check-payment">
+      <MoneyCollectOutlined style={{ color: "#2B56BA" }} />
+    </Link>
+  ),
+
+  getItem(
+    "ออกจากระบบ",
+    "5",
     <LogoutOutlined style={{ color: "#2B56BA" }} />,
     undefined,
     signout

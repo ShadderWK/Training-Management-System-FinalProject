@@ -3,7 +3,72 @@
   padding: 24px 100px;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 30px;
   margin-top: 70px;
   width: 100vw;
+}
+
+.course-reg-title {
+  display: flex;
+  width: 70%;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+.course-reg-title img {
+  width: 500px;
+  height: 300px;
+}
+
+.course-reg-detail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+}
+
+.course-reg-detail h1 {
+  text-align: center;
+  font-family: IBM Plex Sans Thai;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-blue-main);
+  margin: 0;
+}
+
+.course-reg-detail p {
+  font-family: IBM Plex Sans Thai;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  margin: 0;
+}
+
+.course-reg-detail p span {
+  font-weight: 700;
+}
+
+.course-reg-container button {
+  background: var(--primary-blue-main);
+  width: 30%;
+  height: 40px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 22px 44px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 24px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.course-reg-container button:hover {
+  background: var(--primary-blue-pressed);
+  transform: scale(0.95);
 }

@@ -9,6 +9,7 @@ import Member from "./page/login/Member";
 import Home from "./component/Home/Home";
 import CourseReg from "./component/CourseReg/CourseReg";
 import CoursePurchase from "./component/CourseReg/CoursePurchase";
+import MyCourse from "./component/MyCourse/MyCourse";
 import FAQ from "./component/FAQ/FAQ";
 
 //Page Admin
@@ -50,6 +51,7 @@ function App() {
         <Route path="member/home" element={<Home />} />
         <Route path="member/course/:id" element={<CourseReg />} />
         <Route path="member/course-purchase/:id" element={<CoursePurchase />} />
+        <Route path="member/mycourse" element={<MyCourse />} />
         <Route path="member/faq" element={<FAQ />} />
 
         {/* Admin */}

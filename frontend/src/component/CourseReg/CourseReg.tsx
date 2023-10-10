@@ -58,12 +58,25 @@ function CourseReg() {
         <Sidebar defaultSelectedKeys={defaultSelectedKeys} />
 
         <div className="course-reg-container">
-          <h1>{course.Name}</h1>
-          <img src={course.Image} width="500px" />
-          <p>{course.Detail}</p>
-          <p>ราคา : {course.Price} บาท</p>
+          <div className="course-reg-title">
+            <img src={course.Image} width="500px" />
+
+            <div className="course-reg-detail">
+              <h1>{course.Name}</h1>
+              <p>
+                <span>รายละเอียดคอร์ส :</span> {course.Detail}
+              </p>
+              <p>
+                <span>ราคา :</span> {course.Price} บาท
+              </p>
+              <p>
+                <span>รหัสคอร์ส :</span> {course.ID}
+              </p>
+            </div>
+          </div>
+
           <button onClick={() => navigate(`/member/course-purchase/${id}`)}>
-            สั่งซื้อ
+            สั่งซื้อคอร์ส
           </button>
         </div>
       </Layout>

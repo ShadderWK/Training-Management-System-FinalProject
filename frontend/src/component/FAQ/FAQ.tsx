@@ -59,13 +59,21 @@ function FAQ() {
               <li>
                 <div key={index}>
                   <h2>{question.Title}</h2>
-                  <p>รายละเอียด: {question.Detail}</p>
-                  <p>ตอบ: {question.Reply}</p>
+                  <p>
+                    <span>รายละเอียด:</span> {question.Detail}
+                  </p>
+                  <p>
+                    <span>ตอบ:</span> {question.Reply}
+                  </p>
                 </div>
               </li>
             ))}
           </ul>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/LINE_logo.svg/2048px-LINE_logo.svg.png" />
+
+          <div className="faq-image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/LINE_logo.svg/2048px-LINE_logo.svg.png" />
+          </div>
         </div>
       </Layout>
     </div>

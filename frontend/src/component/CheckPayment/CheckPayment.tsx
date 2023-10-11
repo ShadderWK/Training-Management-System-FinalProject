@@ -16,6 +16,7 @@ function CheckPayment() {
   const [token, setToken] = useState<String>("");
   const [role, setRole] = useState<String>("");
   const [courseReg, setCourseReg] = useState<CourseRegistrationInterface[]>([]);
+  const [filterChecked, setFilterChecked] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
@@ -56,7 +57,18 @@ function CheckPayment() {
       >
         <SidebarAdmin defaultSelectedKeys={defaultSelectedKeys} />
         <div className="check-payment-container">
-          <p>ตรวจสอบการชำระเงิน</p>
+          <div className="check-payment-title">
+            <h1>ตรวจสอบการชำระเงิน</h1>
+
+            <label>
+              <input
+                type="checkbox"
+                checked={filterChecked}
+                onChange={() => setFilterChecked(!filterChecked)}
+              />
+              รอการตรวจสอบ
+            </label>
+          </div>
 
           <div>
             <table className="check-payment-table">
@@ -70,29 +82,36 @@ function CheckPayment() {
                 </tr>
               </thead>
               <tbody>
-                {courseReg.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.ID}</td>
+                {courseReg
+                  .filter(
+                    (item) =>
+                      !filterChecked ||
+                      item.PaymentStatus?.Status === "รอการตรวจสอบ"
+                  )
+                  .map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.ID}</td>
 
-                    <td>
-                      {item.Member?.Firstname} {item.Member?.Lastname}
-                    </td>
+                      <td>
+                        {item.Member?.Firstname} {item.Member?.Lastname}
+                      </td>
 
-                    <td>{item.Course?.Name}</td>
+                      <td>{item.Course?.Name}</td>
 
-                    <td>{item.PaymentStatus?.Status}</td>
+                      <td>{item.PaymentStatus?.Status}</td>
 
-                    <td>
-                      <button
-                        onClick={() =>
-                          navigate(`/admin/change-status/${item.ID}`)
-                        }
-                      >
-                        ตรวจสอบ
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                      <td>
+                        <button
+                          className="check-payment-btn"
+                          onClick={() =>
+                            navigate(`/admin/change-status/${item.ID}`)
+                          }
+                        >
+                          ตรวจสอบ
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

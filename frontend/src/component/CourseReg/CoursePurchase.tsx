@@ -5,6 +5,8 @@ import { Layout } from "antd";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 
+import BankQRCode from "../../assets/BankQRCode.jpg";
+
 import { CourseRegistrationInterface } from "../../interfaces/ICourseRegistration";
 
 import { CreateCourseRegistration } from "../../service/HttpClientService";
@@ -17,6 +19,7 @@ function CoursePurchase() {
   const [role, setRole] = useState<String>("");
   const [coursereg, setCourseReg] = useState<CourseRegistrationInterface>({});
   const [receipt, setReceipt] = useState<string | null>(null);
+  const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [errorPic, setErrorPic] = useState<string | null>(null);
@@ -33,9 +36,11 @@ function CoursePurchase() {
         const dataURL = reader.result as string;
         setCourseReg({ ...coursereg, Receipt: dataURL });
         setReceipt(dataURL);
+        setErrorPic("");
+        setSelectedFileName(input.name);
       };
     } else {
-      setErrorPic("Invalid image type. Please select a valid image file.");
+      setErrorPic("รูปภาพไม่ถูกต้อง กรุณาเลือกรูปภาพใหม่");
     }
   };
 
@@ -59,7 +64,7 @@ function CoursePurchase() {
 
     if (memberIDFromLocalStorage !== null) {
       if (!coursereg.Receipt) {
-        setErrorPic("Please select an image.");
+        setErrorPic("กรุณาเลือกรูปภาพ");
         return;
       }
 
@@ -115,19 +120,29 @@ function CoursePurchase() {
         <Sidebar defaultSelectedKeys={defaultSelectedKeys} />
 
         <div className="course-purchase-container">
-          <p>อัพโหลดสลิป</p>
-          {errorPic && <p className="error">{errorPic}</p>}
-          <div>
-            <input
-              id="image"
-              name="Image"
-              type="file"
-              accept="image/*"
-              onChange={handleChangeImages}
-            />
-            {receipt && <img src={receipt} alt="Selected Image" width="200" />}
+          <h1>ชำระเงิน</h1>
+          <div className="course-purchase-section">
+            <img src={BankQRCode} />
+
+            <div className="course-purchase-image">
+              <label htmlFor="image">อัพโหลดรูปภาพ</label>
+              <input
+                id="image"
+                name="Image"
+                type="file"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={handleChangeImages}
+              />
+
+              <div className="course-purchase-imgdisplay">
+                {receipt && <img src={receipt} alt="Selected Image" />}
+                {selectedFileName && <p>{selectedFileName}</p>}
+                {errorPic && <p className="error">{errorPic}</p>}
+              </div>
+            </div>
           </div>
-          <button onClick={submit}>ตกลง</button>
+          <button onClick={submit}>ยืนยัน</button>
         </div>
       </Layout>
     </div>

@@ -101,37 +101,54 @@ function ChangeStatus() {
       >
         <SidebarAdmin defaultSelectedKeys={defaultSelectedKeys} />
         <div className="change-status-container">
-          <p>
-            ชื่อ-นามสกุล : {courseReg.Member?.Firstname}{" "}
-            {courseReg.Member?.Lastname}
-          </p>
-          <p>สมัครคอร์ส : {courseReg.Course?.Name}</p>
-          <p>ราคา : {courseReg.Course?.Price}</p>
-          <p>รูปใบเสร็จ</p>
-          <img src={courseReg.Receipt} width="300px" />
+          <div className="change-status-section">
+            <img src={courseReg.Receipt} />
+            <div className="change-status-text">
+              <h1>ตรวจสอบการชำระเงินหมายเลข {courseReg.ID}</h1>
 
-          <div className="select-container">
-            <label htmlFor="statusSelect">เลือกสถานะการชำระเงิน:</label>
+              <p>
+                <span>ชื่อ-นามสกุล :</span> {courseReg.Member?.Firstname}{" "}
+                {courseReg.Member?.Lastname}
+              </p>
 
-            <select
-              id="statusSelect"
-              className="custom-select"
-              value={
-                courseReg.PaymentStatusID !== undefined
-                  ? courseReg.PaymentStatusID.toString()
-                  : ""
-              }
-              onChange={handleInputChange}
-              name="PaymentStatusID"
-            >
-              {paymentStatus.map((status) => (
-                <option key={status.ID} value={status.ID?.toString() || ""}>
-                  {status.Status}
-                </option>
-              ))}
-            </select>
+              <p>
+                <span>เบอร์โทรติดต่อ :</span> {courseReg.Member?.Tel}
+              </p>
 
-            <button onClick={submit}>ตกลง</button>
+              <p>
+                <span>อีเมล :</span> {courseReg.Member?.Email}
+              </p>
+
+              <p>
+                <span>สมัครคอร์ส :</span> {courseReg.Course?.Name}
+              </p>
+              <p>
+                <span>ราคา :</span> {courseReg.Course?.Price}
+              </p>
+
+              <div className="change-status-select-container">
+                <label htmlFor="statusSelect">เลือกสถานะการชำระเงิน:</label>
+
+                <select
+                  id="statusSelect"
+                  className="custom-select"
+                  value={
+                    courseReg.PaymentStatusID !== undefined
+                      ? courseReg.PaymentStatusID.toString()
+                      : ""
+                  }
+                  onChange={handleInputChange}
+                  name="PaymentStatusID"
+                >
+                  {paymentStatus.map((status) => (
+                    <option key={status.ID} value={status.ID?.toString() || ""}>
+                      {status.Status}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <button onClick={submit}>ยืนยันการชำระเงิน</button>
+            </div>
           </div>
         </div>
       </Layout>

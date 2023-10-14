@@ -54,9 +54,9 @@ function FAQ() {
 
         <div className="faq-container">
           <h1>คำถามที่พบบ่อย FAQ</h1>
-          <ul>
+          <div className="faq-block-container">
             {faq.map((question, index) => (
-              <li>
+              <div className="faq-block">
                 <div key={index}>
                   <h2>{question.Title}</h2>
                   <p>
@@ -66,9 +66,9 @@ function FAQ() {
                     <span>ตอบ:</span> {question.Reply}
                   </p>
                 </div>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
 
           <div className="faq-image">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png" />

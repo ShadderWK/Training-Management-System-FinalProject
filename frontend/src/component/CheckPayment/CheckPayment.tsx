@@ -96,7 +96,7 @@ function CheckPayment() {
                         {item.Member?.Firstname} {item.Member?.Lastname}
                       </td>
 
-                      <td>{item.Course?.Name}</td>
+                      <td style={{ textAlign: "left" }}>{item.Course?.Name}</td>
 
                       <td>{item.PaymentStatus?.Status}</td>
 

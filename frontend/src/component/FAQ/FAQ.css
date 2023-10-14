@@ -7,39 +7,54 @@
   margin-top: 70px;
   overflow-x: hidden;
   width: 100vw;
-}
 
-.faq-container li {
-  margin-bottom: 15px;
+  font-family: IBM Plex Sans Thai;
+  font-weight: 400;
 }
 
 .faq-container h1 {
-  text-align: center;
-  font-family: IBM Plex Sans Thai;
-  font-size: 24px;
-  font-weight: 700;
   color: var(--primary-blue-main);
-  margin: 0;
 }
 
-.faq-container h2 {
-  font-family: IBM Plex Sans Thai;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--primary-blue-main);
-  margin: 0;
+.faq-block-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
 }
 
-.faq-container p {
-  font-family: IBM Plex Sans Thai;
-  font-size: 18px;
-  font-weight: 400;
+.faq-block {
+  width: 80%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   color: #000;
-  margin: 0;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px 10px;
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
-.faq-container p span {
-  font-weight: 700;
+.faq-block h2 {
+  color: var(--primary-blue-main);
+  font-weight: 400;
+}
+
+.faq-block span {
+  color: var(--primary-blue-main);
+}
+
+.faq-block:hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .faq-image {

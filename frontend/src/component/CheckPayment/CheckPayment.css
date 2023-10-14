@@ -43,18 +43,18 @@
 
 .check-payment-table td {
   padding: 12px 15px;
-  text-align: left;
-  border: 1px solid var(--gray-line-boarder);
+  text-align: center;
   background-color: #fff;
+  font-weight: 400;
 }
 
 .check-payment-table th {
   background-color: var(--primary-b-main);
   color: var(--primary-blue-l1);
-  border: 1px solid var(--gray-line-boarder);
+
   padding: 12px 15px;
   font-size: 18px;
-  font-weight: 700px;
+  font-weight: 700;
 }
 
 .check-payment-btn {

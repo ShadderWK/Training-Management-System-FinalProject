@@ -92,6 +92,19 @@ func ListCourseRegistrationsByMemberID(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": courseregistrations})
 }
 
+// GET /CourseRegistrationsByCourseID
+func ListCourseRegistrationsByCourseID(c *gin.Context) {
+	var courseregistrations []entity.CourseRegistration
+	id := c.Param("id")
+
+	if tx := entity.DB().Preload("Member").Preload("Course").Preload("PaymentStatus").Raw("SELECT * FROM course_registrations WHERE course_id = ?", id).Find(&courseregistrations); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "CourseRegistration not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": courseregistrations})
+}
+
 
 
 // DELETE /CourseRegistration/:id

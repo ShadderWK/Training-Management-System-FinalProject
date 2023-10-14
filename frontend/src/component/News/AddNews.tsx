@@ -16,6 +16,8 @@ function AddNews() {
   const [role, setRole] = useState<String>("");
   const [news, setNews] = useState<NewsInterface>({});
   const [image, setImage] = useState<string | null>(null);
+
+  const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [errorPic, setErrorPic] = useState<string | null>(null);
@@ -32,9 +34,11 @@ function AddNews() {
         const dataURL = reader.result as string;
         setNews({ ...news, Image: dataURL });
         setImage(dataURL);
+        setErrorPic("");
+        setSelectedFileName(input.name);
       };
     } else {
-      setErrorPic("Invalid image type. Please select a valid image file.");
+      setErrorPic("รูปภาพไม่ถูกต้อง กรุณาเลือกรูปภาพใหม่");
     }
   };
 
@@ -53,7 +57,7 @@ function AddNews() {
 
     if (adminIDFromLocalStorage !== null) {
       if (!news.Image) {
-        setErrorPic("Please select an image.");
+        setErrorPic("กรุณาเลือกรูปภาพ");
         return;
       }
       const adminID = parseInt(adminIDFromLocalStorage, 10);
@@ -106,20 +110,25 @@ function AddNews() {
         <SidebarAdmin defaultSelectedKeys={defaultSelectedKeys} />
         <div className="addnews-container">
           <h1>เพิ่มรูปข่าว</h1>
-          {errorPic && <p className="error">{errorPic}</p>}
-          <div>
+          <div className="addbtn-container">
+            <label htmlFor="image">อัพโหลดรูปภาพ</label>
             <input
               id="image"
               name="Image"
               type="file"
               accept="image/*"
+              style={{ display: "none" }}
               onChange={handleChangeImages}
             />
-            {image && <img src={image} alt="Selected Image" width="200" />}
+
+            <div className="addnews-imgdisplay">
+              {image && <img src={image} alt="Selected Image" />}
+              {selectedFileName && <p>{selectedFileName}</p>}
+              {errorPic && <p className="addnews-error">{errorPic}</p>}
+            </div>
           </div>
-          <div>
-            <button onClick={submit}>ตกลง</button>
-          </div>
+
+          <button onClick={submit}>ตกลง</button>
         </div>
       </Layout>
     </div>

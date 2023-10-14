@@ -500,6 +500,19 @@ const GetCourseRegistrationByMemberID = async (id: string) => {
   return res;
 };
 
+const GetCourseRegistrationByCourseID = async (id: string) => {
+  let res = await fetch(
+    `${apiUrl}/course_registrations_bycourseid/${id}`,
+    requestOptionsGet
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      return result.data ? result.data : false;
+    });
+
+  return res;
+};
+
 const UpdateCourseRegistration = async (data: CourseRegistrationInterface) => {
   const requestOptions = {
     method: "PATCH",
@@ -589,6 +602,7 @@ export {
   GetCourseRegistrations,
   GetCourseRegistrationByID,
   GetCourseRegistrationByMemberID,
+  GetCourseRegistrationByCourseID,
   UpdateCourseRegistration,
   DeleteCourseRegistration,
 };

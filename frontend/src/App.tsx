@@ -22,6 +22,8 @@ import AddFAQ from "./component/FAQ/AddFAQ";
 import UpdateFAQ from "./component/FAQ/UpdateFAQ";
 import CheckPayment from "./component/CheckPayment/CheckPayment";
 import ChangeStatus from "./component/CheckPayment/ChangeStatus";
+import ListRegCourse from "./component/ListRegCourse/ListRegCourse";
+import ListCourseByID from "./component/ListRegCourse/ListCourseByID";
 
 //Component
 import Topbar from "./component/TopBar/Topbar";
@@ -64,6 +66,8 @@ function App() {
         <Route path="admin/update-faq/:id" element={<UpdateFAQ />} />
         <Route path="admin/check-payment" element={<CheckPayment />} />
         <Route path="admin/change-status/:id" element={<ChangeStatus />} />
+        <Route path="admin/list-reg-course" element={<ListRegCourse />} />
+        <Route path="admin/list-course/:id" element={<ListCourseByID />} />
       </Routes>
     </div>
   );

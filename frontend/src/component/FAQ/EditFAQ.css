@@ -6,6 +6,17 @@
   gap: 24px;
   margin-top: 70px;
   width: 100vw;
+
+  font-family: IBM Plex Sans Thai;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.editfaq-container h1 {
+  font-size: 24px;
+  margin: 0;
+  text-align: center;
+  color: var(--primary-blue-main);
 }
 
 .editfaq-title {
@@ -15,35 +26,110 @@
   width: 100%;
 }
 
+.editfaq-title h1 {
+  font-size: 20px;
+}
+
+.editfaq-title button {
+  background: var(--primary-blue-main);
+
+  height: 30px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 22px 44px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 18px;
+  font-weight: 700;
+  font-family: IBM Plex Sans Thai;
+}
+
+.editfaq-title button:hover {
+  background: var(--primary-blue-pressed);
+  transform: scale(0.95);
+}
+
 .editfaq-all-question {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
+  gap: 20px;
 }
 
-.editfaq-all-question table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 20px;
+.editfaq-block {
+  width: 80%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #000;
+  text-align: center;
+  font-size: 15px;
+  padding: 10px 10px;
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
-.editfaq-all-question th {
-  background-color: #f2f2f2;
-  text-align: left;
-  padding: 10px;
-  border: 1px solid #ddd;
+.editfaq-block h2 {
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.editfaq-all-question td {
-  padding: 10px;
-  border: 1px solid #ddd;
+.editfaq-block p {
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: 10px;
 }
 
-.editfaq-all-question tr {
-  transition: background-color 0.3s;
+.editfaq-btn {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-.editfaq-all-question tr:hover {
-  background-color: #f5f5f5;
+.editfaq-btn button {
+  height: 30px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 15px;
+  font-weight: 700;
+  font-family: IBM Plex Sans Thai;
+}
+
+.edit-btn {
+  background-color: var(--status-info);
+}
+
+.edit-btn:hover {
+  transform: scale(0.95);
+  background-color: var(--status-info-hover);
+}
+
+.delete-btn {
+  background-color: var(--status-error);
+}
+
+.delete-btn:hover {
+  transform: scale(0.95);
+  background-color: var(--status-error-hover);
 }

@@ -18,8 +18,8 @@
 }
 
 .course-purchase-container button {
-  background: var(--primary-blue-main);
-  width: 30%;
+  background: var(--status-success);
+  width: 20%;
   height: 40px;
   color: #fff;
   justify-content: center;
@@ -37,7 +37,7 @@
 }
 
 .course-purchase-container button:hover {
-  background: var(--primary-blue-pressed);
+  background: var(--status-success-hover);
   transform: scale(0.95);
 }
 

@@ -6,4 +6,68 @@
   gap: 24px;
   margin-top: 70px;
   width: 100vw;
+
+  font-family: IBM Plex Sans Thai;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.updatefaq-container h1 {
+  font-size: 24px;
+  margin: 0;
+  text-align: center;
+  color: var(--primary-blue-main);
+}
+
+.updatefaq-input {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.updatefaq-text-title {
+  margin: 0;
+  font-weight: 700;
+}
+
+.updatefaq-error-message {
+  margin: 0;
+  color: var(--status-error);
+}
+
+.updatefaq-input textarea {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  resize: none;
+  border-radius: 4px;
+
+  font-family: IBM Plex Sans Thai;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.updatefaq-input button {
+  background: var(--primary-blue-main);
+
+  height: 30px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 22px 44px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 18px;
+  font-weight: 700;
+  font-family: IBM Plex Sans Thai;
+}
+
+.updatefaq-input button:hover {
+  background: var(--primary-blue-pressed);
+  transform: scale(0.95);
 }

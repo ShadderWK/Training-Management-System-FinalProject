@@ -4,13 +4,14 @@ import {
   PictureOutlined,
   QuestionCircleOutlined,
   MoneyCollectOutlined,
+  UnorderedListOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
 
-import "./Sidebar.css";
+import "./SidebarAdmin.css";
 
 const { Sider } = Layout;
 
@@ -71,8 +72,16 @@ const items: MenuItem[] = [
   ),
 
   getItem(
-    "ออกจากระบบ",
+    "ดูรายชื่อที่สมัคร",
     "5",
+    <Link to="/admin/list-reg-course">
+      <UnorderedListOutlined style={{ color: "#2B56BA" }} />
+    </Link>
+  ),
+
+  getItem(
+    "ออกจากระบบ",
+    "6",
     <LogoutOutlined style={{ color: "#2B56BA" }} />,
     undefined,
     signout
@@ -96,7 +105,7 @@ function SidebarAdmin({ defaultSelectedKeys }: SidebarProps) {
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
       theme="dark"
-      width={220}
+      width={260}
     >
       <div>
         <Menu

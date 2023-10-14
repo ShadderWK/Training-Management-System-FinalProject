@@ -60,7 +60,7 @@ function EditFAQ() {
       >
         <SidebarAdmin defaultSelectedKeys={defaultSelectedKeys} />
         <div className="editfaq-container">
-          <h1>แก้ไข FAQ</h1>
+          <h1>แก้ไขคำถามที่พบบ่อย FAQ</h1>
           <div className="editfaq-title">
             <h1>คำถามที่มีในปัจจุบัน</h1>
             <button onClick={() => navigate("/admin/add-faq")}>
@@ -69,41 +69,36 @@ function EditFAQ() {
           </div>
 
           <div className="editfaq-all-question">
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Title</th>
-                  <th>Detail</th>
-                  <th>Reply</th>
-                  <th>Admin</th>
-                  <th>Edit/Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {faq.map((question, index) => (
-                  <tr key={index}>
-                    <td>{question.ID}</td>
-                    <td>{question.Title}</td>
-                    <td>{question.Detail}</td>
-                    <td>{question.Reply}</td>
-                    <td>{question.AdminID}</td>
-                    <td>
-                      <button
-                        onClick={() =>
-                          navigate(`/admin/update-faq/${question.ID}`)
-                        }
-                      >
-                        Edit
-                      </button>
-                      <button onClick={() => DeleteFAQ(question.ID + "")}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {faq.map((question, index) => (
+              <div className="editfaq-block">
+                <div key={index}>
+                  <h2>{question.Title}</h2>
+                  <p>
+                    <span>รายละเอียด:</span> {question.Detail}
+                  </p>
+                  <p>
+                    <span>ตอบ:</span> {question.Reply}
+                  </p>
+
+                  <div className="editfaq-btn">
+                    <button
+                      className="edit-btn"
+                      onClick={() =>
+                        navigate(`/admin/update-faq/${question.ID}`)
+                      }
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="delete-btn"
+                      onClick={() => DeleteFAQ(question.ID + "")}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </Layout>

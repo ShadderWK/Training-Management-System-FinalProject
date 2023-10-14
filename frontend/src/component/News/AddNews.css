@@ -6,4 +6,80 @@
   gap: 24px;
   margin-top: 70px;
   width: 100vw;
+
+  font-family: IBM Plex Sans Thai;
+  font-weight: 400;
+}
+
+.addnews-container h1 {
+  color: var(--primary-blue-main);
+  font-size: 24px;
+  margin: 0;
+}
+
+.addnews-container button {
+  background: var(--status-success);
+  width: 20%;
+  height: 40px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 22px 44px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 20px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.addbtn-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.addbtn-container label {
+  background: var(--primary-blue-main);
+  width: 20%;
+  height: 40px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 22px 44px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 18px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.addbtn-container label:hover {
+  background: var(--primary-blue-pressed);
+  transform: scale(0.95);
+}
+
+.addnews-imgdisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.addnews-imgdisplay p {
+  margin: 0;
+}
+
+.addnews-error {
+  color: var(--status-error);
+  font-size: 20px;
 }

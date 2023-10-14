@@ -66,32 +66,17 @@ function News() {
             </button>
           </div>
 
-          <table className="news-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Image</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {news.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.ID}</td>
-                  <td>
-                    <img
-                      src={item.Image}
-                      alt={`News ${index + 1}`}
-                      className="news-image"
-                    />
-                  </td>
-                  <td>
-                    <button onClick={() => DeletANews(item.ID + "")}>ลบ</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="news-content">
+            {news.map((newsItem) => (
+              <div key={newsItem.ID} className="news-block">
+                <img src={newsItem.Image} />
+
+                <button onClick={() => DeletANews(newsItem.ID + "")}>
+                  Delete
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </Layout>
     </div>

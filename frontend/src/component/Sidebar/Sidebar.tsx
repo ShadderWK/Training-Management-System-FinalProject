@@ -92,7 +92,7 @@ function Sidebar({ defaultSelectedKeys }: SidebarProps) {
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
       theme="dark"
-      width={220}
+      width={260}
     >
       <div>
         <Menu

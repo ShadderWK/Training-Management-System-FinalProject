@@ -82,6 +82,7 @@ func SetupDatabase() {
 		Address:   "บ้านเลขที่ 69 ซอยถี่ๆ",
 		Birthday:  BirthdayA,
 		Gender:    GenderA,
+		Image:	   "https://i.pinimg.com/1200x/c1/65/d3/c165d3d14ba35071138320298a701956.jpg",
 	}
 	db.Model(&Member{}).Create(&MemberA)
 

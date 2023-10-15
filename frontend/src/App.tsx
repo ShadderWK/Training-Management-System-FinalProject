@@ -6,6 +6,8 @@ import Register from "./page/register/Register";
 
 //Page Member
 import Member from "./page/login/Member";
+import MemberProfile from "./component/UserProfile/MemberProfile";
+import ChangePassword from "./component/UserProfile/ChangePassword";
 import Home from "./component/Home/Home";
 import CourseReg from "./component/CourseReg/CourseReg";
 import CoursePurchase from "./component/CourseReg/CoursePurchase";
@@ -50,6 +52,8 @@ function App() {
 
         {/* Member */}
         <Route path="member" element={<Member />} />
+        <Route path="member/profile/:id" element={<MemberProfile />} />
+        <Route path="member/change-password/:id" element={<ChangePassword />} />
         <Route path="member/home" element={<Home />} />
         <Route path="member/course/:id" element={<CourseReg />} />
         <Route path="member/course-purchase/:id" element={<CoursePurchase />} />

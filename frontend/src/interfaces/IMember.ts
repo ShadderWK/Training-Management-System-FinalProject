@@ -6,9 +6,10 @@ export interface MemberInterface {
   Firstname?: string;
   Lastname?: string;
   Password?: string;
-	Tel?:			string;
-	Address?: 	string;
-	Birthday?:	Date;
+  Tel?: string;
+  Address?: string;
+  Birthday?: Date;
+  Image?: string;
 
   Gender?: GenderInterface;
   GenderID?: number;

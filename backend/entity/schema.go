@@ -30,6 +30,7 @@ type Member struct {
 	Password  string
 	Tel       string
 	Address   string
+	Image  	  string
 	Birthday  time.Time
 
 	GenderID int

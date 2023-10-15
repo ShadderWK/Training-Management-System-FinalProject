@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { MemberInterface } from "../../interfaces/IMember";
+
+import { GetMemberByID } from "../../service/HttpClientService";
 
 import "./Navbar.css";
 import UserIcon from "../../assets/UserIcon.svg";
@@ -14,6 +16,16 @@ function Navbar() {
   const Firstname = localStorage.getItem("Firstname") + "";
   const Lastname = localStorage.getItem("Lastname") + "";
   const Fullname = Firstname + " " + Lastname;
+  const navigate = useNavigate();
+
+  const fetchMemberByID = async () => {
+    let res = await GetMemberByID(Uid + "");
+    res && setMember(res);
+  };
+
+  useEffect(() => {
+    fetchMemberByID();
+  }, [navigate]);
 
   return (
     <div className="navbar-container">
@@ -24,7 +36,11 @@ function Navbar() {
 
       <div className="navbar-profile">
         <div className="navbar-name">{Fullname}</div>
-        <img src={UserIcon} className="navbar-img" />
+        <img
+          src={member.Image}
+          onClick={() => navigate(`/member/profile/${Uid}`)}
+          className="navbar-img"
+        />
       </div>
     </div>
   );

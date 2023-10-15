@@ -9,16 +9,71 @@
 
   font-family: IBM Plex Sans Thai;
   font-weight: 400;
+  font-size: 18px;
+}
+
+.member-profile-container h1 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--primary-blue-main);
 }
 
 .member-profile-section {
   display: flex;
-  gap: 30px;
+  width: 100%;
+  gap: 40px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.member-profile-detail {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.member-profile-img-section {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.member-profile-img-btn {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.member-profile-img-btn button {
+  background: var(--primary-blue-main);
+
+  width: 50%;
+  height: 30px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 15px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.member-profile-img-section button:hover {
+  background: var(--primary-blue-pressed);
+  transform: scale(0.95);
 }
 
 .member-profile-img-container {
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 300px;
   background-color: #fff;
   padding: 10px;
   border-radius: 20px;
@@ -28,4 +83,75 @@
   width: 100%;
   height: 100%;
   border-radius: 20px;
+}
+
+.member-profile-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.member-profile-text-container p {
+  margin: 0;
+}
+
+.member-profile-text-container span {
+  font-weight: 700;
+}
+
+.profile-btn-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.profile-change-pass-btn {
+  background: var(--status-warning);
+
+  width: 40%;
+  height: 50px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 22px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.profile-change-pass-btn:hover {
+  background: var(--status-warning-hover);
+  transform: scale(0.95);
+}
+
+.profile-edit-btn {
+  background: var(--status-info);
+
+  width: 40%;
+  height: 50px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 22px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.profile-edit-btn:hover {
+  background: var(--status-info-hover);
+  transform: scale(0.95);
 }

@@ -6,6 +6,7 @@ import { CourseInterface } from "../interfaces/ICourse";
 import { CourseRegistrationInterface } from "../interfaces/ICourseRegistration";
 import { NewsInterface } from "../interfaces/INews";
 import { QuestionInterface } from "../interfaces/IQuestion";
+import { GenderInterface } from "../interfaces/IGender";
 
 const apiUrl = `http://localhost:8080`;
 
@@ -89,6 +90,27 @@ const GetAdminByID = async (id: string) => {
   return res;
 };
 
+// ===== Gender =====
+const GetGenders = async () => {
+  let res = await fetch(`${apiUrl}/genders`, requestOptionsGet)
+    .then((response) => response.json())
+    .then((result) => {
+      return result.data ? result.data : false;
+    });
+
+  return res;
+};
+
+const GetGenderByID = async (id: string) => {
+  let res = await fetch(`${apiUrl}/gender/${id}`, requestOptionsGet)
+    .then((response) => response.json())
+    .then((result) => {
+      return result.data ? result.data : false;
+    });
+
+  return res;
+};
+
 // ===== Member =====
 const CreateMember = async (data: MemberInterface) => {
   const requestOptions = {
@@ -144,6 +166,29 @@ const UpdateMember = async (data: MemberInterface) => {
   };
 
   let res = await fetch(`${apiUrl}/update-member`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return { status: true, message: res.data };
+      } else {
+        return { status: false, message: res.error };
+      }
+    });
+
+  return res;
+};
+
+const UpdateMemberPassword = async (data: MemberInterface) => {
+  const requestOptions = {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
+
+  let res = await fetch(`${apiUrl}/update-member-password`, requestOptions)
     .then((response) => response.json())
     .then((res) => {
       if (res.data) {
@@ -566,11 +611,16 @@ export {
   GetAdmins,
   GetAdminByID,
 
+  //Gender
+  GetGenders,
+  GetGenderByID,
+
   //Member
   CreateMember,
   GetMembers,
   GetMemberByID,
   UpdateMember,
+  UpdateMemberPassword,
   DeleteMember,
 
   //PaymentStatus

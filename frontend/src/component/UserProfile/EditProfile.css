@@ -1,0 +1,198 @@
+.edit-profile-container {
+  display: flex;
+  padding: 24px 100px;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 70px;
+  width: 100vw;
+
+  font-family: IBM Plex Sans Thai;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.edit-profile-container h1 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--primary-blue-main);
+}
+
+.edit-profile-section {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.edit-profile-section p {
+  margin: 0;
+}
+
+.edit-profile-name-section {
+  display: flex;
+  width: 100%;
+  gap: 40px;
+}
+
+.edit-profile-name {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.edit-profile-name input {
+  width: 100%;
+}
+
+.edit-profile-input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.change-gender-select-container {
+  display: flex;
+  width: 100%;
+  align-items: end;
+}
+
+.edit-profile-input-section {
+  display: flex;
+  gap: 0px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid var(--primary-blue-l2);
+}
+
+.edit-profile-input-section-email {
+  display: flex;
+  gap: 0px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: var(--gray-line-boarder);
+  border: 1px solid var(--primary-blue-l2);
+}
+
+.edit-profile-input-section-email input {
+  font-family: IBM Plex Sans Thai;
+  background-color: var(--gray-line-boarder);
+  border: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  height: 100%;
+  width: 100%;
+  cursor: default;
+}
+
+.edit-profile-input-section-email input::placeholder {
+  color: var(--primary-blue-l2);
+}
+
+.edit-profile-input-section-email input:focus {
+  outline: none;
+  border: none;
+}
+
+.edit-profile-input-section input {
+  font-family: IBM Plex Sans Thai;
+  border: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  height: 100%;
+  width: 100%;
+}
+
+.edit-profile-input-section input::placeholder {
+  color: var(--primary-blue-l2);
+}
+
+.edit-profile-input-section input:focus {
+  outline: none;
+  border: none;
+}
+
+.edit-profile-input-section textarea {
+  font-family: IBM Plex Sans Thai;
+  border: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  height: 100%;
+  width: 100%;
+  resize: vertical;
+}
+
+.edit-profile-input-section textarea::placeholder {
+  color: var(--primary-blue-l2);
+}
+
+.edit-profile-input-section textarea:focus {
+  outline: none;
+  border: none;
+}
+
+.edit-profile-input-section select {
+  font-family: IBM Plex Sans Thai;
+  border: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  height: 100%;
+  width: 100%;
+}
+
+.edit-profile-input-section select::placeholder {
+  color: var(--primary-blue-l2);
+}
+
+.edit-profile-input-section select:focus {
+  outline: none;
+  border: none;
+}
+
+.edit-profile-btn-section {
+  display: flex;
+  gap: 40px;
+}
+
+.edit-profile-btn-section button {
+  width: 50%;
+  height: 50px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.edit-profile-btn-submit {
+  background-color: var(--status-success);
+}
+
+.edit-profile-btn-submit:hover {
+  background-color: var(--status-success-hover);
+  transform: scale(0.95);
+}
+
+.edit-profile-btn-back {
+  background-color: var(--primary-blue-main);
+}
+
+.edit-profile-btn-back:hover {
+  background: var(--primary-blue-pressed);
+  transform: scale(0.95);
+}

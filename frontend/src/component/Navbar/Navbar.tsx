@@ -13,9 +13,6 @@ function Navbar() {
   const [member, setMember] = useState<MemberInterface>({});
   const Uid = localStorage.getItem("uid") + "";
   const Token = localStorage.getItem("token") + "";
-  const Firstname = localStorage.getItem("Firstname") + "";
-  const Lastname = localStorage.getItem("Lastname") + "";
-  const Fullname = Firstname + " " + Lastname;
   const navigate = useNavigate();
 
   const fetchMemberByID = async () => {
@@ -30,12 +27,14 @@ function Navbar() {
   return (
     <div className="navbar-container">
       <div className="navbar-logo">
-        <img src={LogoIcon} className="navbar-img" />
+        <img src={LogoIcon} className="navbar-img-logo" />
         <a>สถาบันวิจัยและพัฒนา</a>
       </div>
 
       <div className="navbar-profile">
-        <div className="navbar-name">{Fullname}</div>
+        <div className="navbar-name">
+          {member.Firstname} {member.Lastname}
+        </div>
         <img
           src={member.Image}
           onClick={() => navigate(`/member/profile/${Uid}`)}

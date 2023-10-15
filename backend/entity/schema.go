@@ -8,7 +8,7 @@ import (
 
 type Admin struct {
 	gorm.Model
-	Email    string
+	Email    string `gorm:"uniqueIndex"`
 	Name     string
 	Password string
 
@@ -26,7 +26,7 @@ type Member struct {
 	gorm.Model
 	Firstname string
 	Lastname  string
-	Email     string
+	Email     string `gorm:"uniqueIndex"`
 	Password  string
 	Tel       string
 	Address   string

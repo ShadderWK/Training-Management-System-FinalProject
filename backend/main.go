@@ -44,6 +44,7 @@ func main() {
 			router.GET("/members", controller.ListMembers)
 			router.DELETE("/delete-member/:id", controller.DeleteMember)
 			router.PATCH("/update-member", controller.UpdateMember)
+			router.PATCH("/update-member-password", controller.UpdateMemberPassword)
 
 			//PaymentStatus
 			router.GET("/payment_status/:id", controller.GetPaymentStatus)

@@ -7,7 +7,10 @@ import Sidebar from "../Sidebar/Sidebar";
 
 import { MemberInterface } from "../../interfaces/IMember";
 
-import { GetMemberByID, UpdateMember } from "../../service/HttpClientService";
+import {
+  GetMemberByID,
+  UpdateMemberPassword,
+} from "../../service/HttpClientService";
 
 import "./ChangePassword.css";
 
@@ -56,7 +59,7 @@ function ChangePassword() {
       GenderID: member.GenderID,
     };
 
-    let res = await UpdateMember(newdata);
+    let res = await UpdateMemberPassword(newdata);
     if (res.status) {
       setSuccess(true);
       window.location.href = "/member/home";
@@ -103,32 +106,52 @@ function ChangePassword() {
         <div className="change-password-container">
           <h1>เปลี่ยนรหัสผ่าน</h1>
 
-          <div>
-            <p>รหัสผ่านใหม่</p>
-            <input
-              name="Password"
-              onChange={(e) => setNewPassword(e.target.value)}
-              value={newPassword}
-            />
-            {passwordError && (
-              <span className="error-message">
-                รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร
-              </span>
-            )}
+          <div className="change-password-section">
+            <div className="change-password-field">
+              <p>รหัสผ่านใหม่</p>
+              <div className="change-password-input-container">
+                <input
+                  name="Password"
+                  type="password"
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  value={newPassword}
+                />
+              </div>
+              {passwordError && (
+                <span className="error-message">
+                  รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร
+                </span>
+              )}
+            </div>
           </div>
 
-          <div>
-            <p>ยืนยันรหัสผ่านใหม่</p>
-            <input
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              value={confirmPassword}
-            />
-            {confirmPasswordError && (
-              <span className="error-message">รหัสผ่านไม่ตรงกัน</span>
-            )}
+          <div className="change-password-section">
+            <div className="change-password-field">
+              <p>ยืนยันรหัสผ่านใหม่</p>
+              <div className="change-password-input-container">
+                <input
+                  type="password"
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  value={confirmPassword}
+                />
+              </div>
+              {confirmPasswordError && (
+                <span className="error-message">รหัสผ่านไม่ตรงกัน</span>
+              )}
+            </div>
           </div>
 
-          <button onClick={submit}>ยืนยัน</button>
+          <div className="change-password-btn-section">
+            <button className="change-password-btn-submit" onClick={submit}>
+              ยืนยัน
+            </button>
+            <button
+              className="change-password-btn-back"
+              onClick={() => navigate(`/member/profile/${id}`)}
+            >
+              ย้อนกลับ
+            </button>
+          </div>
         </div>
       </Layout>
     </div>

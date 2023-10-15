@@ -103,7 +103,6 @@ func UpdateMember(c *gin.Context) {
 		return
 	}
 
-	pass, _ := bcrypt.GenerateFromPassword([]byte(member.Password), 14)
 	// แทรกการ validate ไว้ช่วงนี้ของ controller
 	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
 	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -112,7 +111,6 @@ func UpdateMember(c *gin.Context) {
 
 	update := entity.Member{
 		Email:     member.Email,
-		Password:  string(pass),
 		Firstname: member.Firstname,
 		Lastname:  member.Lastname,
 		Tel:       member.Tel,
@@ -120,6 +118,33 @@ func UpdateMember(c *gin.Context) {
 		Gender:    gender,
 		Birthday:  member.Birthday,
 		Image:	   member.Image,
+	}
+
+	if err := entity.DB().Where("id = ?", member.ID).Updates(&update).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusCreated, gin.H{"data": update})
+}
+
+// PATCH /MemberPassword
+func UpdateMemberPassword(c *gin.Context) {
+	var member entity.Member
+
+	if err := c.ShouldBindJSON(&member); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	pass, _ := bcrypt.GenerateFromPassword([]byte(member.Password), 14)
+	// แทรกการ validate ไว้ช่วงนี้ของ controller
+	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
+	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	// 	return
+	// }
+
+	update := entity.Member{
+		Password:  string(pass),
 	}
 
 	if err := entity.DB().Where("id = ?", member.ID).Updates(&update).Error; err != nil {

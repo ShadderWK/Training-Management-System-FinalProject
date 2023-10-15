@@ -122,6 +122,7 @@ function ChangeStatus() {
               <p>
                 <span>สมัครคอร์ส :</span> {courseReg.Course?.Name}
               </p>
+
               <p>
                 <span>ราคา :</span> {courseReg.Course?.Price}
               </p>

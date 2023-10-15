@@ -86,6 +86,18 @@ func SetupDatabase() {
 	}
 	db.Model(&Member{}).Create(&MemberA)
 
+	MemberB := Member{
+		Email:     "Member02@example.com",
+		Firstname: "สมศรี",
+		Lastname:  "หฤทัย",
+		Password:  string(passwordA),
+		Tel:       "0971242212",
+		Address:   "บ้านเลขที่ 788 ซอยพิลม",
+		Birthday:  BirthdayA,
+		Gender:    GenderB,
+	}
+	db.Model(&Member{}).Create(&MemberB)
+
 	CourseA := Course{
 		Name:     "แนวโน้มนวัตกรรมและเทคโนโลยีการศึกษาสำหรับการจัดการการศึกษาทุกช่วงวัย",
 		Detail:   "test test test",

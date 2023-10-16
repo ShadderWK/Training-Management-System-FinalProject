@@ -82,6 +82,7 @@
 @media (max-width: 1200px) {
   .home-container {
     padding: 18px;
+    margin-left: 80px;
   }
 
   .img-carousel {

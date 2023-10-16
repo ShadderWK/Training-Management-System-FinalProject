@@ -71,3 +71,33 @@ body {
   max-width: 1440px;
   margin: 0 auto;
 }
+
+.button-text {
+  margin-left: 8px;
+}
+
+.ant-table-wrapper {
+  max-width: 70vw !important;
+  width: 100% !important;
+}
+
+.ant-table-content {
+  font-family: IBM Plex Sans Thai;
+  font-weight: 400;
+  font-size: 16px;
+  width: 100% !important;
+}
+
+.ant-table-thead th {
+  text-align: center !important;
+  background-color: var(--primary-b-main) !important;
+  padding: 12px 15px !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.ant-table-tbody td {
+  margin-bottom: 15px !important;
+  border-left: 0.5px solid var(--gray-line-boarder);
+  padding: 5px 10px !important;
+}

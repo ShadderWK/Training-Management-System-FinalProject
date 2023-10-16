@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Table } from "antd";
+import type { ColumnsType } from "antd/es/table";
+import { TeamOutlined } from "@ant-design/icons";
 
 import NavbarAdmin from "../Navbar/NavbarAdmin";
 import SidebarAdmin from "../Sidebar/SidebarAdmin";
@@ -19,6 +21,39 @@ function ListRegCourse() {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
   const defaultSelectedKeys = ["5"];
+
+  const columns: ColumnsType<CourseInterface> = [
+    {
+      title: "รหัสคอร์ส",
+      dataIndex: "ID",
+      key: "ID",
+      align: "center",
+    },
+
+    {
+      title: "ชื่อคอร์ส",
+      dataIndex: "Name",
+      key: "ID",
+      align: "left",
+    },
+
+    {
+      title: "ดูรายชื่อผู้สมัคร",
+      key: "action",
+      align: "center",
+      render: (record) => (
+        <span>
+          <button
+            className="listcourse-btn"
+            onClick={() => navigate(`/admin/list-course/${record.ID}`)}
+          >
+            <TeamOutlined />
+            <span className="button-text">ดูรายชื่อ</span>
+          </button>
+        </span>
+      ),
+    },
+  ];
 
   const fetchCourses = async () => {
     let res = await GetCourses();
@@ -41,7 +76,7 @@ function ListRegCourse() {
     }
 
     fetchCourses();
-  }, []);
+  }, [course]);
 
   return (
     <div>
@@ -57,35 +92,7 @@ function ListRegCourse() {
         <div className="list-course-container">
           <h1>รายชื่อคอร์สในปัจจุบัน</h1>
 
-          <div>
-            <table className="check-payment-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>ชื่อคอร์ส</th>
-                  <th>เช็ครายชื่อคนที่สมัคร</th>
-                </tr>
-              </thead>
-              <tbody>
-                {course.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.ID}</td>
-                    <td style={{ textAlign: "left" }}>{item.Name}</td>
-                    <td style={{ justifyContent: "center" }}>
-                      <button
-                        className="listcourse-btn"
-                        onClick={() =>
-                          navigate(`/admin/list-course/${item.ID}`)
-                        }
-                      >
-                        ดูรายชื่อ
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <Table columns={columns} dataSource={course} scroll={{ x: 900 }} />
         </div>
       </Layout>
     </div>

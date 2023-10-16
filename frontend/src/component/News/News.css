@@ -30,7 +30,6 @@
 
 .news-title button {
   background: var(--primary-blue-main);
-
   height: 30px;
   color: #fff;
   justify-content: center;
@@ -62,7 +61,7 @@
 
 .news-block {
   display: flex;
-  width: 90%;
+  width: 100%;
   flex-direction: column;
   align-items: end;
   justify-content: center;
@@ -78,6 +77,7 @@
 
 .news-block img {
   width: 100%;
+  border-radius: 10px;
 }
 
 .news-block button {
@@ -102,4 +102,30 @@
 .news-block button:hover {
   transform: scale(0.95);
   background-color: var(--status-error-hover);
+}
+
+@media (max-width: 1200px) {
+  .news-container {
+    padding: 20px;
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .news-container {
+    padding: 16px;
+  }
+
+  .news-title {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .news-title button {
+    width: 100%;
+  }
+
+  .news-block button {
+    width: 100%;
+  }
 }

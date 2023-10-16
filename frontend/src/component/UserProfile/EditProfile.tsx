@@ -28,6 +28,11 @@ function EditProfile() {
   const navigate = useNavigate();
   const defaultSelectedKeys = ["1"];
 
+  const MAX_FIRSTNAME_LENGTH = 30;
+  const MAX_LASTNAME_LENGTH = 30;
+  const MAX_TEL_LENGTH = 10;
+  const MAX_ADDRESS_LENGTH = 300;
+
   const convertType = (data: string | number | undefined) => {
     let val = typeof data === "string" ? parseInt(data) : data;
     return val;
@@ -35,12 +40,32 @@ function EditProfile() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
+    let inputValue = e.target.value;
+
+    if (name === "Tel") {
+      inputValue = inputValue.replace(/\D/g, ""); // Remove non-numeric characters
+      inputValue = inputValue.substring(0, 10);
+    } else if (
+      name === "Firstname" &&
+      inputValue.length > MAX_FIRSTNAME_LENGTH
+    ) {
+      return;
+    } else if (name === "Lastname" && inputValue.length > MAX_LASTNAME_LENGTH) {
+      return;
+    }
+
     console.log(name);
-    setMember({ ...member, [name]: e.target.value });
+    setMember({ ...member, [name]: inputValue });
   };
 
   const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const name = e.target.name;
+
+    const value = e.target.value;
+
+    if (name === "Address" && value.length > MAX_ADDRESS_LENGTH) {
+      return;
+    }
     console.log(name);
     setMember({ ...member, [name]: e.target.value });
   };
@@ -194,6 +219,7 @@ function EditProfile() {
                 <div className="edit-profile-input-section">
                   <input
                     name="Tel"
+                    type="tel"
                     value={member.Tel}
                     onChange={handleInputChange}
                   />

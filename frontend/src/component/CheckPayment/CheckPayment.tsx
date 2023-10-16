@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Table } from "antd";
+import type { ColumnsType } from "antd/es/table";
+import { PictureOutlined } from "@ant-design/icons";
 
 import NavbarAdmin from "../Navbar/NavbarAdmin";
 import SidebarAdmin from "../Sidebar/SidebarAdmin";
-import ChangeStatus from "./ChangeStatus";
 
 import { GetCourseRegistrations } from "../../service/HttpClientService";
 
@@ -17,10 +18,63 @@ function CheckPayment() {
   const [role, setRole] = useState<String>("");
   const [courseReg, setCourseReg] = useState<CourseRegistrationInterface[]>([]);
   const [filterChecked, setFilterChecked] = useState(false);
+  const [filteredData, setFilteredData] = useState<
+    CourseRegistrationInterface[]
+  >([]);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const { Column } = Table;
   const navigate = useNavigate();
   const defaultSelectedKeys = ["4"];
+
+  const columns: ColumnsType<CourseRegistrationInterface> = [
+    {
+      title: "หมายคำสั่งซื้อ",
+      dataIndex: "ID",
+      key: "ID",
+      align: "center",
+    },
+
+    {
+      title: "ชื่อ-นามสกุล",
+      dataIndex: "Member",
+      render: (text, record) =>
+        `${record?.Member?.Firstname || ""} ${record?.Member?.Lastname || ""}`,
+      key: "Name",
+      align: "center",
+    },
+
+    {
+      title: "คอร์สที่สมัคร",
+      dataIndex: ["Course", "Name"],
+      key: "Course.Name",
+      align: "center",
+    },
+
+    {
+      title: "สถานะ",
+      dataIndex: ["PaymentStatus", "Status"],
+      key: "PaymentStatus.Status",
+      align: "center",
+    },
+
+    {
+      title: "ตรวจสอบสลิป",
+      key: "action",
+      align: "center",
+      render: (record) => (
+        <div className="check-payment-btn-container">
+          <button
+            className="check-payment-btn"
+            onClick={() => navigate(`/admin/change-status/${record.ID}`)}
+          >
+            <PictureOutlined />
+            <span className="button-text">ตรวจสอบ</span>
+          </button>
+        </div>
+      ),
+    },
+  ];
 
   const fetchCourseRegistrations = async () => {
     let res = await GetCourseRegistrations();
@@ -42,8 +96,17 @@ function CheckPayment() {
       localStorage.clear();
     }
 
+    if (filterChecked) {
+      const filteredCourseReg = courseReg.filter(
+        (item) => item.PaymentStatus?.Status === "รอการตรวจสอบ"
+      );
+      setFilteredData(filteredCourseReg);
+    } else {
+      setFilteredData(courseReg);
+    }
+
     fetchCourseRegistrations();
-  }, []);
+  }, [filterChecked, courseReg]);
 
   return (
     <div>
@@ -70,51 +133,11 @@ function CheckPayment() {
             </label>
           </div>
 
-          <div>
-            <table className="check-payment-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>ชื่อ-นามสกุล</th>
-                  <th>คอร์สที่สมัคร</th>
-                  <th>สถานะ</th>
-                  <th>ตรวจสอบ</th>
-                </tr>
-              </thead>
-              <tbody>
-                {courseReg
-                  .filter(
-                    (item) =>
-                      !filterChecked ||
-                      item.PaymentStatus?.Status === "รอการตรวจสอบ"
-                  )
-                  .map((item, index) => (
-                    <tr key={index}>
-                      <td>{item.ID}</td>
-
-                      <td>
-                        {item.Member?.Firstname} {item.Member?.Lastname}
-                      </td>
-
-                      <td style={{ textAlign: "left" }}>{item.Course?.Name}</td>
-
-                      <td>{item.PaymentStatus?.Status}</td>
-
-                      <td>
-                        <button
-                          className="check-payment-btn"
-                          onClick={() =>
-                            navigate(`/admin/change-status/${item.ID}`)
-                          }
-                        >
-                          ตรวจสอบ
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-          </div>
+          <Table
+            columns={columns}
+            dataSource={filteredData}
+            scroll={{ x: 900 }}
+          />
         </div>
       </Layout>
     </div>

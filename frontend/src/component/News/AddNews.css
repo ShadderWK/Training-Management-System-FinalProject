@@ -19,7 +19,7 @@
 
 .addnews-container button {
   background: var(--status-success);
-  width: 20%;
+  width: 300px;
   height: 40px;
   color: #fff;
   justify-content: center;
@@ -36,6 +36,11 @@
   font-family: IBM Plex Sans Thai;
 }
 
+.addnews-container button:hover {
+  background: var(--status-success-hover);
+  transform: scale(0.95);
+}
+
 .addbtn-container {
   display: flex;
   width: 100%;
@@ -46,7 +51,7 @@
 
 .addbtn-container label {
   background: var(--primary-blue-main);
-  width: 20%;
+  width: 300px;
   height: 40px;
   color: #fff;
   justify-content: center;
@@ -82,4 +87,29 @@
 .addnews-error {
   color: var(--status-error);
   font-size: 20px;
+}
+
+.addnews-imgdisplay img {
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .addnews-container {
+    padding: 20px;
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .addnews-container {
+    padding: 16px;
+  }
+
+  .addbtn-container label {
+    width: 100%;
+  }
+
+  .addnews-container button {
+    width: 100%;
+  }
 }

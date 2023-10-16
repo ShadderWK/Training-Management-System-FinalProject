@@ -64,7 +64,7 @@
 }
 
 .editfaq-block {
-  width: 80%;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -132,4 +132,25 @@
 .delete-btn:hover {
   transform: scale(0.95);
   background-color: var(--status-error-hover);
+}
+
+@media (max-width: 1200px) {
+  .editfaq-container {
+    padding: 20px;
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .editfaq-container {
+    padding: 16px;
+  }
+
+  .editfaq-title {
+    flex-direction: column;
+  }
+
+  .editfaq-title button {
+    width: 100%;
+  }
 }

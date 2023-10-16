@@ -23,7 +23,7 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .updatefaq-text-title {
@@ -36,16 +36,34 @@
   color: var(--status-error);
 }
 
-.updatefaq-input textarea {
+.updatefaq-text-input {
+  display: flex;
+  gap: 0px;
   width: 100%;
-  padding: 12px;
-  box-sizing: border-box;
-  resize: none;
-  border-radius: 4px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid var(--primary-blue-l2);
+}
 
+.updatefaq-text-input textarea {
   font-family: IBM Plex Sans Thai;
+  border: none;
+  color: #000;
+  font-size: 16px;
   font-weight: 400;
-  font-size: 14px;
+  height: 100%;
+  width: 100%;
+  resize: none;
+}
+
+.updatefaq-text-input textarea::placeholder {
+  color: var(--primary-blue-l2);
+}
+
+.updatefaq-text-input textarea:focus {
+  outline: none;
+  border: none;
 }
 
 .updatefaq-input button {
@@ -70,4 +88,17 @@
 .updatefaq-input button:hover {
   background: var(--primary-blue-pressed);
   transform: scale(0.95);
+}
+
+@media (max-width: 1200px) {
+  .updatefaq-container {
+    padding: 20px;
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .updatefaq-container {
+    padding: 16px;
+  }
 }

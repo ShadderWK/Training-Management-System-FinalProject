@@ -19,9 +19,7 @@
 }
 
 .list-course-byid-container button {
-  background: var(--primary-blue-main);
-  width: 300px;
-  height: 40px;
+  background: var(--status-success);
   color: #fff;
   justify-content: center;
   align-items: center;
@@ -31,13 +29,40 @@
   border: none;
   cursor: pointer;
   transition: 0.3s;
-
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 400;
   font-family: IBM Plex Sans Thai;
 }
 
 .list-course-byid-container button:hover {
-  background: var(--primary-blue-pressed);
+  background: var(--status-success-hover);
   transform: scale(0.95);
+}
+
+@media (max-width: 1200px) {
+  .list-course-byid-container {
+    padding: 20px;
+    margin-left: 80px;
+  }
+
+  .list-course-byid-container h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .list-course-byid-container {
+    padding: 16px;
+    margin-left: 80px;
+  }
+
+  .list-course-byid-container h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  /* .list-course-byid-container button {
+    width: 100%;
+  } */
 }

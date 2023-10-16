@@ -110,6 +110,13 @@ function AddNews() {
         <SidebarAdmin defaultSelectedKeys={defaultSelectedKeys} />
         <div className="addnews-container">
           <h1>เพิ่มรูปข่าว</h1>
+
+          <div className="addnews-imgdisplay">
+            {image && <img src={image} alt="Selected Image" />}
+            {selectedFileName && <p>{selectedFileName}</p>}
+            {errorPic && <p className="addnews-error">{errorPic}</p>}
+          </div>
+
           <div className="addbtn-container">
             <label htmlFor="image">อัพโหลดรูปภาพ</label>
             <input
@@ -120,12 +127,6 @@ function AddNews() {
               style={{ display: "none" }}
               onChange={handleChangeImages}
             />
-
-            <div className="addnews-imgdisplay">
-              {image && <img src={image} alt="Selected Image" />}
-              {selectedFileName && <p>{selectedFileName}</p>}
-              {errorPic && <p className="addnews-error">{errorPic}</p>}
-            </div>
           </div>
 
           <button onClick={submit}>ตกลง</button>

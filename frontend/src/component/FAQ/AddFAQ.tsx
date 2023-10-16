@@ -119,14 +119,16 @@ function AddFAQ() {
           <div className="addfaq-input">
             <div className="addfaq-text">
               <p className="addfaq-text-title">หัวข้อคำถาม</p>
-              <textarea
-                id="title"
-                name="Title"
-                placeholder="หัวข้อ..."
-                rows={1}
-                value={faq.Title}
-                onChange={handleInputChange}
-              />
+              <div className="addfaq-text-input">
+                <textarea
+                  id="title"
+                  name="Title"
+                  placeholder="หัวข้อ..."
+                  rows={1}
+                  value={faq.Title}
+                  onChange={handleInputChange}
+                />
+              </div>
               {errorMessages.Title && (
                 <p className="addfaq-error-message">{errorMessages.Title}</p>
               )}
@@ -134,14 +136,16 @@ function AddFAQ() {
 
             <div className="addfaq-text">
               <p className="addfaq-text-title">รายละเอียดคำถาม</p>
-              <textarea
-                id="detail"
-                name="Detail"
-                placeholder="รายละเอียด..."
-                rows={4}
-                value={faq.Detail}
-                onChange={handleInputChange}
-              />
+              <div className="addfaq-text-input">
+                <textarea
+                  id="detail"
+                  name="Detail"
+                  placeholder="รายละเอียด..."
+                  rows={4}
+                  value={faq.Detail}
+                  onChange={handleInputChange}
+                />
+              </div>
               {errorMessages.Detail && (
                 <p className="addfaq-error-message">{errorMessages.Detail}</p>
               )}
@@ -149,14 +153,16 @@ function AddFAQ() {
 
             <div className="addfaq-text">
               <p className="addfaq-text-title">คำตอบ</p>
-              <textarea
-                id="reply"
-                name="Reply"
-                placeholder="คำตอบ..."
-                rows={4}
-                value={faq.Reply}
-                onChange={handleInputChange}
-              />
+              <div className="addfaq-text-input">
+                <textarea
+                  id="reply"
+                  name="Reply"
+                  placeholder="คำตอบ..."
+                  rows={4}
+                  value={faq.Reply}
+                  onChange={handleInputChange}
+                />
+              </div>
               {errorMessages.Reply && (
                 <p className="addfaq-error-message">{errorMessages.Reply}</p>
               )}

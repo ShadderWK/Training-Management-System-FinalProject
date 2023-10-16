@@ -25,7 +25,7 @@
   background: var(--primary-blue-main) !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .ant-layout-sider {
     position: fixed !important;
     z-index: 1 !important;

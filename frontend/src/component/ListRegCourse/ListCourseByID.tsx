@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Table } from "antd";
+import type { ColumnsType } from "antd/es/table";
 import * as XLSX from "xlsx";
 
 import NavbarAdmin from "../Navbar/NavbarAdmin";
@@ -22,8 +23,39 @@ function ListCourseByID() {
   const [courseReg, setCourseReg] = useState<CourseRegistrationInterface[]>([]);
   const [token, setToken] = useState<String>("");
   const [role, setRole] = useState<String>("");
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
+
+  const columns: ColumnsType<CourseRegistrationInterface> = [
+    {
+      title: "หมายเลขคำสั่งซื้อ",
+      dataIndex: "ID",
+      key: "ID",
+      align: "center",
+    },
+
+    {
+      title: "ชื่อ-นามสกุล",
+      dataIndex: "Member",
+      render: (text, record) =>
+        `${record?.Member?.Firstname || ""} ${record?.Member?.Lastname || ""}`,
+      key: "Name",
+      align: "center",
+    },
+
+    {
+      title: "เบอร์โทรศัพท์",
+      dataIndex: ["Member", "Tel"],
+      key: "Member.Tel",
+      align: "center",
+    },
+
+    {
+      title: "อีเมล",
+      dataIndex: ["Member", "Email"],
+      key: "Member.Email",
+      align: "center",
+    },
+  ];
+
   const navigate = useNavigate();
   const defaultSelectedKeys = ["5"];
 
@@ -93,36 +125,11 @@ function ListCourseByID() {
       >
         <SidebarAdmin defaultSelectedKeys={defaultSelectedKeys} />
         <div className="list-course-byid-container">
-          <h1>รายชื่อคนในคอร์ส</h1>
+          <h1>รายชื่อผู้สมัครคอร์ส</h1>
           <h1>{course.Name}</h1>
-          <button onClick={exportToExcel}>Export to Excel</button>
+          <button onClick={exportToExcel}>ส่งออกเป็นไฟล์ Excel</button>
 
-          <div>
-            <table className="check-payment-table">
-              <thead>
-                <tr>
-                  <th>หมายเลขคำสั่งซื้อ</th>
-                  <th>ชื่อคนสมัคร</th>
-                  <th>อีเมล</th>
-                  <th>เบอร์โทรติดต่อ</th>
-                  <th>สถานนะการชำระเงิน</th>
-                </tr>
-              </thead>
-              <tbody>
-                {courseReg.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.ID}</td>
-                    <td>
-                      {item.Member?.Firstname} {item.Member?.Lastname}
-                    </td>
-                    <td>{item.Member?.Email}</td>
-                    <td>{item.Member?.Tel}</td>
-                    <td>{item.PaymentStatus?.Status}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <Table columns={columns} dataSource={courseReg} scroll={{ x: 900 }} />
         </div>
       </Layout>
     </div>

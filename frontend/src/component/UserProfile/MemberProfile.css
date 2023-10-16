@@ -134,7 +134,7 @@
 .profile-edit-btn {
   background: var(--status-info);
 
-  width: 40%;
+  width: 50%;
   height: 50px;
   color: #fff;
   justify-content: center;
@@ -154,4 +154,51 @@
 .profile-edit-btn:hover {
   background: var(--status-info-hover);
   transform: scale(0.95);
+}
+
+@media (max-width: 1200px) {
+  .member-profile-container {
+    padding: 20px;
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .member-profile-container {
+    padding: 16px;
+    margin-left: 80px;
+  }
+
+  .member-profile-detail {
+    flex-direction: column;
+  }
+
+  .member-profile-img-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .member-profile-img-btn {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .member-profile-img-btn button {
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .profile-btn-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-change-pass-btn {
+    width: 100%;
+  }
+
+  .profile-edit-btn {
+    width: 100%;
+  }
 }

@@ -21,23 +21,36 @@
 .listcourse-btn {
   background: var(--primary-blue-main);
   width: 100%;
-  height: 30px;
+
   color: #fff;
   justify-content: center;
   align-items: center;
   display: flex;
-  padding: 11px 22px;
+  padding: 5px 10px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: 0.3s;
 
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 400;
   font-family: IBM Plex Sans Thai;
 }
 
 .listcourse-btn:hover {
   background: var(--primary-blue-pressed);
   transform: scale(0.95);
+}
+
+@media (max-width: 1200px) {
+  .list-course-container {
+    padding: 20px;
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .list-course-container {
+    padding: 16px;
+  }
 }

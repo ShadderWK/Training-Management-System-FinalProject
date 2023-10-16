@@ -126,7 +126,7 @@
   font-weight: 400;
   height: 100%;
   width: 100%;
-  resize: vertical;
+  resize: none;
 }
 
 .edit-profile-input-section textarea::placeholder {
@@ -195,4 +195,31 @@
 .edit-profile-btn-back:hover {
   background: var(--primary-blue-pressed);
   transform: scale(0.95);
+}
+
+@media (max-width: 1200px) {
+  .edit-profile-container {
+    padding: 20px;
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .edit-profile-container {
+    padding: 16px;
+  }
+
+  .edit-profile-name-section {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .edit-profile-btn-section {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .edit-profile-btn-section button {
+    width: 100%;
+  }
 }

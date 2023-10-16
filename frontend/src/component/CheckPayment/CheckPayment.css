@@ -33,50 +33,47 @@
   color: var(--primary-blue-main);
 }
 
-.check-payment-title h .check-payment-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background-color: #fff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.check-payment-table td {
-  padding: 12px 15px;
-  text-align: center;
-  background-color: #fff;
-  font-weight: 400;
-}
-
-.check-payment-table th {
-  background-color: var(--primary-b-main);
-  color: var(--primary-blue-l1);
-
-  padding: 12px 15px;
-  font-size: 18px;
-  font-weight: 700;
+.check-payment-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .check-payment-btn {
   background: var(--primary-blue-main);
-
-  height: 30px;
   color: #fff;
   justify-content: center;
   align-items: center;
   display: flex;
-  padding: 11px 22px;
+  padding: 5px 10px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: 0.3s;
 
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 400;
   font-family: IBM Plex Sans Thai;
 }
 
 .check-payment-btn:hover {
   background: var(--primary-blue-pressed);
   transform: scale(0.95);
+}
+
+@media (max-width: 1200px) {
+  .check-payment-container {
+    padding: 20px;
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .check-payment-container {
+    padding: 16px;
+  }
+
+  .check-payment-title {
+    flex-direction: column;
+  }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Popconfirm } from "antd";
 
 import NavbarAdmin from "../Navbar/NavbarAdmin";
 import SidebarAdmin from "../Sidebar/SidebarAdmin";
@@ -16,7 +16,7 @@ function EditFAQ() {
   const [role, setRole] = useState<String>("");
   const [faq, setFaq] = useState<QuestionInterface[]>([]);
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["3"];
+  const defaultSelectedKeys = ["5"];
 
   const fetchQuestions = async () => {
     let res = await GetQuestions();
@@ -89,12 +89,16 @@ function EditFAQ() {
                     >
                       Edit
                     </button>
-                    <button
-                      className="delete-btn"
-                      onClick={() => DeleteFAQ(question.ID + "")}
+
+                    <Popconfirm
+                      title="คุณแน่ใจว่าจะลบคำถามนี้ใช่หรือไม่"
+                      description="การลบการอบรมจะไม่สามารถกู้คืนได้"
+                      onConfirm={() => DeleteFAQ(question.ID + "")}
+                      okText="ตกลง"
+                      cancelText="ไม่"
                     >
-                      Delete
-                    </button>
+                      <button className="delete-btn">Delete</button>
+                    </Popconfirm>
                   </div>
                 </div>
               </div>

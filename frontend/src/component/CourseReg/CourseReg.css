@@ -10,21 +10,20 @@
 
 .course-reg-title {
   display: flex;
-  width: 70%;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 70px;
+  width: 100%;
+  gap: 40px;
 }
 
-.course-reg-title img {
-  width: 500px;
-  height: 300px;
+.course-reg-img {
+  display: flex;
+  justify-content: center;
+  width: 50%;
 }
 
 .course-reg-detail {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 50%;
   gap: 16px;
 }
 
@@ -39,7 +38,7 @@
 
 .course-reg-detail p {
   font-family: IBM Plex Sans Thai;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   color: #000;
   margin: 0;
@@ -51,7 +50,7 @@
 
 .course-reg-container button {
   background: var(--primary-blue-main);
-  width: 30%;
+  width: 100%;
   height: 40px;
   color: #fff;
   justify-content: center;
@@ -71,4 +70,30 @@
 .course-reg-container button:hover {
   background: var(--primary-blue-pressed);
   transform: scale(0.95);
+}
+
+@media (max-width: 1200px) {
+  .course-reg-container {
+    padding: 20px;
+    margin-left: 80px;
+  }
+
+  .course-reg-title {
+    flex-direction: column;
+  }
+
+  .course-reg-img {
+    width: 100%;
+  }
+
+  .course-reg-detail {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .course-reg-container {
+    padding: 16px;
+    margin-left: 80px;
+  }
 }

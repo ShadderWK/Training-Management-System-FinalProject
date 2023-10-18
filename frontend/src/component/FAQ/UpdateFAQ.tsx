@@ -31,7 +31,7 @@ function UpdateFAQ() {
     Reply: "",
   });
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["3"];
+  const defaultSelectedKeys = ["5"];
 
   const convertType = (data: string | number | undefined) => {
     let val = typeof data === "string" ? parseInt(data) : data;

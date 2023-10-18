@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Layout, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import { TeamOutlined } from "@ant-design/icons";
+
+import {
+  TeamOutlined,
+  InfoCircleOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 
 import NavbarAdmin from "../Navbar/NavbarAdmin";
 import SidebarAdmin from "../Sidebar/SidebarAdmin";
@@ -15,26 +20,55 @@ import "./ListRegCourse.css";
 
 function ListRegCourse() {
   const [course, setCourse] = useState<CourseInterface[]>([]);
+  const [filteredData, setFilteredData] = useState<CourseInterface[]>([]);
+
+  const [filterActive, setFilterActive] = useState(false);
+  const [filterDisable, setFilterDisable] = useState(false);
+  const [searchText, setSearchText] = useState("");
   const [token, setToken] = useState<String>("");
   const [role, setRole] = useState<String>("");
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["5"];
+  const defaultSelectedKeys = ["2"];
 
   const columns: ColumnsType<CourseInterface> = [
     {
-      title: "รหัสคอร์ส",
+      title: "รหัสการอบรม",
       dataIndex: "ID",
       key: "ID",
       align: "center",
     },
 
     {
-      title: "ชื่อคอร์ส",
+      title: "หัวข้อการอบรม",
       dataIndex: "Name",
       key: "ID",
       align: "left",
+    },
+
+    {
+      title: "สถานะ",
+      dataIndex: ["CourseStatus", "Status"],
+      key: "ID",
+      align: "center",
+    },
+
+    {
+      title: "ดูข้อมูลการอบรม",
+      key: "action",
+      align: "center",
+      render: (record) => (
+        <span className="icon-table">
+          <InfoCircleOutlined
+            style={{
+              fontSize: "20px",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "#1890ff",
+            }}
+            onClick={() => navigate(`/admin/course/${record.ID}`)}
+          />
+        </span>
+      ),
     },
 
     {
@@ -42,14 +76,16 @@ function ListRegCourse() {
       key: "action",
       align: "center",
       render: (record) => (
-        <span>
-          <button
-            className="listcourse-btn"
+        <span className="icon-table">
+          <TeamOutlined
+            style={{
+              fontSize: "20px",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "#1890ff",
+            }}
             onClick={() => navigate(`/admin/list-course/${record.ID}`)}
-          >
-            <TeamOutlined />
-            <span className="button-text">ดูรายชื่อ</span>
-          </button>
+          />
         </span>
       ),
     },
@@ -75,8 +111,39 @@ function ListRegCourse() {
       localStorage.clear();
     }
 
+    if (filterActive) {
+      const filteredCourse = course.filter(
+        (item) => item.CourseStatus?.Status === "เปิดใช้งาน"
+      );
+      setFilteredData(filteredCourse);
+    } else {
+      setFilteredData(course);
+    }
+
+    let filteredCourse = course;
+
+    if (filterActive && filterDisable) {
+      filteredCourse = course;
+    } else if (filterActive) {
+      filteredCourse = course.filter(
+        (item) => item?.CourseStatus?.Status === "เปิดใช้งาน"
+      );
+    } else if (filterDisable) {
+      filteredCourse = course.filter(
+        (item) => item?.CourseStatus?.Status === "ปิดใช้งาน"
+      );
+    }
+
+    if (searchText) {
+      filteredCourse = filteredCourse.filter((item) =>
+        item?.Name?.toLowerCase().includes(searchText.toLowerCase())
+      );
+    }
+
+    setFilteredData(filteredCourse);
+
     fetchCourses();
-  }, [course]);
+  }, [course, filterActive, filterDisable]);
 
   return (
     <div>
@@ -90,9 +157,51 @@ function ListRegCourse() {
       >
         <SidebarAdmin defaultSelectedKeys={defaultSelectedKeys} />
         <div className="list-course-container">
-          <h1>รายชื่อคอร์สในปัจจุบัน</h1>
+          <h1>การอบรมทั้งหมดในปัจจุบัน</h1>
 
-          <Table columns={columns} dataSource={course} scroll={{ x: 900 }} />
+          <div className="list-course-section">
+            <button onClick={() => navigate(`/admin/add-course`)}>
+              เพิ่มการอบรม
+            </button>
+
+            <div className="list-course-filter">
+              <div className="list-course-checkbox">
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={filterActive}
+                    onChange={() => setFilterActive(!filterActive)}
+                  />
+                  เปิดใช้งาน
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={filterDisable}
+                    onChange={() => setFilterDisable(!filterDisable)}
+                  />
+                  ปิดใช้งาน
+                </label>
+              </div>
+
+              <div className="list-course-input">
+                <input
+                  type="text"
+                  placeholder="ชื่อการอบรม..."
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
+                />
+                <SearchOutlined style={{ color: "#2B56BA" }} />
+              </div>
+            </div>
+          </div>
+
+          <Table
+            columns={columns}
+            dataSource={filteredData}
+            scroll={{ x: 1200 }}
+          />
         </div>
       </Layout>
     </div>

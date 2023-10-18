@@ -22,7 +22,7 @@ function AddNews() {
   const [error, setError] = useState(false);
   const [errorPic, setErrorPic] = useState<string | null>(null);
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["2"];
+  const defaultSelectedKeys = ["4"];
 
   const handleChangeImages = (event: ChangeEvent<HTMLInputElement>) => {
     const input = event.target.files?.[0];

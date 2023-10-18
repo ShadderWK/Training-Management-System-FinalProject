@@ -3,7 +3,6 @@ package controller
 import (
 	"net/http"
 
-	// "github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
 	"github.com/ShadderWK/Training-Management-System-FinalProject/entity"
 )
@@ -34,12 +33,6 @@ func CreateCourseRegistration(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "PaymentStatus not found"})
 		return
 	}
-
-	// แทรกการ validate ไว้ช่วงนี้ของ controller
-	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	// 	return
-	// }
 
 	coureg := entity.CourseRegistration{
 		Receipt:		courseregistration.Receipt,
@@ -82,9 +75,10 @@ func ListCourseRegistrations(c *gin.Context) {
 // GET /CourseRegistrationsByPaymentStatusID
 func ListCourseRegistrationsByMemberID(c *gin.Context) {
 	var courseregistrations []entity.CourseRegistration
-	id := c.Param("id")
+	memberID := c.Param("member_id")
+	statusID := c.Param("status_id")
 
-	if tx := entity.DB().Preload("Member").Preload("Course").Preload("PaymentStatus").Raw("SELECT * FROM course_registrations WHERE member_id = ? AND payment_status_id = 2", id).Find(&courseregistrations); tx.RowsAffected == 0 {
+	if tx := entity.DB().Preload("Member").Preload("Course").Preload("PaymentStatus").Raw("SELECT * FROM course_registrations WHERE member_id = ? AND payment_status_id = ?", memberID, statusID).Find(&courseregistrations); tx.RowsAffected == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "CourseRegistration not found"})
 		return
 	}
@@ -95,9 +89,10 @@ func ListCourseRegistrationsByMemberID(c *gin.Context) {
 // GET /CourseRegistrationsByCourseID
 func ListCourseRegistrationsByCourseID(c *gin.Context) {
 	var courseregistrations []entity.CourseRegistration
-	id := c.Param("id")
+	courseID := c.Param("course_id")
+	statusID := c.Param("status_id")
 
-	if tx := entity.DB().Preload("Member").Preload("Course").Preload("PaymentStatus").Raw("SELECT * FROM course_registrations WHERE course_id = ?", id).Find(&courseregistrations); tx.RowsAffected == 0 {
+	if tx := entity.DB().Preload("Member").Preload("Course").Preload("PaymentStatus").Raw("SELECT * FROM course_registrations WHERE course_id = ?  AND payment_status_id = ?", courseID, statusID).Find(&courseregistrations); tx.RowsAffected == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "CourseRegistration not found"})
 		return
 	}
@@ -105,7 +100,36 @@ func ListCourseRegistrationsByCourseID(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": courseregistrations})
 }
 
+// GET /CountCourseRegistrationByPaymentStatus/:status_id
+func CountCourseRegistrationByPaymentStatus(c *gin.Context) {
+	statusID := c.Param("status_id")
 
+	var totalCount int64
+	err := entity.DB().Table("course_registrations").
+		Where("payment_status_id = ?", statusID).
+		Count(&totalCount).
+		Error
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"totalCount": totalCount})
+}
+
+func SumCourseRegistrationPrices(c *gin.Context) {
+    var total_price int64
+
+	statusID := c.Param("status_id")
+
+	if tx := entity.DB().Raw("SELECT SUM(courses.price) AS total_price FROM course_registrations JOIN courses ON course_registrations.course_id = courses.id WHERE course_registrations.payment_status_id = ?",statusID).Find(&total_price); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "CourseRegistration not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": total_price})
+}
 
 // DELETE /CourseRegistration/:id
 func DeleteCourseRegistration(c *gin.Context) {
@@ -145,12 +169,6 @@ func UpdateCourseRegistration(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "PaymentStatus not found"})
 		return
 	}
-
-	// แทรกการ validate ไว้ช่วงนี้ของ controller
-	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	// 	return
-	// }
 
 	update := entity.CourseRegistration{
 		Receipt:		courseregistration.Receipt,

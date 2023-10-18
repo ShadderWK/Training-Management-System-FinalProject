@@ -1,0 +1,170 @@
+.course-container {
+  display: flex;
+  padding: 24px 100px;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 70px;
+  width: 100vw;
+
+  font-family: IBM Plex Sans Thai;
+  font-weight: 400;
+}
+
+.course-status-section h1 {
+  margin: 0;
+  font-size: 24px;
+  text-align: center;
+  color: var(--primary-blue-main);
+}
+
+.course-img-status {
+  display: flex;
+  gap: 40px;
+}
+
+.course-img-container {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+.course-img {
+  display: flex;
+}
+
+.course-status-section {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 10px;
+}
+
+.course-status-section p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.course-status-section span {
+  font-weight: 700;
+}
+
+.course-pdf {
+  font-weight: 400;
+}
+
+.course-btn {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.course-btn button {
+  width: 100%;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.course-btn button:hover {
+  transform: scale(0.95);
+}
+
+.course-btn-active {
+  background: var(--status-success);
+}
+
+.course-btn-disable {
+  background: var(--status-error);
+}
+
+.course-btn-active:hover {
+  background: var(--status-success-hover);
+}
+
+.course-btn-disable:hover {
+  background: var(--status-error-hover);
+}
+
+.course-btn-section {
+  display: flex;
+  width: 100%;
+  gap: 40px;
+}
+
+.course-btn-section button {
+  width: 50%;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 11px 22px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.course-btn-section button:hover {
+  transform: scale(0.95);
+}
+
+.course-btn-edit {
+  background-color: var(--status-warning);
+}
+
+.course-btn-edit:hover {
+  background-color: var(--status-warning-hover);
+}
+
+@media (max-width: 1200px) {
+  .course-container {
+    padding: 20px;
+    margin-left: 80px;
+  }
+
+  .course-container h1 {
+    text-align: center;
+  }
+
+  .course-img-status {
+    flex-direction: column;
+  }
+
+  .course-img-container {
+    width: 100%;
+  }
+
+  .course-status-section {
+    width: 100%;
+  }
+
+  .course-btn-section {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .course-btn-section button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .course-container {
+    padding: 16px;
+    margin-left: 80px;
+  }
+}

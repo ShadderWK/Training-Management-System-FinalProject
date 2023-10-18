@@ -3,7 +3,6 @@ package controller
 import (
 	"net/http"
 
-	// "github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
 	"github.com/ShadderWK/Training-Management-System-FinalProject/entity"
 )
@@ -13,6 +12,7 @@ func CreateCourse(c *gin.Context) {
 
 	var course entity.Course
 	var admin entity.Admin
+	var coursestatus entity.CourseStatus
 
 	if err := c.ShouldBindJSON(&course); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -24,18 +24,19 @@ func CreateCourse(c *gin.Context) {
 		return
 	}
 
-	// แทรกการ validate ไว้ช่วงนี้ของ controller
-	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	// 	return
-	// }
+	if tx := entity.DB().Where("id = ?", course.CourseStatusID).First(&coursestatus); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "CourseStatus not found"})
+		return
+	}
 
 	cou := entity.Course{
 		Detail:			course.Detail,
 		Name:          	course.Name,
 		Image:			course.Image,
 		Price:			course.Price,
-		Admin:		admin,
+		Admin:			admin,
+		Pdf:			course.Pdf,
+		CourseStatus:	coursestatus,
 	}
 
 	if err := entity.DB().Create(&cou).Error; err != nil {
@@ -50,7 +51,7 @@ func GetCourse(c *gin.Context) {
 	var course entity.Course
 	id := c.Param("id")
 
-	if tx := entity.DB().Preload("Admin").Where("id = ?", id).First(&course); tx.RowsAffected == 0 {
+	if tx := entity.DB().Preload("Admin").Preload("CourseStatus").Where("id = ?", id).First(&course); tx.RowsAffected == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Course not found"})
 		return
 	}
@@ -61,8 +62,22 @@ func GetCourse(c *gin.Context) {
 // GET /Courses
 func ListCourses(c *gin.Context) {
 	var courses []entity.Course
-	if err := entity.DB().Preload("Admin").Raw("SELECT * FROM courses").Find(&courses).Error; err != nil {
+	if err := entity.DB().Preload("Admin").Preload("CourseStatus").Raw("SELECT * FROM courses").Find(&courses).Error; err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": courses})
+}
+
+// GET /CourseByCourseStatusID
+func ListCoursesByCourseStatusID(c *gin.Context) {
+	var courses []entity.Course
+
+	statusID := c.Param("status_id")
+
+	if tx := entity.DB().Preload("Admin").Preload("CourseStatus").Raw("SELECT * FROM courses WHERE course_status_id = ?", statusID).Find(&courses); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Course not found"})
 		return
 	}
 
@@ -85,6 +100,7 @@ func DeleteCourse(c *gin.Context) {
 func UpdateCourse(c *gin.Context) {
 	var course entity.Course
 	var admin entity.Admin
+	var coursestatus entity.CourseStatus
 
 	if err := c.ShouldBindJSON(&course); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -96,11 +112,10 @@ func UpdateCourse(c *gin.Context) {
 		return
 	}
 
-	// แทรกการ validate ไว้ช่วงนี้ของ controller
-	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	// 	return
-	// }
+	if tx := entity.DB().Where("id = ?", course.CourseStatusID).First(&coursestatus); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "CourseStatus not found"})
+		return
+	}
 
 	update := entity.Course{
 		Detail:			course.Detail,
@@ -108,6 +123,8 @@ func UpdateCourse(c *gin.Context) {
 		Image:			course.Image,
 		Price:			course.Price,
 		Admin:			admin,
+		Pdf:			course.Pdf,
+		CourseStatus:	coursestatus,
 	}
 
 	if err := entity.DB().Where("id = ?", course.ID).Updates(&update).Error; err != nil {

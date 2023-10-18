@@ -43,6 +43,7 @@ func SetupDatabase() {
 		&PaymentStatus{},
 		&Question{},
 		&News{},
+		&CourseStatus{},
 	)
 
 	db = database
@@ -98,70 +99,70 @@ func SetupDatabase() {
 	}
 	db.Model(&Member{}).Create(&MemberB)
 
+	CourseStatusA := CourseStatus{
+		Status: "เปิดใช้งาน",
+	}
+	db.Model(&CourseStatus{}).Create(&CourseStatusA)
+
+	CourseStatusB := CourseStatus{
+		Status: "ปิดใช้งาน",
+	}
+	db.Model(&CourseStatus{}).Create(&CourseStatusB)
+
 	CourseA := Course{
 		Name:     "แนวโน้มนวัตกรรมและเทคโนโลยีการศึกษาสำหรับการจัดการการศึกษาทุกช่วงวัย",
-		Detail:   "test test test",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 		Price:    10100,
 		Image:    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
 		Admin:	  AdminA,
+		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
 	}
 	db.Model(&Course{}).Create(&CourseA)
 
 	CourseB := Course{
-		Name:     "ชีวอนามัยและความปลอดภัย",
-		Detail:   "ทดสอบๆ",
+		Name:     "Cybersecurity for Executives",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 		Price:    2000,
-		Image:    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Image:    "https://images.unsplash.com/photo-1548092372-0d1bd40894a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
 		Admin:	  AdminA,
+		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
 	}
 	db.Model(&Course{}).Create(&CourseB)
 
 	CourseC := Course{
-		Name:     "แนวโน้มนวัตกรรมและเทคโนโลยีการศึกษาสำหรับการจัดการการศึกษาทุกช่วงวัย",
-		Detail:   "test test test",
+		Name:     "เทคนิคการเร่งรัดหนี้สินอย่างมืออาชีพ สำหรับลูกหนี้การค้า",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 		Price:    3000,
-		Image:    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+		Image:    "https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
 		Admin:	  AdminA,
+		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
 	}
 	db.Model(&Course{}).Create(&CourseC)
 
 	CourseD := Course{
-		Name:     "ทดสอบครับทดสอบบบบ",
-		Detail:   "ทดสอบๆ",
-		Price:    5000,
-		Image:    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Name:     "Develop Digital Culture for Team Excellence พัฒนาวัฒนธรรมการสร้างทีมที่มีประสิทธิภาพ",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    4500,
+		Image:    "https://images.unsplash.com/photo-1532619187608-e5375cab36aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
 		Admin:	  AdminA,
+		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
 	}
 	db.Model(&Course{}).Create(&CourseD)
 
 	CourseE := Course{
-		Name:     "แนวโน้มนวัตกรรมและเทคโนโลยีการศึกษาสำหรับการจัดการการศึกษาทุกช่วงวัย",
-		Detail:   "test test test",
-		Price:    9000,
-		Image:    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+		Name:     "นักพากย์ Esports",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    500,
+		Image:    "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
 		Admin:	  AdminA,
+		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
 	}
 	db.Model(&Course{}).Create(&CourseE)
-
-	CourseF := Course{
-		Name:     "course testๆ",
-		Detail:   "ทดสอบๆ",
-		Price:    3000,
-		Image:    "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
-		Admin:	  AdminA,
-	}
-	db.Model(&Course{}).Create(&CourseF)
-
-	CourseG := Course{
-		Name:     "course testๆ 22",
-		Detail:   "test test test",
-		Price:    6000,
-		Image:    "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
-		Admin:	  AdminA,
-	}
-	db.Model(&Course{}).Create(&CourseG)
-
-	
 
 	PaymentStatusA := PaymentStatus{
 		Status: "รอการตรวจสอบ",
@@ -178,13 +179,7 @@ func SetupDatabase() {
 	}
 	db.Model(&PaymentStatus{}).Create(&PaymentStatusC)
 
-	CourseRegistrationA := CourseRegistration{
-		Receipt: "https://img.freepik.com/free-vector/realistic-receipt-template_23-2147938550.jpg?w=2000",
-		Member:  MemberA,
-		Course:  CourseA,
-		PaymentStatus: PaymentStatusA,
-	}
-	db.Model(&CourseRegistration{}).Create(&CourseRegistrationA)
+	
 
 	QuestionA := Question{
 		Title:  "จ่ายเงินอย่างไร",
@@ -203,19 +198,19 @@ func SetupDatabase() {
 	db.Model(&Question{}).Create(&QuestionB)
 
 	NewsA := News{
-		Image:  "https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Image:  "https://images.unsplash.com/photo-1614850715649-1d0106293bd1?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=2070",
 		Admin:  AdminA,
 	}
 	db.Model(&News{}).Create(&NewsA)
 
 	NewsB := News{
-		Image:  "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+		Image:  "https://images.unsplash.com/photo-1614851099175-e5b30eb6f696?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=2070",
 		Admin:  AdminA,
 	}
 	db.Model(&News{}).Create(&NewsB)
 
 	NewsC := News{
-		Image:  "https://plus.unsplash.com/premium_photo-1677215210940-99dc9abd546b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Image:  "https://images.unsplash.com/photo-1636955840493-f43a02bfa064?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=2070",
 		Admin:  AdminA,
 	}
 	db.Model(&News{}).Create(&NewsC)

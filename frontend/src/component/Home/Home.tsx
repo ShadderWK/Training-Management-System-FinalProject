@@ -6,7 +6,10 @@ import { SearchOutlined } from "@ant-design/icons";
 import { CourseInterface } from "../../interfaces/ICourse";
 import { NewsInterface } from "../../interfaces/INews";
 
-import { GetCourses, GetNews } from "../../service/HttpClientService";
+import {
+  GetCoursesByCourseStatusID,
+  GetNews,
+} from "../../service/HttpClientService";
 
 import "./Home.css";
 
@@ -25,8 +28,8 @@ function Home() {
   const navigate = useNavigate();
   const defaultSelectedKeys = ["1"];
 
-  const fetchCourses = async () => {
-    let res = await GetCourses();
+  const fetchCourseByCourseStatusID = async () => {
+    let res = await GetCoursesByCourseStatusID("1");
     res && setCourses(res);
   };
 
@@ -51,7 +54,7 @@ function Home() {
     }
 
     fetchNews();
-    fetchCourses();
+    fetchCourseByCourseStatusID();
   }, [navigate]);
 
   return (
@@ -72,12 +75,10 @@ function Home() {
               autoplay
               style={{
                 width: "100%",
-                maxWidth: "80vw",
               }}
             >
-              <div>
-                <img className="img-carousel" src={NewsImg} />
-              </div>
+              <img className="img-carousel" src={NewsImg} />
+
               {news.map((item, index) => (
                 <div key={index}>
                   <img

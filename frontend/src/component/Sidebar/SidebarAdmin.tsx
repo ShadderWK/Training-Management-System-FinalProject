@@ -48,34 +48,34 @@ const items: MenuItem[] = [
   ),
 
   getItem(
-    "แก้ไขข่าวสาร",
+    "ดูการอบรมทั้งหมด",
     "2",
-    <Link to="/admin/edit-news">
-      <PictureOutlined style={{ color: "#2B56BA" }} />
-    </Link>
-  ),
-
-  getItem(
-    "แก้ไข FAQ",
-    "3",
-    <Link to="/admin/edit-faq">
-      <QuestionCircleOutlined style={{ color: "#2B56BA" }} />
+    <Link to="/admin/list-reg-course">
+      <UnorderedListOutlined style={{ color: "#2B56BA" }} />
     </Link>
   ),
 
   getItem(
     "ตรวจสอบการชำระเงิน",
-    "4",
+    "3",
     <Link to="/admin/check-payment">
       <MoneyCollectOutlined style={{ color: "#2B56BA" }} />
     </Link>
   ),
 
   getItem(
-    "ดูรายชื่อที่สมัคร",
+    "แก้ไขข่าวสาร",
+    "4",
+    <Link to="/admin/edit-news">
+      <PictureOutlined style={{ color: "#2B56BA" }} />
+    </Link>
+  ),
+
+  getItem(
+    "แก้ไขคำถามที่พบบ่อย",
     "5",
-    <Link to="/admin/list-reg-course">
-      <UnorderedListOutlined style={{ color: "#2B56BA" }} />
+    <Link to="/admin/edit-faq">
+      <QuestionCircleOutlined style={{ color: "#2B56BA" }} />
     </Link>
   ),
 

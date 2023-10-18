@@ -21,7 +21,7 @@ function MyCourse() {
   const defaultSelectedKeys = ["2"];
 
   const fetchCourseRegistrationByMemberID = async () => {
-    let res = await GetCourseRegistrationByMemberID(Uid + "");
+    let res = await GetCourseRegistrationByMemberID(Uid + "", "2");
     res && setCourseReg(res);
   };
 

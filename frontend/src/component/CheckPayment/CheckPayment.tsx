@@ -25,7 +25,7 @@ function CheckPayment() {
   const [error, setError] = useState(false);
   const { Column } = Table;
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["4"];
+  const defaultSelectedKeys = ["3"];
 
   const columns: ColumnsType<CourseRegistrationInterface> = [
     {
@@ -63,15 +63,17 @@ function CheckPayment() {
       key: "action",
       align: "center",
       render: (record) => (
-        <div className="check-payment-btn-container">
-          <button
-            className="check-payment-btn"
+        <span className="icon-table">
+          <PictureOutlined
+            style={{
+              fontSize: "20px",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "#1890ff",
+            }}
             onClick={() => navigate(`/admin/change-status/${record.ID}`)}
-          >
-            <PictureOutlined />
-            <span className="button-text">ตรวจสอบ</span>
-          </button>
-        </div>
+          />
+        </span>
       ),
     },
   ];

@@ -62,12 +62,21 @@ type PaymentStatus struct {
 	Status string
 }
 
+type CourseStatus struct {
+	gorm.Model
+	Status string
+}
+
 type Course struct {
 	gorm.Model
 	Name   string
 	Detail string
 	Price  int
 	Image  string
+	Pdf	   string
+
+	CourseStatusID int
+	CourseStatus CourseStatus
 
 	AdminID *uint
 	Admin   Admin
@@ -79,10 +88,10 @@ type CourseRegistration struct {
 	gorm.Model
 	Receipt string
 
-	MemberID *uint
+	MemberID *uint 
 	Member   Member
 
-	CourseID *uint
+	CourseID *uint `gorm:"uniqueIndex"`
 	Course   Course
 
 	PaymentStatusID int

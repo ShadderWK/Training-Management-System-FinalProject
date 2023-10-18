@@ -65,7 +65,7 @@ function ListCourseByID() {
   };
 
   const fetchCourseRegistrationByCourseID = async () => {
-    let res = await GetCourseRegistrationByCourseID(id + "");
+    let res = await GetCourseRegistrationByCourseID(id + "", "2");
     res && setCourseReg(res);
   };
 
@@ -125,7 +125,7 @@ function ListCourseByID() {
       >
         <SidebarAdmin defaultSelectedKeys={defaultSelectedKeys} />
         <div className="list-course-byid-container">
-          <h1>รายชื่อผู้สมัครคอร์ส</h1>
+          <h1>รายชื่อผู้สมัครการอบรม</h1>
           <h1>{course.Name}</h1>
           <button onClick={exportToExcel}>ส่งออกเป็นไฟล์ Excel</button>
 

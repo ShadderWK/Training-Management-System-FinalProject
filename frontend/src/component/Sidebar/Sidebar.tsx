@@ -52,13 +52,13 @@ const items: MenuItem[] = [
       <FolderOutlined style={{ color: "#2B56BA" }} />
     </Link>
   ),
-  getItem(
-    "การชำระเงิน",
-    "3",
-    <Link to="/member/payment">
-      <ShoppingCartOutlined style={{ color: "#2B56BA" }} />
-    </Link>
-  ),
+  // getItem(
+  //   "การชำระเงิน",
+  //   "3",
+  //   <Link to="/member/payment">
+  //     <ShoppingCartOutlined style={{ color: "#2B56BA" }} />
+  //   </Link>
+  // ),
   getItem(
     "ติดต่อเจ้าหน้าที่",
     "4",

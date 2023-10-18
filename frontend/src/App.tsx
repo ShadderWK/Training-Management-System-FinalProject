@@ -27,6 +27,9 @@ import CheckPayment from "./component/CheckPayment/CheckPayment";
 import ChangeStatus from "./component/CheckPayment/ChangeStatus";
 import ListRegCourse from "./component/ListRegCourse/ListRegCourse";
 import ListCourseByID from "./component/ListRegCourse/ListCourseByID";
+import Course from "./component/ListRegCourse/Course";
+import AddCourse from "./component/ListRegCourse/AddCourse";
+import UpdateCourse from "./component/ListRegCourse/UpdateCourse";
 
 //Component
 import Topbar from "./component/TopBar/Topbar";
@@ -74,6 +77,9 @@ function App() {
         <Route path="admin/change-status/:id" element={<ChangeStatus />} />
         <Route path="admin/list-reg-course" element={<ListRegCourse />} />
         <Route path="admin/list-course/:id" element={<ListCourseByID />} />
+        <Route path="admin/course/:id" element={<Course />} />
+        <Route path="admin/add-course" element={<AddCourse />} />
+        <Route path="admin/update-course/:id" element={<UpdateCourse />} />
       </Routes>
     </div>
   );

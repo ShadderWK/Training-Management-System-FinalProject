@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Image } from "antd";
 
 import NavbarAdmin from "../Navbar/NavbarAdmin";
 import SidebarAdmin from "../Sidebar/SidebarAdmin";
@@ -27,7 +27,7 @@ function ChangeStatus() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["4"];
+  const defaultSelectedKeys = ["3"];
 
   const convertType = (data: string | number | undefined) => {
     let val = typeof data === "string" ? parseInt(data) : data;
@@ -102,7 +102,18 @@ function ChangeStatus() {
         <SidebarAdmin defaultSelectedKeys={defaultSelectedKeys} />
         <div className="change-status-container">
           <div className="change-status-section">
-            <img src={courseReg.Receipt} />
+            <div className="change-status-img-section">
+              <div className="change-status-img-container">
+                <Image
+                  src={courseReg.Receipt}
+                  style={{
+                    borderRadius: "20px",
+                    padding: "10px",
+                    backgroundColor: "#fff",
+                  }}
+                />
+              </div>
+            </div>
             <div className="change-status-text">
               <h1>ตรวจสอบการชำระเงินหมายเลข {courseReg.ID}</h1>
 

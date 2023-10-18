@@ -28,6 +28,7 @@
 
 .check-payment-title label {
   font-size: 20px;
+  font-weight: 400;
   margin: 0;
   text-align: center;
   color: var(--primary-blue-main);

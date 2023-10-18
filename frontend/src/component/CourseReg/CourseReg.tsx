@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Image } from "antd";
 
-import {
-  GetCourseByID,
-  CreateCourseRegistration,
-} from "../../service/HttpClientService";
+import { GetCourseByID } from "../../service/HttpClientService";
 
 import { CourseInterface } from "../../interfaces/ICourse";
 
@@ -59,25 +56,56 @@ function CourseReg() {
 
         <div className="course-reg-container">
           <div className="course-reg-title">
-            <img src={course.Image} width="500px" />
+            <div className="course-reg-img">
+              <Image
+                src={course.Image}
+                style={{
+                  borderRadius: "20px",
+                  padding: "10px",
+                  backgroundColor: "#fff",
+                }}
+              />
+            </div>
 
             <div className="course-reg-detail">
               <h1>{course.Name}</h1>
+
               <p>
-                <span>รายละเอียดคอร์ส :</span> {course.Detail}
+                <span>รหัสการอบรม :</span> {course.ID}
               </p>
+
               <p>
                 <span>ราคา :</span> {course.Price} บาท
               </p>
+
               <p>
-                <span>รหัสคอร์ส :</span> {course.ID}
+                <span>รายละเอียดการอบรม :</span> {course.Detail}
               </p>
+
+              <p>
+                {course.CreatedAt ? (
+                  <>
+                    <span>วันที่เพิ่มการอบรม : </span>
+
+                    {new Date(course.CreatedAt).toLocaleDateString("th-TH", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      second: "2-digit",
+                    })}
+                  </>
+                ) : (
+                  "วันที่เพิ่มการอบรม: ไม่มีข้อมูล"
+                )}
+              </p>
+
+              <button onClick={() => navigate(`/member/course-purchase/${id}`)}>
+                สั่งซื้อการอบรม
+              </button>
             </div>
           </div>
-
-          <button onClick={() => navigate(`/member/course-purchase/${id}`)}>
-            สั่งซื้อคอร์ส
-          </button>
         </div>
       </Layout>
     </div>

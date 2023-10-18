@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Popconfirm } from "antd";
 
 import NavbarAdmin from "../Navbar/NavbarAdmin";
 import SidebarAdmin from "../Sidebar/SidebarAdmin";
@@ -16,7 +16,7 @@ function News() {
   const [role, setRole] = useState<String>("");
   const [news, setNews] = useState<NewsInterface[]>([]);
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["2"];
+  const defaultSelectedKeys = ["4"];
 
   const fetchNews = async () => {
     let res = await GetNews();
@@ -71,9 +71,15 @@ function News() {
               <div key={newsItem.ID} className="news-block">
                 <img src={newsItem.Image} />
 
-                <button onClick={() => DeletANews(newsItem.ID + "")}>
-                  Delete
-                </button>
+                <Popconfirm
+                  title="คุณแน่ใจว่าจะลบรูปข่าวนี้ใช่หรือไม่"
+                  description="การลบการอบรมจะไม่สามารถกู้คืนได้"
+                  onConfirm={() => DeletANews(newsItem.ID + "")}
+                  okText="ตกลง"
+                  cancelText="ไม่"
+                >
+                  <button>Delete</button>
+                </Popconfirm>
               </div>
             ))}
           </div>

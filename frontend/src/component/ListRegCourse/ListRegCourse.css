@@ -18,8 +18,86 @@
   color: var(--primary-blue-main);
 }
 
-.listcourse-btn {
+.list-course-section {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+}
+
+.list-course-section button {
   background: var(--primary-blue-main);
+  width: 250px;
+  height: 50px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 22px 44px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 20px;
+  font-weight: 700;
+  font-family: IBM Plex Sans Thai;
+}
+
+.list-course-section button:hover {
+  background: var(--primary-blue-pressed);
+  transform: scale(0.95);
+}
+
+.list-course-filter {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  align-items: center;
+}
+
+.list-course-checkbox {
+  display: flex;
+  gap: 10px;
+}
+
+.list-course-filter label {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--primary-blue-main);
+}
+
+.list-course-input {
+  display: flex;
+  gap: 0px;
+  width: 250px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+  align-items: center;
+  border: 1px solid var(--primary-blue-l2);
+}
+
+.list-course-input input {
+  font-family: IBM Plex Sans Thai;
+  border: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  height: 100%;
+  width: 100%;
+}
+
+.list-course-input input::placeholder {
+  color: var(--primary-blue-l2);
+}
+
+.list-course-input input:focus {
+  outline: none;
+  border: none;
+}
+
+.listcourse-btn {
+  background: var(--status-info);
   width: 100%;
 
   color: #fff;
@@ -38,7 +116,7 @@
 }
 
 .listcourse-btn:hover {
-  background: var(--primary-blue-pressed);
+  background: var(--status-info-hover);
   transform: scale(0.95);
 }
 
@@ -47,10 +125,36 @@
     padding: 20px;
     margin-left: 80px;
   }
+
+  .list-course-section {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .list-course-filter {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {
   .list-course-container {
     padding: 16px;
+  }
+
+  .list-course-container h1 {
+    text-align: center;
+  }
+
+  .list-course-section button {
+    width: 100%;
+  }
+
+  .list-course-filter {
+    flex-direction: column;
+  }
+
+  .list-course-input {
+    width: 100%;
   }
 }

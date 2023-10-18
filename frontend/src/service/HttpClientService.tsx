@@ -230,6 +230,37 @@ const GetPaymentStatuses = async () => {
   return res;
 };
 
+const GetPaymentStatusByID = async (id: string) => {
+  let res = await fetch(`${apiUrl}/payment_status/${id}`, requestOptionsGet)
+    .then((response) => response.json())
+    .then((result) => {
+      return result.data ? result.data : false;
+    });
+
+  return res;
+};
+
+// ===== CourseStatus =====
+const GetCourseStatuses = async () => {
+  let res = await fetch(`${apiUrl}/course_statuses`, requestOptionsGet)
+    .then((response) => response.json())
+    .then((result) => {
+      return result.data ? result.data : false;
+    });
+
+  return res;
+};
+
+const GetCourseStatusByID = async (id: string) => {
+  let res = await fetch(`${apiUrl}/course_status/${id}`, requestOptionsGet)
+    .then((response) => response.json())
+    .then((result) => {
+      return result.data ? result.data : false;
+    });
+
+  return res;
+};
+
 // ===== Course =====
 const CreateCourse = async (data: CourseInterface) => {
   const requestOptions = {
@@ -266,6 +297,19 @@ const GetCourses = async () => {
 
 const GetCourseByID = async (id: string) => {
   let res = await fetch(`${apiUrl}/course/${id}`, requestOptionsGet)
+    .then((response) => response.json())
+    .then((result) => {
+      return result.data ? result.data : false;
+    });
+
+  return res;
+};
+
+const GetCoursesByCourseStatusID = async (id: string) => {
+  let res = await fetch(
+    `${apiUrl}/course_bycoursestatus_id/${id}`,
+    requestOptionsGet
+  )
     .then((response) => response.json())
     .then((result) => {
       return result.data ? result.data : false;
@@ -532,9 +576,24 @@ const GetCourseRegistrationByID = async (id: string) => {
   return res;
 };
 
-const GetCourseRegistrationByMemberID = async (id: string) => {
+const GetCountCourseRegistrationByPaymentStatusID = async (
+  statusId: string
+) => {
   let res = await fetch(
-    `${apiUrl}/course_registrations_bymemberid/${id}`,
+    `${apiUrl}/count_course_registrations_bypaymentstatus_id/${statusId}`,
+    requestOptionsGet
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      return result.totalCount ? result.totalCount : false;
+    });
+
+  return res;
+};
+
+const GetSumCourseRegistrationPrice = async (statusId: string) => {
+  let res = await fetch(
+    `${apiUrl}/sum_course_registrations_price/${statusId}`,
     requestOptionsGet
   )
     .then((response) => response.json())
@@ -545,9 +604,28 @@ const GetCourseRegistrationByMemberID = async (id: string) => {
   return res;
 };
 
-const GetCourseRegistrationByCourseID = async (id: string) => {
+const GetCourseRegistrationByMemberID = async (
+  memberId: string,
+  statusId: string
+) => {
   let res = await fetch(
-    `${apiUrl}/course_registrations_bycourseid/${id}`,
+    `${apiUrl}/course_registrations_bymemberid/${memberId}/${statusId}`,
+    requestOptionsGet
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      return result.data ? result.data : false;
+    });
+
+  return res;
+};
+
+const GetCourseRegistrationByCourseID = async (
+  courseId: string,
+  statusId: string
+) => {
+  let res = await fetch(
+    `${apiUrl}/course_registrations_bycourseid/${courseId}/${statusId}`,
     requestOptionsGet
   )
     .then((response) => response.json())
@@ -625,11 +703,17 @@ export {
 
   //PaymentStatus
   GetPaymentStatuses,
+  GetPaymentStatusByID,
+
+  //CourseStatus
+  GetCourseStatuses,
+  GetCourseStatusByID,
 
   //Course
   CreateCourse,
   GetCourses,
   GetCourseByID,
+  GetCoursesByCourseStatusID,
   UpdateCourse,
   DeleteCourse,
 
@@ -653,6 +737,8 @@ export {
   GetCourseRegistrationByID,
   GetCourseRegistrationByMemberID,
   GetCourseRegistrationByCourseID,
+  GetCountCourseRegistrationByPaymentStatusID,
+  GetSumCourseRegistrationPrice,
   UpdateCourseRegistration,
   DeleteCourseRegistration,
 };

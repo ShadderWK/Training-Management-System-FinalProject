@@ -1,6 +1,6 @@
 import React, { useEffect, useState, ChangeEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Image } from "antd";
 
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
@@ -122,27 +122,34 @@ function CoursePurchase() {
         <div className="course-purchase-container">
           <h1>ชำระเงิน</h1>
           <div className="course-purchase-section">
-            <img src={BankQRCode} />
+            <div className="course-purchase-qrcode">
+              <Image src={BankQRCode} style={{ borderRadius: "20px" }} />
+            </div>
 
             <div className="course-purchase-image">
-              <label htmlFor="image">อัพโหลดรูปภาพ</label>
-              <input
-                id="image"
-                name="Image"
-                type="file"
-                accept="image/*"
-                style={{ display: "none" }}
-                onChange={handleChangeImages}
-              />
+              <div className="course-purchase-btn">
+                <label htmlFor="image">อัพโหลดรูปภาพ</label>
+                <input
+                  id="image"
+                  name="Image"
+                  type="file"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  onChange={handleChangeImages}
+                />
+
+                <button onClick={submit}>ยืนยันคำสั่งซื้อ</button>
+              </div>
 
               <div className="course-purchase-imgdisplay">
-                {receipt && <img src={receipt} alt="Selected Image" />}
+                {receipt && <Image src={receipt} alt="Selected Image" />}
                 {selectedFileName && <p>{selectedFileName}</p>}
-                {errorPic && <p className="error">{errorPic}</p>}
+                {errorPic && (
+                  <p className="course-purchase-error">{errorPic}</p>
+                )}
               </div>
             </div>
           </div>
-          <button onClick={submit}>ยืนยัน</button>
         </div>
       </Layout>
     </div>

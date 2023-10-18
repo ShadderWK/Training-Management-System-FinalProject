@@ -72,12 +72,14 @@ body {
   margin: 0 auto;
 }
 
-.button-text {
-  margin-left: 8px;
+.icon-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ant-table-wrapper {
-  max-width: 70vw !important;
+  max-width: 100vw !important;
   width: 100% !important;
 }
 
@@ -86,6 +88,14 @@ body {
   font-weight: 400;
   font-size: 16px;
   width: 100% !important;
+}
+
+.ant-table-content table {
+  width: 100% !important;
+}
+
+.ant-table-measure-row {
+  display: none !important;
 }
 
 .ant-table-thead th {
@@ -97,7 +107,22 @@ body {
 }
 
 .ant-table-tbody td {
-  margin-bottom: 15px !important;
   border-left: 0.5px solid var(--gray-line-boarder);
   padding: 5px 10px !important;
+}
+
+@media (max-width: 1200px) {
+  .ant-table-wrapper {
+    max-width: 80vw !important;
+  }
+
+  .button-text {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .ant-table-wrapper {
+    max-width: 70vw !important;
+  }
 }

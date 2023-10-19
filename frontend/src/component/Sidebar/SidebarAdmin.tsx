@@ -6,6 +6,7 @@ import {
   MoneyCollectOutlined,
   UnorderedListOutlined,
   LogoutOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Layout, Menu } from "antd";
@@ -56,8 +57,16 @@ const items: MenuItem[] = [
   ),
 
   getItem(
-    "ตรวจสอบการชำระเงิน",
+    "ดูสมาชิกทั้งหมด",
     "3",
+    <Link to="/admin/list-member">
+      <UserOutlined style={{ color: "#2B56BA" }} />
+    </Link>
+  ),
+
+  getItem(
+    "ตรวจสอบการชำระเงิน",
+    "4",
     <Link to="/admin/check-payment">
       <MoneyCollectOutlined style={{ color: "#2B56BA" }} />
     </Link>
@@ -65,7 +74,7 @@ const items: MenuItem[] = [
 
   getItem(
     "แก้ไขข่าวสาร",
-    "4",
+    "5",
     <Link to="/admin/edit-news">
       <PictureOutlined style={{ color: "#2B56BA" }} />
     </Link>
@@ -73,7 +82,7 @@ const items: MenuItem[] = [
 
   getItem(
     "แก้ไขคำถามที่พบบ่อย",
-    "5",
+    "6",
     <Link to="/admin/edit-faq">
       <QuestionCircleOutlined style={{ color: "#2B56BA" }} />
     </Link>
@@ -81,7 +90,7 @@ const items: MenuItem[] = [
 
   getItem(
     "ออกจากระบบ",
-    "6",
+    "7",
     <LogoutOutlined style={{ color: "#2B56BA" }} />,
     undefined,
     signout

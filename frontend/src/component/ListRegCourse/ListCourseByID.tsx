@@ -76,17 +76,10 @@ function ListCourseByID() {
         ชื่อคนสมัคร: `${item.Member?.Firstname} ${item.Member?.Lastname}`,
         อีเมล: item.Member?.Email,
         เบอร์โทรติดต่อ: item.Member?.Tel,
-        สถานนะการชำระเงิน: item.PaymentStatus?.Status,
       }))
     );
 
-    const wscols = [
-      { wch: 30 },
-      { wch: 30 },
-      { wch: 30 },
-      { wch: 30 },
-      { wch: 30 },
-    ];
+    const wscols = [{ wch: 20 }, { wch: 20 }, { wch: 20 }, { wch: 20 }];
 
     ws["!cols"] = wscols;
 

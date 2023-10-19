@@ -1,0 +1,122 @@
+.member-detail-container {
+  display: flex;
+  padding: 24px 100px;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-top: 70px;
+  width: 100vw;
+  font-family: IBM Plex Sans Thai;
+  font-weight: 400;
+}
+
+.member-detail-container h1 {
+  font-size: 24px;
+  margin: 0;
+  color: var(--primary-blue-main);
+}
+
+.member-detail-section {
+  display: flex;
+  width: 100%;
+  gap: 40px;
+}
+
+.member-detail-img-container {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+.member-detail-info-container {
+  display: flex;
+  width: 50%;
+
+  flex-direction: column;
+  background-color: #fff;
+  padding: 22px;
+  border-radius: 20px;
+  gap: 20px;
+}
+
+.member-detail-info-container h2 {
+  font-size: 30px;
+  margin: 0;
+  color: var(--primary-blue-main);
+  text-align: center;
+}
+
+.member-detail-info-container p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.member-detail-info-container span {
+  font-weight: 700;
+}
+
+.member-detail-data {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  grid-gap: 20px;
+}
+
+.member-detail-block {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #000;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px 5px;
+  gap: 10px;
+}
+
+.member-detail-block p {
+  margin: 0;
+}
+
+.member-detail-p {
+  font-size: 24px;
+  color: var(--primary-blue-l1);
+  font-weight: 700;
+}
+
+@media (max-width: 1200px) {
+  .member-detail-container {
+    padding: 20px;
+    margin-left: 80px;
+  }
+
+  .member-detail-section {
+    flex-direction: column;
+  }
+
+  .member-detail-img-container {
+    width: 100%;
+  }
+
+  .member-detail-info-container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .member-detail-container {
+    padding: 16px;
+  }
+
+  .member-detail-data {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .member-detail-info-container {
+    padding: 10px;
+  }
+}

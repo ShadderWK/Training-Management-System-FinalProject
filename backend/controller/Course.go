@@ -87,6 +87,25 @@ func ListCoursesByCourseStatusID(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": courses})
 }
 
+// GET /CountCoursesByCourseStatus
+func CountCoursesByCourseStatus(c *gin.Context) {
+	statusID := c.Param("status_id")
+
+	var totalCount int64
+
+	err := entity.DB().Table("courses").
+		Where("course_status_id = ?", statusID).
+		Count(&totalCount).
+		Error
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"totalCount": totalCount})
+}
+
 // DELETE /Course/:id
 func DeleteCourse(c *gin.Context) {
 	id := c.Param("id")

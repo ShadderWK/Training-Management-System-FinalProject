@@ -27,7 +27,7 @@ function ChangeStatus() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["3"];
+  const defaultSelectedKeys = ["4"];
 
   const convertType = (data: string | number | undefined) => {
     let val = typeof data === "string" ? parseInt(data) : data;

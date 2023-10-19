@@ -19,14 +19,15 @@
 }
 
 .adminHome-section {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   width: 100%;
-  justify-content: space-evenly;
+  grid-gap: 20px;
 }
 
 .adminHome-block {
   display: flex;
-  width: 30%;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -38,6 +39,12 @@
   font-size: 15px;
   padding: 10px 5px;
   gap: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.adminHome-block:hover {
+  transform: scale(0.95);
 }
 
 .adminHome-block p {
@@ -55,6 +62,11 @@
     padding: 20px;
     margin-left: 80px;
   }
+
+  .adminHome-section {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -63,8 +75,7 @@
   }
 
   .adminHome-section {
-    flex-direction: column;
-    gap: 20px;
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .adminHome-block {

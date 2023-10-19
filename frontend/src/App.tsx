@@ -31,6 +31,8 @@ import Course from "./component/ListRegCourse/Course";
 import AddCourse from "./component/ListRegCourse/AddCourse";
 import UpdateCourse from "./component/ListRegCourse/UpdateCourse";
 import MyCourseDetail from "./component/MyCourse/MyCourseDetail";
+import ListMember from "./component/ListMember/ListMember";
+import MemberDetail from "./component/ListMember/MemberDetail";
 
 //Component
 import Topbar from "./component/TopBar/Topbar";
@@ -38,10 +40,6 @@ import Topbar from "./component/TopBar/Topbar";
 function App() {
   const [token, setToken] = useState<String>("");
   const [open, setOpen] = React.useState(true);
-
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -82,6 +80,8 @@ function App() {
         <Route path="admin/course/:id" element={<Course />} />
         <Route path="admin/add-course" element={<AddCourse />} />
         <Route path="admin/update-course/:id" element={<UpdateCourse />} />
+        <Route path="admin/list-member" element={<ListMember />} />
+        <Route path="admin/member-detail/:id" element={<MemberDetail />} />
       </Routes>
     </div>
   );

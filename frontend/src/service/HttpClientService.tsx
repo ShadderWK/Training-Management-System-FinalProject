@@ -155,6 +155,16 @@ const GetMemberByID = async (id: string) => {
   return res;
 };
 
+const GetCountMembers = async () => {
+  let res = await fetch(`${apiUrl}/count-members`, requestOptionsGet)
+    .then((response) => response.json())
+    .then((result) => {
+      return result.totalCount ? result.totalCount : false;
+    });
+
+  return res;
+};
+
 const UpdateMember = async (data: MemberInterface) => {
   const requestOptions = {
     method: "PATCH",
@@ -313,6 +323,19 @@ const GetCoursesByCourseStatusID = async (id: string) => {
     .then((response) => response.json())
     .then((result) => {
       return result.data ? result.data : false;
+    });
+
+  return res;
+};
+
+const GetCountCoursesByCourseStatusID = async (id: string) => {
+  let res = await fetch(
+    `${apiUrl}/count-course_bycoursestatus_id/${id}`,
+    requestOptionsGet
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      return result.totalCount ? result.totalCount : false;
     });
 
   return res;
@@ -670,6 +693,35 @@ const GetCourseRegistrationByCourseID = async (
   return res;
 };
 
+const GetCountCoursesRegistraionByMemberID = async (memberId: string) => {
+  let res = await fetch(
+    `${apiUrl}/count_course_registrations_bymember_id/${memberId}`,
+    requestOptionsGet
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      return result.totalCount ? result.totalCount : false;
+    });
+
+  return res;
+};
+
+const GetSumCourseRegistrationPricesByMemberID = async (
+  statusId: string,
+  memberId: string
+) => {
+  let res = await fetch(
+    `${apiUrl}/sum_course_registrations_price/${statusId}/${memberId}`,
+    requestOptionsGet
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      return result.data ? result.data : false;
+    });
+
+  return res;
+};
+
 const UpdateCourseRegistration = async (data: CourseRegistrationInterface) => {
   const requestOptions = {
     method: "PATCH",
@@ -731,6 +783,7 @@ export {
   CreateMember,
   GetMembers,
   GetMemberByID,
+  GetCountMembers,
   UpdateMember,
   UpdateMemberPassword,
   DeleteMember,
@@ -748,6 +801,7 @@ export {
   GetCourses,
   GetCourseByID,
   GetCoursesByCourseStatusID,
+  GetCountCoursesByCourseStatusID,
   UpdateCourse,
   DeleteCourse,
 
@@ -775,6 +829,8 @@ export {
   GetCountCourseRegistrationByPaymentStatusID,
   GetSumCourseRegistrationPrice,
   CheckCourseRegistrationByCourseID,
+  GetSumCourseRegistrationPricesByMemberID,
+  GetCountCoursesRegistraionByMemberID,
   UpdateCourseRegistration,
   DeleteCourseRegistration,
 };

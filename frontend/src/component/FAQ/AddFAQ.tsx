@@ -27,7 +27,7 @@ function AddFAQ() {
     Reply: "",
   });
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["5"];
+  const defaultSelectedKeys = ["6"];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const name = e.target.name;

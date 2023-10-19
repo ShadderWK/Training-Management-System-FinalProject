@@ -42,6 +42,7 @@ func main() {
 			//Member
 			router.GET("/member/:id", controller.GetMember)
 			router.GET("/members", controller.ListMembers)
+			router.GET("/count-members", controller.CountMembers)
 			router.DELETE("/delete-member/:id", controller.DeleteMember)
 			router.PATCH("/update-member", controller.UpdateMember)
 			router.PATCH("/update-member-password", controller.UpdateMemberPassword)
@@ -63,6 +64,7 @@ func main() {
 			router.GET("/course/:id", controller.GetCourse)
 			router.GET("/courses", controller.ListCourses)
 			router.GET("/course_bycoursestatus_id/:status_id", controller.ListCoursesByCourseStatusID)
+			router.GET("/count-course_bycoursestatus_id/:status_id", controller.CountCoursesByCourseStatus)
 			router.DELETE("/delete-course/:id", controller.DeleteCourse)
 			router.PATCH("/update-course", controller.UpdateCourse)
 
@@ -76,6 +78,8 @@ func main() {
 			router.GET("/count_course_registrations_bypaymentstatus_id/:status_id", controller.CountCourseRegistrationByPaymentStatus)
 			router.GET("/check_course_registration_by_courseid/:member_id/:course_id/:status_id", controller.CheckCourseRegistrationByCourseID)
 			router.GET("/sum_course_registrations_price/:status_id", controller.SumCourseRegistrationPrices)
+			router.GET("/sum_course_registrations_price/:status_id/:member_id", controller.SumCourseRegistrationPricesByMemberID)
+			router.GET("/count_course_registrations_bymember_id/:member_id", controller.CountCoursesRegistraionByMemberID)
 			router.DELETE("/delete-course_registration/:id", controller.DeleteCourseRegistration)
 			router.PATCH("/update-course_registration", controller.UpdateCourseRegistration)
 

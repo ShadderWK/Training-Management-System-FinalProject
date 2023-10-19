@@ -146,6 +146,38 @@ func SumCourseRegistrationPrices(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": total_price})
 }
 
+func SumCourseRegistrationPricesByMemberID(c *gin.Context) {
+    var total_price int64
+
+	statusID := c.Param("status_id")
+	memberID := c.Param("member_id")
+
+	if tx := entity.DB().Raw("SELECT SUM(courses.price) AS total_price FROM course_registrations JOIN courses ON course_registrations.course_id = courses.id WHERE course_registrations.payment_status_id = ? AND course_registrations.member_id =  ?",statusID,memberID).Find(&total_price); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "CourseRegistration not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": total_price})
+}
+
+func CountCoursesRegistraionByMemberID(c *gin.Context) {
+	memberID := c.Param("member_id")
+
+	var totalCount int64
+
+	err := entity.DB().Table("course_registrations").
+		Where("member_id = ?", memberID).
+		Count(&totalCount).
+		Error
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"totalCount": totalCount})
+}
+
 func CheckCourseRegistrationByCourseID(c *gin.Context) {
 	var checkCourseReg string
 

@@ -16,7 +16,7 @@ function EditFAQ() {
   const [role, setRole] = useState<String>("");
   const [faq, setFaq] = useState<QuestionInterface[]>([]);
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["5"];
+  const defaultSelectedKeys = ["6"];
 
   const fetchQuestions = async () => {
     let res = await GetQuestions();

@@ -16,7 +16,7 @@ function News() {
   const [role, setRole] = useState<String>("");
   const [news, setNews] = useState<NewsInterface[]>([]);
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["4"];
+  const defaultSelectedKeys = ["5"];
 
   const fetchNews = async () => {
     let res = await GetNews();

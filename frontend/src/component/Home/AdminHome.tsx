@@ -5,6 +5,8 @@ import {
   MoneyCollectOutlined,
   MehOutlined,
   CheckCircleOutlined,
+  UserOutlined,
+  SolutionOutlined,
 } from "@ant-design/icons";
 
 import NavbarAdmin from "../Navbar/NavbarAdmin";
@@ -13,6 +15,8 @@ import SidebarAdmin from "../Sidebar/SidebarAdmin";
 import {
   GetCountCourseRegistrationByPaymentStatusID,
   GetSumCourseRegistrationPrice,
+  GetCountMembers,
+  GetCountCoursesByCourseStatusID,
 } from "../../service/HttpClientService";
 
 import "./AdminHome.css";
@@ -20,7 +24,10 @@ import "./AdminHome.css";
 function AdminHome() {
   const [count1, setCount1] = useState<string>("");
   const [count2, setCount2] = useState<string>("");
-  const [price, setPrice] = useState<string>("");
+  const [countMember, setCountMember] = useState<string>("");
+  const [countCourse, setCountCourse] = useState<string>("");
+  const [price1, setPrice1] = useState<string>("");
+  const [price2, setPrice2] = useState<string>("");
   const [token, setToken] = useState<String>("");
   const [role, setRole] = useState<String>("");
   const navigate = useNavigate();
@@ -36,9 +43,24 @@ function AdminHome() {
     res && setCount2(res);
   };
 
-  const fetchSumCourseRegistrationPrice = async () => {
+  const fetchSumCourseRegistrationPrice1 = async () => {
     let res = await GetSumCourseRegistrationPrice("2");
-    res && setPrice(res);
+    res && setPrice1(res);
+  };
+
+  const fetchSumCourseRegistrationPrice2 = async () => {
+    let res = await GetSumCourseRegistrationPrice("1");
+    res && setPrice2(res);
+  };
+
+  const fetchCountCoursesByCourseStatusID = async () => {
+    let res = await GetCountCoursesByCourseStatusID("1");
+    res && setCountCourse(res);
+  };
+
+  const fetchCountMember = async () => {
+    let res = await GetCountMembers();
+    res && setCountMember(res);
   };
 
   useEffect(() => {
@@ -58,7 +80,10 @@ function AdminHome() {
 
     fetchCountCourseRegistrationByPaymentStatusID1();
     fetchCountCourseRegistrationByPaymentStatusID2();
-    fetchSumCourseRegistrationPrice();
+    fetchSumCourseRegistrationPrice1();
+    fetchSumCourseRegistrationPrice2();
+    fetchCountCoursesByCourseStatusID();
+    fetchCountMember();
   }, []);
   return (
     <div>
@@ -74,7 +99,10 @@ function AdminHome() {
         <div className="adminHome-container">
           <h1>Dashboard Admin</h1>
           <div className="adminHome-section">
-            <div className="adminHome-block">
+            <div
+              className="adminHome-block"
+              onClick={() => navigate("/admin/check-payment")}
+            >
               <CheckCircleOutlined
                 style={{ fontSize: "40px", color: "#52c41a" }}
               />
@@ -87,7 +115,10 @@ function AdminHome() {
               </p>
             </div>
 
-            <div className="adminHome-block">
+            <div
+              className="adminHome-block"
+              onClick={() => navigate("/admin/check-payment")}
+            >
               <MehOutlined style={{ fontSize: "40px", color: "#faad14" }} />
               <p>จำนวนผู้สมัครที่รอการตรวจสอบ</p>
               <p className="adminHome-value">
@@ -98,15 +129,64 @@ function AdminHome() {
               </p>
             </div>
 
-            <div className="adminHome-block">
+            <div
+              className="adminHome-block"
+              onClick={() => navigate("/admin/check-payment")}
+            >
               <MoneyCollectOutlined
                 style={{ fontSize: "40px", color: "#1890ff" }}
               />
               <p>รายได้ทั้งหมด</p>
               <p className="adminHome-value">
-                {isNaN(parseInt(price))
+                {isNaN(parseInt(price1))
                   ? "0"
-                  : parseInt(price).toLocaleString()}{" "}
+                  : parseInt(price1).toLocaleString()}{" "}
+                บาท
+              </p>
+            </div>
+
+            <div
+              className="adminHome-block"
+              onClick={() => navigate("/admin/list-member")}
+            >
+              <UserOutlined style={{ fontSize: "40px", color: "#d6dff5" }} />
+              <p>จำนวนสมาชิกทั้งหมด</p>
+              <p className="adminHome-value">
+                {isNaN(parseInt(countMember))
+                  ? "0"
+                  : parseInt(countMember).toLocaleString()}{" "}
+                คน
+              </p>
+            </div>
+
+            <div
+              className="adminHome-block"
+              onClick={() => navigate("/admin/list-reg-course")}
+            >
+              <SolutionOutlined
+                style={{ fontSize: "40px", color: "#5980d9" }}
+              />
+              <p>จำนวนการอบรมที่เปิดใช้งานทั้งหมด</p>
+              <p className="adminHome-value">
+                {isNaN(parseInt(countCourse))
+                  ? "0"
+                  : parseInt(countCourse).toLocaleString()}{" "}
+                การอบรม
+              </p>
+            </div>
+
+            <div
+              className="adminHome-block"
+              onClick={() => navigate("/admin/check-payment")}
+            >
+              <MoneyCollectOutlined
+                style={{ fontSize: "40px", color: "#ff4d4f" }}
+              />
+              <p>จำนวนเงินรอการตรวจสอบ</p>
+              <p className="adminHome-value">
+                {isNaN(parseInt(price2))
+                  ? "0"
+                  : parseInt(price2).toLocaleString()}{" "}
                 บาท
               </p>
             </div>

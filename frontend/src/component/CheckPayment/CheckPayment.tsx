@@ -25,7 +25,7 @@ function CheckPayment() {
   const [error, setError] = useState(false);
   const { Column } = Table;
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["3"];
+  const defaultSelectedKeys = ["4"];
 
   const columns: ColumnsType<CourseRegistrationInterface> = [
     {

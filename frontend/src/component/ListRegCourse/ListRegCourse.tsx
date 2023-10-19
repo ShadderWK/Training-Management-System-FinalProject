@@ -21,7 +21,6 @@ import "./ListRegCourse.css";
 function ListRegCourse() {
   const [course, setCourse] = useState<CourseInterface[]>([]);
   const [filteredData, setFilteredData] = useState<CourseInterface[]>([]);
-
   const [filterActive, setFilterActive] = useState(false);
   const [filterDisable, setFilterDisable] = useState(false);
   const [searchText, setSearchText] = useState("");

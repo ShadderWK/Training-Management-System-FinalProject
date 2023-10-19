@@ -140,6 +140,43 @@
   gap: 10px;
 }
 
+.add-course-section-3-time-btn {
+  display: flex;
+
+  gap: 20px;
+  align-items: center;
+}
+
+.add-course-section-3-input {
+  display: flex;
+  gap: 0px;
+  width: 20%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+  align-items: center;
+  border: 1px solid var(--primary-blue-l2);
+}
+
+.add-course-section-3-input input {
+  font-family: IBM Plex Sans Thai;
+  border: none;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  height: 100%;
+  width: 100%;
+}
+
+.add-course-section-3-input input::placeholder {
+  color: var(--primary-blue-l2);
+}
+
+.add-course-section-3-input input:focus {
+  outline: none;
+  border: none;
+}
+
 .add-course-section-3 button {
   background-color: var(--primary-blue-main);
   width: 200px;

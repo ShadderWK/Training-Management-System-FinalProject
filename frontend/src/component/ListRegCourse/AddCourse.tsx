@@ -46,6 +46,16 @@ function AddCourse() {
     setCourse({ ...course, [name]: e.target.value });
   };
 
+  const handleInputDateTimeChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const name = e.target.name;
+    setCourse({
+      ...course,
+      [name]: new Date(e.target.value).toISOString(),
+    });
+  };
+
   const isImageType = (file: File) => {
     const acceptedImageTypes = [
       "image/jpeg",
@@ -119,7 +129,8 @@ function AddCourse() {
         !course.Pdf ||
         !course.Name ||
         !course.Detail ||
-        !course.Price
+        !course.Price ||
+        !course.StartTime
       ) {
         setError(true);
         setErrorMessage("ข้อมูลไม่ครบถ้วน");
@@ -133,6 +144,7 @@ function AddCourse() {
         Pdf: course.Pdf,
         Price: convertType(course.Price),
         AdminID: adminID,
+        StartTime: course.StartTime,
         CourseStatusID: 2,
       };
       console.log(data);
@@ -240,9 +252,21 @@ function AddCourse() {
             </div>
 
             <div className="add-course-section-3">
-              <button onClick={() => imageInputRef.current?.click()}>
-                เพิ่มรูปภาพ
-              </button>
+              <div className="add-course-section-3-time-btn">
+                <button onClick={() => imageInputRef.current?.click()}>
+                  เพิ่มรูปภาพ
+                </button>
+
+                <p>วันที่เริ่มอบรม</p>
+                <div className="add-course-section-3-input">
+                  <input
+                    name="StartTime"
+                    type="date"
+                    value={(course.StartTime + "").split("T")[0]}
+                    onChange={handleInputDateTimeChange}
+                  />
+                </div>
+              </div>
 
               {course.Image && (
                 <div className="add-course-img-section">

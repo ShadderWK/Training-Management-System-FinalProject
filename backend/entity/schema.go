@@ -74,6 +74,9 @@ type Course struct {
 	Price  int
 	Image  string
 	Pdf	   string
+	Place  string
+	StartTime time.Time
+	EndTime   time.Time
 
 	CourseStatusID int
 	CourseStatus CourseStatus

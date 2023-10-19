@@ -37,6 +37,9 @@ func CreateCourse(c *gin.Context) {
 		Admin:			admin,
 		Pdf:			course.Pdf,
 		CourseStatus:	coursestatus,
+		Place:			course.Place,
+		StartTime:		course.StartTime,
+		EndTime:		course.EndTime,
 	}
 
 	if err := entity.DB().Create(&cou).Error; err != nil {
@@ -125,6 +128,9 @@ func UpdateCourse(c *gin.Context) {
 		Admin:			admin,
 		Pdf:			course.Pdf,
 		CourseStatus:	coursestatus,
+		Place:			course.Place,
+		StartTime:		course.StartTime,
+		EndTime:		course.EndTime,
 	}
 
 	if err := entity.DB().Where("id = ?", course.ID).Updates(&update).Error; err != nil {

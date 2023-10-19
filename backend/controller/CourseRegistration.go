@@ -100,6 +100,21 @@ func ListCourseRegistrationsByCourseID(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": courseregistrations})
 }
 
+func GetCourseRegistrationsByCourseID(c *gin.Context) {
+	var courseregistrations entity.CourseRegistration
+
+	courseID := c.Param("course_id")
+	statusID := c.Param("status_id")
+	memberID := c.Param("member_id")
+
+	if tx := entity.DB().Preload("Member").Preload("Course").Preload("PaymentStatus").Raw("SELECT * FROM course_registrations WHERE course_id = ?  AND payment_status_id = ? AND member_id = ?", courseID, statusID, memberID).Find(&courseregistrations); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "CourseRegistration not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": courseregistrations})
+}
+
 // GET /CountCourseRegistrationByPaymentStatus/:status_id
 func CountCourseRegistrationByPaymentStatus(c *gin.Context) {
 	statusID := c.Param("status_id")
@@ -129,6 +144,21 @@ func SumCourseRegistrationPrices(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"data": total_price})
+}
+
+func CheckCourseRegistrationByCourseID(c *gin.Context) {
+	var checkCourseReg string
+
+	memberID := c.Param("member_id")
+	courseID := c.Param("course_id")
+	statusID := c.Param("status_id")
+
+	if tx := entity.DB().Raw("SELECT CASE WHEN EXISTS (SELECT 1 FROM course_registrations WHERE member_id = ? AND course_id = ? AND payment_status_id = ?) THEN 'checked' ELSE 'not_checked' END AS is_registered", memberID, courseID, statusID).Find(&checkCourseReg); tx.RowsAffected == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "CourseRegistration not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"is_registered": checkCourseReg})
 }
 
 // DELETE /CourseRegistration/:id

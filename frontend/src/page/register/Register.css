@@ -1,200 +1,154 @@
-.wrapper-reg {
-  align-items: center;
+.reg-container {
   display: flex;
-  min-height: 100vh;
-  justify-content: center;
 }
 
-.wrapper-reg2 {
-  align-items: center;
+.reg-wrapper {
   display: flex;
+  margin-top: 194px;
+  width: 100vw;
+  font-family: IBM Plex Sans Thai;
+  font-weight: 400;
+  font-size: 14px;
+  align-items: center;
+}
+
+.reg-wrapper-2 {
+  display: flex;
+  width: 100%;
   gap: 92px;
-  justify-content: space-between;
-  padding: 0 48px;
-}
-
-.photo-reg {
-  margin-top: 100px;
-}
-
-.from-reg {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 50px;
-}
-
-.header-reg {
-  font-size: 32px;
-  color: var(--primary-blue-main);
-  margin: 0;
-}
-
-.input-namereg {
-  display: flex;
-  gap: 24px;
-  height: 35px;
-}
-
-.input-allreg {
-  gap: 16px;
-  display: flex;
-  flex-direction: column;
-}
-
-.input-allin {
-  height: 35px;
-  border-radius: 8px;
-  border: 1px solid var(--gray-gd);
-  color: #000;
-  font-size: 16px;
-  font-family: "IBM Plex Sans Thai", "sans-serif";
-  padding: 0px 8px;
-}
-
-.input-namereg-text {
-  border-radius: 8px;
-  border: 1px solid var(--gray-gd);
-  color: #000;
-  font-size: 16px;
-  font-family: "IBM Plex Sans Thai", "sans-serif";
-  padding: 0px 8px;
-  width: 188px;
-  flex-direction: row;
-}
-
-.layout-sexdate {
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-}
-
-.form-sexreg {
-  display: flex;
-  gap: 24px;
-  font-family: "IBM Plex Sans Thai", "sans-serif";
-  font-size: 14px;
-  font-weight: 400;
-  width: 188px;
-  color: var(--neutral-black-l);
-}
-
-.Date-sex-reg {
-  display: flex;
-  gap: 24px;
-}
-
-.input-sexreg {
-  font-family: "IBM Plex Sans Thai", "sans-serif";
-  font-size: 14px;
-  font-weight: 400;
-  width: 188px;
-  color: var(--neutral-black-main);
-  gap: 16px;
-}
-
-.container-reg {
-  cursor: pointer;
-  position: relative;
-  padding-left: 20px;
-  margin-bottom: 10px;
-}
-
-.container-reg input {
-  position: absolute;
-  opacity: 0;
-}
-
-.checkmark-reg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 16px;
-  height: 16px;
-  background-color: #fff;
-  border-style: solid;
-  border-width: 1px;
-  border-color: var(--primary-blue-l2);
-  border-radius: 50%;
-}
-
-.container-reg:hover input ~ .checkmark-reg {
-  background-color: #ccc;
-}
-
-.checkmark-reg:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.container-reg input:checked ~ .checkmark-reg:after {
-  display: block;
-}
-
-.container-reg .checkmark-reg:after {
-  top: 3px;
-  left: 3px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--primary-blue-main);
-}
-
-.input-datereg {
-  display: flex;
-  font-size: 14px;
-  font-weight: 400;
-  font-family: "IBM Plex Sans Thai", "sans-serif";
-}
-
-.input-datereg input[type="date"] {
-  color: var(--neutral-black-main);
-  background-color: #fff;
-  padding: 15px;
-  width: 188px;
-  padding: 0px 8px;
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 1px;
-}
-
-.form-bntreg {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin: 0;
-}
-
-.input-bntreg {
-  display: flex;
-  margin: 0;
-  width: 400px;
   justify-content: center;
+}
+
+.reg-img {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+.reg-section {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reg-section h1 {
+  color: var(--primary-blue-main);
+  font-size: 32px;
+  margin: 0;
+}
+
+.reg-section p {
+  margin: 0;
+}
+
+.reg-name {
+  display: flex;
+  gap: 24px;
+}
+
+.reg-section input {
+  height: 35px;
   border-radius: 8px;
+  border: 1px solid var(--gray-gd, #aaa);
+  opacity: 0.8;
+  padding: 0px 8px;
+  font-family: IBM Plex Sans Thai;
+  font-size: 16px;
+}
+
+.reg-section button {
   background: var(--primary-blue-main);
-  font-family: "IBM Plex Sans Thai", "sans-serif";
-  font-size: 24px;
-  font-weight: 400;
+  height: 40px;
   color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 22px 44px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
+  transition: 0.3s;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
 }
 
-.input-bntreg:hover {
+.reg-section button:hover {
   background: var(--primary-blue-pressed);
+  transform: scale(0.95);
 }
 
-.input-sexreg {
+.reg-name input {
+  width: 50%;
+}
+
+.reg-sex-bd {
   display: flex;
+  gap: 24px;
 }
 
-@media screen and (max-width: 1200px) {
-  .wrapper-reg {
+.reg-sex-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.reg-sex-radio-container {
+  display: flex;
+  gap: 16px;
+}
+
+.reg-sex-radio {
+  display: flex;
+  align-items: center;
+}
+
+.reg-bd {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.reg-bd input {
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .reg-wrapper {
+    margin-top: 80px;
+  }
+
+  .reg-wrapper-2 {
     flex-direction: column;
-    gap: 24px;
-    padding: 24px;
     justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .reg-img {
+    display: none;
+  }
+
+  .reg-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .reg-wrapper-2 {
+    padding: 16px;
+  }
+
+  .reg-sex-bd {
+    flex-direction: column;
+  }
+
+  .reg-sex-container {
+    width: 100%;
+  }
+
+  .reg-bd {
+    width: 100%;
   }
 }

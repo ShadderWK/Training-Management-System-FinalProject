@@ -111,6 +111,11 @@ body {
   padding: 5px 10px !important;
 }
 
+.ant-notification-notice {
+  font-family: IBM Plex Sans Thai;
+  font-weight: 400;
+}
+
 @media (max-width: 1200px) {
   .ant-table-wrapper {
     max-width: 80vw !important;

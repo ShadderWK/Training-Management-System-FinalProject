@@ -8,6 +8,9 @@ export interface CourseInterface {
   Price?: number;
   Image?: string;
   Pdf?: string;
+  Place?: string;
+  StartTime?: Date;
+  EndTime?: Date;
   CreatedAt?: string;
   UpdatedAt?: string;
 

@@ -155,6 +155,22 @@ function Course() {
               </p>
 
               <p>
+                {course.StartTime ? (
+                  <>
+                    <span>วันที่เริ่มการอบรม : </span>
+
+                    {new Date(course.StartTime).toLocaleDateString("th-TH", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </>
+                ) : (
+                  "เริ่มการอบรม: ไม่มีข้อมูล"
+                )}
+              </p>
+
+              <p>
                 <span>เอกสาร : </span>
                 <a href={course.Pdf} target="_blank" download>
                   <span className="course-pdf">
@@ -179,25 +195,6 @@ function Course() {
                   </>
                 ) : (
                   "วันที่เพิ่มการอบรม: ไม่มีข้อมูล"
-                )}
-              </p>
-
-              <p>
-                {course.UpdatedAt ? (
-                  <>
-                    <span>วันที่ทำการแก้ไขล่าสุด : </span>
-
-                    {new Date(course.UpdatedAt).toLocaleDateString("th-TH", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      second: "2-digit",
-                    })}
-                  </>
-                ) : (
-                  "วันที่ทำการแก้ไขล่าสุด: ไม่มีข้อมูล"
                 )}
               </p>
 

@@ -101,8 +101,17 @@ function CourseReg() {
                 )}
               </p>
 
-              <button onClick={() => navigate(`/member/course-purchase/${id}`)}>
+              <button
+                className="course-reg-buy"
+                onClick={() => navigate(`/member/course-purchase/${id}`)}
+              >
                 สั่งซื้อการอบรม
+              </button>
+              <button
+                className="course-reg-back"
+                onClick={() => navigate(`/member/home`)}
+              >
+                ย้อนกลับ
               </button>
             </div>
           </div>

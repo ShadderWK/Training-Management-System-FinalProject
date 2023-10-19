@@ -56,13 +56,13 @@ function MyCourse() {
         <Sidebar defaultSelectedKeys={defaultSelectedKeys} />
 
         <div className="mycourse-container">
-          <p>คอร์สของฉัน</p>
-          <div>
+          <h1>การอบรมของฉัน</h1>
+          <div className="mycourse-section">
             {courseReg.map((item) => {
               return (
                 <BlogCourse
                   key={item.ID!}
-                  id={item.ID!}
+                  id={item.CourseID!}
                   name={item.Course?.Name!}
                   image={item.Course?.Image!}
                 />

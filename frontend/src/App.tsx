@@ -30,6 +30,7 @@ import ListCourseByID from "./component/ListRegCourse/ListCourseByID";
 import Course from "./component/ListRegCourse/Course";
 import AddCourse from "./component/ListRegCourse/AddCourse";
 import UpdateCourse from "./component/ListRegCourse/UpdateCourse";
+import MyCourseDetail from "./component/MyCourse/MyCourseDetail";
 
 //Component
 import Topbar from "./component/TopBar/Topbar";
@@ -64,6 +65,7 @@ function App() {
         <Route path="member/course-purchase/:id" element={<CoursePurchase />} />
         <Route path="member/mycourse" element={<MyCourse />} />
         <Route path="member/faq" element={<FAQ />} />
+        <Route path="member/mycourse/:id" element={<MyCourseDetail />} />
 
         {/* Admin */}
         <Route path="admin" element={<Admin />} />

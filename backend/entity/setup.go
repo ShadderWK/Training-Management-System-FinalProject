@@ -73,6 +73,8 @@ func SetupDatabase() {
 	db.Model(&Gender{}).Create(&GenderC)
 
 	BirthdayA := time.Date(2017, time.November, 4, 9, 15, 0, 0, time.UTC)
+	StartTimeA := time.Date(2019, time.December, 5, 3, 0, 0, 0, time.UTC)
+	EndTimeA := time.Date(2019, time.December, 5, 4, 0, 0, 0, time.UTC)
 
 	MemberA := Member{
 		Email:     "Member01@example.com",
@@ -80,7 +82,7 @@ func SetupDatabase() {
 		Lastname:  "เดชาเกียรติไกร",
 		Password:  string(passwordA),
 		Tel:       "0871231212",
-		Address:   "บ้านเลขที่ 69 ซอยถี่ๆ",
+		Address:   "บ้านเลขที่ 69 ซอยหมู่บ้านๆ",
 		Birthday:  BirthdayA,
 		Gender:    GenderA,
 		Image:	   "https://i.pinimg.com/1200x/c1/65/d3/c165d3d14ba35071138320298a701956.jpg",
@@ -117,6 +119,9 @@ func SetupDatabase() {
 		Admin:	  AdminA,
 		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
 		CourseStatus: CourseStatusA,
+		Place:	  "ห้อง 1102",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
 	}
 	db.Model(&Course{}).Create(&CourseA)
 
@@ -128,6 +133,9 @@ func SetupDatabase() {
 		Admin:	  AdminA,
 		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
 		CourseStatus: CourseStatusA,
+		Place:	  "ห้อง 2102",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
 	}
 	db.Model(&Course{}).Create(&CourseB)
 
@@ -139,6 +147,9 @@ func SetupDatabase() {
 		Admin:	  AdminA,
 		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
 		CourseStatus: CourseStatusA,
+		Place:	  "ออนไลน์",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
 	}
 	db.Model(&Course{}).Create(&CourseC)
 
@@ -150,6 +161,9 @@ func SetupDatabase() {
 		Admin:	  AdminA,
 		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
 		CourseStatus: CourseStatusA,
+		Place:	  "Zoom",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
 	}
 	db.Model(&Course{}).Create(&CourseD)
 
@@ -161,6 +175,9 @@ func SetupDatabase() {
 		Admin:	  AdminA,
 		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
 		CourseStatus: CourseStatusA,
+		Place:	  "Microsoft Team",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
 	}
 	db.Model(&Course{}).Create(&CourseE)
 

@@ -15,7 +15,7 @@ function BlogCourse({ id, name, image }: Props) {
   return (
     <div
       className="blog-course-container"
-      onClick={() => navigate(`/member/course/${id}`)}
+      onClick={() => navigate(`/member/mycourse/${id}`)}
     >
       <div className="blog-course-img">
         <img src={image} />

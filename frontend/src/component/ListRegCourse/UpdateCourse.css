@@ -95,7 +95,7 @@
 .update-course-title-price {
   display: flex;
   gap: 0px;
-  width: 50%;
+  width: 100%;
   padding: 10px;
   border-radius: 8px;
   background-color: #fff;
@@ -235,8 +235,24 @@
 
 .update-course-price-section {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.update-course-section-last {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.update-course-section-last-box {
+  width: 50%;
+}
+
+.update-course-last-box-2 {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
 }
 
 @media (max-width: 1200px) {
@@ -276,5 +292,17 @@
   .update-course-title {
     display: flex;
     flex-direction: column;
+  }
+
+  .update-course-section-last {
+    flex-direction: column;
+  }
+
+  .update-course-section-last-box {
+    width: 100%;
+  }
+
+  .update-course-last-box-2 {
+    width: 100%;
   }
 }

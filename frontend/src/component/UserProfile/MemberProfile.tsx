@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Layout } from "antd";
-import { PictureOutlined } from "@ant-design/icons";
 import { format, parseISO } from "date-fns";
 import { th } from "date-fns/locale";
 

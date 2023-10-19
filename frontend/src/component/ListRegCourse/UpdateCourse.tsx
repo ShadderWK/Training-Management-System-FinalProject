@@ -46,6 +46,16 @@ function UpdateCourses() {
     setCourse({ ...course, [name]: e.target.value });
   };
 
+  const handleInputDateTimeChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const name = e.target.name;
+    setCourse({
+      ...course,
+      [name]: new Date(e.target.value).toISOString(),
+    });
+  };
+
   const isImageType = (file: File) => {
     const acceptedImageTypes = [
       "image/jpeg",
@@ -134,6 +144,8 @@ function UpdateCourses() {
       Price: convertType(course.Price),
       AdminID: course.AdminID,
       CourseStatusID: course.CourseStatusID,
+      StartTime: course.StartTime,
+      EndTime: course.EndTime,
     };
     console.log(data);
 
@@ -258,23 +270,41 @@ function UpdateCourses() {
                 </div>
               </div>
 
-              <div className="update-course-title">
-                <p>ราคา</p>
-                <div className="update-course-price-section">
-                  <div className="update-course-title-price">
-                    <input
-                      name="Price"
-                      type="number"
-                      value={course.Price}
-                      onChange={handleInputChange}
-                    />
-                    <p>บาท</p>
+              <div className="update-course-section-last">
+                <div className="update-course-section-last-box">
+                  <p>ราคา</p>
+                  <div className="update-course-price-section">
+                    <div className="update-course-title-price">
+                      <input
+                        name="Price"
+                        type="number"
+                        value={course.Price}
+                        onChange={handleInputChange}
+                      />
+                      <p>บาท</p>
+                    </div>
+                    {priceError && (
+                      <p className="update-course-error-message">
+                        {priceError}
+                      </p>
+                    )}
                   </div>
-                  {priceError && (
-                    <p className="update-course-error-message">{priceError}</p>
-                  )}
+                </div>
+
+                <div className="update-course-last-box-2">
+                  <p>วันที่เริ่มอบรม</p>
+                  <div className="update-course-title-input">
+                    <input
+                      name="StartTime"
+                      type="date"
+                      value={(course.StartTime + "").split("T")[0]}
+                      onChange={handleInputDateTimeChange}
+                    />
+                  </div>
                 </div>
               </div>
+
+              <div className="update-course-title"></div>
 
               <button className="update-course-btn" onClick={submit}>
                 ยืนยันการแก้ไข

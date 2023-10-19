@@ -30,7 +30,6 @@ function EditProfile() {
 
   const MAX_FIRSTNAME_LENGTH = 30;
   const MAX_LASTNAME_LENGTH = 30;
-  const MAX_TEL_LENGTH = 10;
   const MAX_ADDRESS_LENGTH = 300;
 
   const convertType = (data: string | number | undefined) => {
@@ -43,7 +42,7 @@ function EditProfile() {
     let inputValue = e.target.value;
 
     if (name === "Tel") {
-      inputValue = inputValue.replace(/\D/g, ""); // Remove non-numeric characters
+      inputValue = inputValue.replace(/\D/g, "");
       inputValue = inputValue.substring(0, 10);
     } else if (
       name === "Firstname" &&

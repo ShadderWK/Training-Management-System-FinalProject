@@ -604,6 +604,40 @@ const GetSumCourseRegistrationPrice = async (statusId: string) => {
   return res;
 };
 
+const CheckCourseRegistrationByCourseID = async (
+  memberId: string,
+  courseId: string,
+  statusId: string
+) => {
+  let res = await fetch(
+    `${apiUrl}/check_course_registration_by_courseid/${memberId}/${courseId}/${statusId}`,
+    requestOptionsGet
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      return result.is_registered ? result.is_registered : false;
+    });
+
+  return res;
+};
+
+const GetCourseRegistrationsByCourseID = async (
+  memberId: string,
+  courseId: string,
+  statusId: string
+) => {
+  let res = await fetch(
+    `${apiUrl}/course_registrations_bycourseid/${courseId}/${statusId}/${memberId}`,
+    requestOptionsGet
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      return result.data ? result.data : false;
+    });
+
+  return res;
+};
+
 const GetCourseRegistrationByMemberID = async (
   memberId: string,
   statusId: string
@@ -737,8 +771,10 @@ export {
   GetCourseRegistrationByID,
   GetCourseRegistrationByMemberID,
   GetCourseRegistrationByCourseID,
+  GetCourseRegistrationsByCourseID,
   GetCountCourseRegistrationByPaymentStatusID,
   GetSumCourseRegistrationPrice,
+  CheckCourseRegistrationByCourseID,
   UpdateCourseRegistration,
   DeleteCourseRegistration,
 };

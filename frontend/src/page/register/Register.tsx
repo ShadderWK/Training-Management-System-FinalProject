@@ -2,77 +2,33 @@ import React, { useEffect, useState } from "react";
 import "./Register.css";
 import MemberReg1 from "../../assets/MemberLogin1.png";
 import TopbarReg from "../../component/TopBar/TopbarReg";
-import Alert from "../../component/Alert/Alert";
+
+import { notification } from "antd";
+
 import { MemberInterface } from "../../interfaces/IMember";
-import { GenderInterface } from "../../interfaces/IGender";
 import { CreateMember } from "../../service/HttpClientService";
-import { SelectChangeEvent } from "@mui/material/Select";
+
+type NotificationType = "success" | "info" | "warning" | "error";
 
 function Register() {
-  const [member, setMember] = useState<MemberInterface>({});
+  const MAX_FIRSTNAME_LENGTH = 30;
+  const MAX_LASTNAME_LENGTH = 30;
+  const MAX_ADDRESS_LENGTH = 300;
 
+  const [member, setMember] = useState<MemberInterface>({});
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [api, contextHolder] = notification.useNotification();
 
-  const [pass, setPass] = React.useState<State>({
-    password: "",
-    showPassword: false,
-  });
-
-  const [radio, setRadio] = React.useState("");
-
-  interface State {
-    password: string;
-    showPassword: boolean;
-  }
-
-  const handlePassword =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setPass({ ...pass, [prop]: event.target.value });
-    };
-
-  // ==============================(handle ShowPassword)=====================================
-  const handleClickShowPassword = () => {
-    setPass({
-      ...pass,
-      showPassword: !pass.showPassword,
+  const openNotificationWithIcon = (type: NotificationType) => {
+    api[type]({
+      message: "เกิดความผิดพลาด",
+      description: errorMessage,
     });
   };
 
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
-
-  // =========================(handleClose)====================================================
-
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setSuccess(false);
-    setError(false);
-  };
-
-  // =========================(HandleChange)====================================================
-
-  const handleChange = (event: SelectChangeEvent) => {
-    const name = event.target.name as keyof typeof member;
-    console.log(event.target.name);
-    console.log(event.target.value);
-    setMember({
-      ...member,
-      [name]: event.target.value,
-    });
-    console.log(member);
-  };
-
-  // ทำให้ ID ของ Gender เป็น Parameter แล้วเก็บไว้ แล้วพอกดเลือกค่าใน Value ให้เอา Parameter พวกนี้ไปใส่เลย
   enum GenderOptions {
     Female = 2,
     Male = 1,
@@ -86,47 +42,95 @@ function Register() {
     setMember({
       ...member,
       [name]: genderValue,
-      GenderID: GenderOptions[genderValue], //เพิ่มตรงส่วนนี้ให้เก็บ GenderID ที่ได้มาจาก Parameter ของ Radio ที่เลือกไว้เลย
+      GenderID: GenderOptions[genderValue],
     });
   };
 
-  // =========================(HandleInputChange)====================================================
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
-    setMember({ ...member, [name]: e.target.value });
+
+    let inputValue = e.target.value;
+
+    if (name === "Tel") {
+      inputValue = inputValue.replace(/\D/g, "");
+      inputValue = inputValue.substring(0, 10);
+    } else if (
+      name === "Firstname" &&
+      inputValue.length > MAX_FIRSTNAME_LENGTH
+    ) {
+      return;
+    } else if (name === "Lastname" && inputValue.length > MAX_LASTNAME_LENGTH) {
+      return;
+    }
+
+    setMember({ ...member, [name]: inputValue });
   };
 
-  // =========================(Fetch API)====================================================
-
-  const apiUrl = "http://localhost:8080";
-  const requestOptionsGet = {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
+  const handleInputChangeBirthday = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const name = e.target.name;
+    setMember({
+      ...member,
+      [name]: new Date(e.target.value).toISOString(),
+    });
   };
 
-  const convertType = (data: string | number | undefined) => {
-    let val = typeof data === "string" ? parseInt(data) : data;
-    return val;
-  };
-
-  console.log(member);
-
-  // เพิ่มข้อมูลเข้า Database
   const submit = async () => {
+    if (
+      !member.Firstname ||
+      !member.Lastname ||
+      !member.Email ||
+      !member.Password ||
+      !member.Address ||
+      !member.GenderID ||
+      !member.Birthday
+    ) {
+      setError(true);
+      setErrorMessage("ข้อมูลไม่ครบถ้วน");
+      openNotificationWithIcon("warning");
+      return;
+    }
+
+    if (member.Password.length < 8) {
+      setError(true);
+      setErrorMessage("รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร");
+      openNotificationWithIcon("warning");
+      return;
+    }
+
+    if (member.Password !== confirmPassword) {
+      setError(true);
+      setErrorMessage("รหัสผ่านไม่ตรงกัน");
+      openNotificationWithIcon("warning");
+      return;
+    }
+
+    const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+
+    if (!emailPattern.test(member.Email)) {
+      setError(true);
+      setErrorMessage("รูปแบบอีเมลไม่ถูกต้อง");
+      openNotificationWithIcon("warning");
+      return;
+    }
+
     let data = {
       Firstname: member.Firstname,
       Lastname: member.Lastname,
-      Password: pass.password,
       Email: member.Email,
+      Password: member.Password,
       Tel: member.Tel,
       Address: member.Address,
       Birthday: member.Birthday,
       GenderID: member.GenderID,
+      Image:
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
     };
-    // window.location.href = "/members"
+
     let res = await CreateMember(data);
     if (res.status) {
-      window.location.href = "/user/profile-member";
+      window.location.href = "/";
       setSuccess(true);
     } else {
       setError(true);
@@ -136,117 +140,115 @@ function Register() {
   return (
     <div>
       <TopbarReg />
-      {/* <div className="wrapper-reg"> */}
-      <div className="wrapper-reg2">
-        <div className="photo-reg">
-          <img src={MemberReg1} />
-        </div>
-        <div className="from-reg">
-          <h3 className="header-reg">ลงทะเบียน</h3>
-          <div className="input-namereg">
-            <input
-              className="input-namereg-text"
-              placeholder="ชื่อ"
-              name="Firstname"
-              value={member.Firstname}
-              onChange={handleInputChange}
-            ></input>
-            <input
-              className="input-namereg-text"
-              placeholder="สกุล"
-              name="Lastname"
-              value={member.Lastname}
-              onChange={handleInputChange}
-            ></input>
-          </div>
-          <div className="input-allreg">
-            <input
-              className="input-allin"
-              placeholder="อีเมล"
-              name="Email"
-              value={member.Email}
-              onChange={handleInputChange}
-            ></input>
-            <input
-              className="input-allin"
-              name="Password1"
-              value={member.Password}
-              placeholder="รหัสผ่าน"
-              onChange={handleInputChange}
-            ></input>
-            <input
-              className="input-allin"
-              placeholder="ยืนยันรหัสผ่าน"
-              name="Password2"
-              value={member.Password}
-              onChange={handleInputChange}
-            ></input>
-            <input
-              className="input-allin"
-              placeholder="เบอร์โทรศัพท์"
-              name="Tel"
-              value={member.Tel}
-              onChange={handleInputChange}
-            ></input>
-            <input
-              className="input-allin"
-              placeholder="ที่อยู่"
-              name="Address"
-              value={member.Address}
-              onChange={handleInputChange}
-            ></input>
-          </div>
-          <div>
-            <div className="layout-sexdate">
-              <div className="form-sexreg">เพศ</div>
-              <div className="form-sexreg">วันเกิด</div>
+      {contextHolder}
+      <div className="reg-container">
+        <div className="reg-wrapper">
+          <div className="reg-wrapper-2">
+            <div className="reg-img">
+              <img src={MemberReg1}></img>
             </div>
-            <div className="Date-sex-reg">
-              <div className="input-sexreg">
-                <label className="container-reg">
-                  หญิง
-                  <input
-                    type="radio"
-                    name="Gender"
-                    value="Female" // ใส่ข้อความแบบนี้ให้ตรง Parameter ที่เรากำหนดไว้
-                    onChange={handleInputRadioChange}
-                  />
-                  <span className="checkmark-reg"></span>
-                </label>
-                <label className="container-reg">
-                  ชาย
-                  <input
-                    type="radio"
-                    name="Gender"
-                    value="Male" // ใส่ข้อความแบบนี้ให้ตรง Parameter ที่เรากำหนดไว้
-                    onChange={handleInputRadioChange}
-                  />
-                  <span className="checkmark-reg"></span>
-                </label>
-                <label className="container-reg">
-                  ไม่ระบุ
-                  <input
-                    type="radio"
-                    name="Gender"
-                    value="Unspecified" // ใส่ข้อความแบบนี้ให้ตรง Parameter ที่เรากำหนดไว้
-                    onChange={handleInputRadioChange}
-                  />
-                  <span className="checkmark-reg"></span>
-                </label>
-              </div>
-              <div className="input-datereg">
+            <div className="reg-section">
+              <h1>ลงทะเบียน</h1>
+              <div className="reg-name">
                 <input
-                  type="date"
-                  name="date-reg"
+                  value={member.Firstname}
+                  name="Firstname"
                   onChange={handleInputChange}
+                  placeholder="ชื่อ"
+                />
+
+                <input
+                  value={member.Lastname}
+                  name="Lastname"
+                  onChange={handleInputChange}
+                  placeholder="นามสกุล"
                 />
               </div>
+
+              <input
+                value={member.Email}
+                type="email"
+                name="Email"
+                onChange={handleInputChange}
+                placeholder="อีเมล"
+              />
+
+              <input
+                type="password"
+                value={member.Password}
+                name="Password"
+                onChange={handleInputChange}
+                placeholder="รหัสผ่าน"
+              />
+
+              <input
+                type="password"
+                placeholder="ยืนยันรหัสผ่าน"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+
+              <input
+                value={member.Tel}
+                name="Tel"
+                onChange={handleInputChange}
+                placeholder="เบอร์โทรศัพท์"
+              />
+
+              <input
+                value={member.Address}
+                name="Address"
+                onChange={handleInputChange}
+                placeholder="ที่อยู่"
+              />
+
+              <div className="reg-sex-bd">
+                <div className="reg-sex-container">
+                  <p>เพศ</p>
+                  <div className="reg-sex-radio-container">
+                    <div className="reg-sex-radio">
+                      <input
+                        type="radio"
+                        onChange={handleInputRadioChange}
+                        name="Gender"
+                        value="Female"
+                      />
+                      <p>หญิง</p>
+                    </div>
+
+                    <div className="reg-sex-radio">
+                      <input
+                        type="radio"
+                        onChange={handleInputRadioChange}
+                        name="Gender"
+                        value="Male"
+                      />
+                      <p>ชาย</p>
+                    </div>
+
+                    <div className="reg-sex-radio">
+                      <input
+                        type="radio"
+                        onChange={handleInputRadioChange}
+                        name="Gender"
+                        value="Unspecified"
+                      />
+                      <p>ไม่ระบุ</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="reg-bd">
+                  <p>วันเกิด</p>
+                  <input
+                    type="date"
+                    value={(member.Birthday + "").split("T")[0]}
+                    name="Birthday"
+                    onChange={handleInputChangeBirthday}
+                  />
+                </div>
+              </div>
+              <button onClick={submit}>ยืนยันการลงทะเบียน</button>
             </div>
-          </div>
-          <div className="form-bntreg">
-            <button className="input-bntreg" onClick={submit}>
-              ยืนยันการลงทะเบียน
-            </button>
           </div>
         </div>
       </div>

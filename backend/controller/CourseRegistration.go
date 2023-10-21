@@ -36,6 +36,7 @@ func CreateCourseRegistration(c *gin.Context) {
 
 	coureg := entity.CourseRegistration{
 		Receipt:		courseregistration.Receipt,
+		Note:			courseregistration.Note,			
 		Member:			member,
 		Course: 		course,
 		PaymentStatus:	paymentstatus,
@@ -234,6 +235,7 @@ func UpdateCourseRegistration(c *gin.Context) {
 
 	update := entity.CourseRegistration{
 		Receipt:		courseregistration.Receipt,
+		Note:			courseregistration.Note,			
 		Member:			member,
 		Course: 		course,
 		PaymentStatus:	paymentstatus,

@@ -98,6 +98,10 @@ function CheckPayment() {
       localStorage.clear();
     }
 
+    fetchCourseRegistrations();
+  }, []);
+
+  useEffect(() => {
     if (filterChecked) {
       const filteredCourseReg = courseReg.filter(
         (item) => item.PaymentStatus?.Status === "รอการตรวจสอบ"
@@ -106,8 +110,6 @@ function CheckPayment() {
     } else {
       setFilteredData(courseReg);
     }
-
-    fetchCourseRegistrations();
   }, [filterChecked, courseReg]);
 
   return (

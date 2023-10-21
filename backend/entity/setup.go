@@ -18,20 +18,17 @@ func DB() *gorm.DB {
 }
 
 func SetupDatabase() {
-
 	dsn := "user=postgres dbname=TMS sslmode=disable password=123456"
     database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	fmt.Print(database)
 
 	if err != nil {
-		// fmt.Print(err)
 		panic("failed to connect database")
 
 	}
 
 	// Migrate the schema
-
 	database.AutoMigrate(
 		// Actor
 		&Admin{},
@@ -98,6 +95,7 @@ func SetupDatabase() {
 		Address:   "บ้านเลขที่ 788 ซอยพิลม",
 		Birthday:  BirthdayA,
 		Gender:    GenderB,
+		Image: 	   "https://i.pinimg.com/564x/70/9f/60/709f60999c513338e23c71591ceca743.jpg",
 	}
 	db.Model(&Member{}).Create(&MemberB)
 
@@ -117,7 +115,9 @@ func SetupDatabase() {
 		Price:    10100,
 		Image:    "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
 		Admin:	  AdminA,
-		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile: "https://www.africau.edu/images/default/sample.pdf",
 		CourseStatus: CourseStatusA,
 		Place:	  "ห้อง 1102",
 		StartTime: StartTimeA,
@@ -131,7 +131,9 @@ func SetupDatabase() {
 		Price:    2000,
 		Image:    "https://images.unsplash.com/photo-1548092372-0d1bd40894a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
 		Admin:	  AdminA,
-		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
 		CourseStatus: CourseStatusA,
 		Place:	  "ห้อง 2102",
 		StartTime: StartTimeA,
@@ -145,7 +147,9 @@ func SetupDatabase() {
 		Price:    3000,
 		Image:    "https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
 		Admin:	  AdminA,
-		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
 		CourseStatus: CourseStatusA,
 		Place:	  "ออนไลน์",
 		StartTime: StartTimeA,
@@ -159,7 +163,9 @@ func SetupDatabase() {
 		Price:    4500,
 		Image:    "https://images.unsplash.com/photo-1532619187608-e5375cab36aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
 		Admin:	  AdminA,
-		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
 		CourseStatus: CourseStatusA,
 		Place:	  "Zoom",
 		StartTime: StartTimeA,
@@ -173,7 +179,9 @@ func SetupDatabase() {
 		Price:    500,
 		Image:    "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
 		Admin:	  AdminA,
-		Pdf:	  "https://www.africau.edu/images/default/sample.pdf",
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
 		CourseStatus: CourseStatusA,
 		Place:	  "Microsoft Team",
 		StartTime: StartTimeA,

@@ -73,8 +73,10 @@ type Course struct {
 	Detail string
 	Price  int
 	Image  string
-	Pdf	   string
+	LinkFile string
 	Place  string
+	LinkContact string
+	QRContact string
 	StartTime time.Time
 	EndTime   time.Time
 
@@ -90,6 +92,7 @@ type Course struct {
 type CourseRegistration struct {
 	gorm.Model
 	Receipt string
+	Note string
 
 	MemberID *uint 
 	Member   Member

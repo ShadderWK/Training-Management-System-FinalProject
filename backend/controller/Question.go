@@ -3,7 +3,6 @@ package controller
 import (
 	"net/http"
 
-	// "github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
 	"github.com/ShadderWK/Training-Management-System-FinalProject/entity"
 )
@@ -22,12 +21,6 @@ func CreateQuestion(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Admin not found"})
 		return
 	}
-
-	// แทรกการ validate ไว้ช่วงนี้ของ controller
-	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	// 	return
-	// }
 
 	qus := entity.Question{
 		Title:			question.Title,
@@ -93,12 +86,6 @@ func UpdateQuestion(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Admin not found"})
 		return
 	}
-
-	// แทรกการ validate ไว้ช่วงนี้ของ controller
-	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	// 	return
-	// }
 
 	update := entity.Question{
 		Title:			question.Title,

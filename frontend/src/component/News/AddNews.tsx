@@ -27,18 +27,27 @@ function AddNews() {
   const handleChangeImages = (event: ChangeEvent<HTMLInputElement>) => {
     const input = event.target.files?.[0];
 
-    if (input && isImageType(input)) {
-      const reader = new FileReader();
-      reader.readAsDataURL(input);
-      reader.onload = function () {
-        const dataURL = reader.result as string;
-        setNews({ ...news, Image: dataURL });
-        setImage(dataURL);
-        setErrorPic("");
-        setSelectedFileName(input.name);
-      };
+    if (input) {
+      if (input.size > 300 * 1024) {
+        setErrorPic("ไฟล์รูปภาพต้องมีขนาดไม่เกิน 300 KB");
+        return;
+      }
+
+      if (isImageType(input)) {
+        const reader = new FileReader();
+        reader.readAsDataURL(input);
+        reader.onload = function () {
+          const dataURL = reader.result as string;
+          setNews({ ...news, Image: dataURL });
+          setImage(dataURL);
+          setErrorPic("");
+          setSelectedFileName(input.name);
+        };
+      } else {
+        setErrorPic("รูปภาพไม่ถูกต้อง กรุณาเลือกรูปภาพใหม่");
+      }
     } else {
-      setErrorPic("รูปภาพไม่ถูกต้อง กรุณาเลือกรูปภาพใหม่");
+      setErrorPic("กรุณาเลือกรูปภาพ");
     }
   };
 

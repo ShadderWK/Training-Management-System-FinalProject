@@ -44,6 +44,23 @@
   font-weight: 700;
 }
 
+.mycourse-detail-link {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.mycourse-detail-qr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.mycourse-detail-qr-container {
+  width: 30%;
+}
+
 @media (max-width: 1200px) {
   .mycourse-detail-container {
     padding: 20px;
@@ -66,5 +83,15 @@
 @media (max-width: 768px) {
   .mycourse-detail-container {
     padding: 16px;
+  }
+
+  .mycourse-detail-link {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .mycourse-detail-qr-container {
+    width: 100%;
   }
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import "./App.css";
 
 //Page Register
 import Register from "./page/register/Register";
@@ -39,7 +40,6 @@ import Topbar from "./component/TopBar/Topbar";
 
 function App() {
   const [token, setToken] = useState<String>("");
-  const [open, setOpen] = React.useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

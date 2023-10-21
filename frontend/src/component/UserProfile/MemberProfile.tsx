@@ -44,15 +44,23 @@ function MemberProfile() {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target?.files?.[0] as File;
 
-    if (file && isImageType(file)) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const imageUrl = event.target?.result as string;
-        setMember({ ...member, Image: imageUrl });
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setError(true);
+    if (file) {
+      if (file.size > 300 * 1024) {
+        setError(true);
+        return;
+      }
+
+      if (isImageType(file)) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const imageUrl = event.target?.result as string;
+          setMember({ ...member, Image: imageUrl });
+        };
+        reader.readAsDataURL(file);
+        setError(false);
+      } else {
+        setError(true);
+      }
     }
   };
 

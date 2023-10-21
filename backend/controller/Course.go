@@ -35,11 +35,13 @@ func CreateCourse(c *gin.Context) {
 		Image:			course.Image,
 		Price:			course.Price,
 		Admin:			admin,
-		Pdf:			course.Pdf,
 		CourseStatus:	coursestatus,
 		Place:			course.Place,
 		StartTime:		course.StartTime,
 		EndTime:		course.EndTime,
+		LinkContact:	course.LinkContact,
+		QRContact:		course.QRContact,
+		LinkFile:		course.LinkFile,
 	}
 
 	if err := entity.DB().Create(&cou).Error; err != nil {
@@ -145,11 +147,13 @@ func UpdateCourse(c *gin.Context) {
 		Image:			course.Image,
 		Price:			course.Price,
 		Admin:			admin,
-		Pdf:			course.Pdf,
 		CourseStatus:	coursestatus,
 		Place:			course.Place,
 		StartTime:		course.StartTime,
 		EndTime:		course.EndTime,
+		LinkContact:	course.LinkContact,
+		QRContact:		course.QRContact,
+		LinkFile:		course.LinkFile,
 	}
 
 	if err := entity.DB().Where("id = ?", course.ID).Updates(&update).Error; err != nil {

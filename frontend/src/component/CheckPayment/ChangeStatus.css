@@ -89,6 +89,10 @@
   font-size: 14px;
 }
 
+.change-status-note {
+  color: var(--status-error);
+}
+
 .change-status-section button {
   background: var(--primary-blue-main);
 

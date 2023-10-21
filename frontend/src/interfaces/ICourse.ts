@@ -7,7 +7,9 @@ export interface CourseInterface {
   Detail?: string;
   Price?: number;
   Image?: string;
-  Pdf?: string;
+  LinkFile?: string;
+  LinkContact?: string;
+  QRContact?: string;
   Place?: string;
   StartTime?: Date;
   EndTime?: Date;

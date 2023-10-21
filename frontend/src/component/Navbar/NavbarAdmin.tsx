@@ -8,8 +8,8 @@ function NavbarAdmin() {
   return (
     <div className="navbar-container">
       <div className="navbar-logo">
-        <img src={LogoIcon} className="navbar-img" />
-        <a>Admin สถาบันวิจัยและพัฒนา</a>
+        <img src={LogoIcon} className="navbar-img-logo" />
+        <a>ผู้ดูแลระบบ</a>
       </div>
 
       <div className="navbar-profile">

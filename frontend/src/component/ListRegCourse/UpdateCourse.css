@@ -75,6 +75,7 @@
 
 .update-course-input-section p {
   margin: 0;
+  font-size: 18px;
 }
 
 .update-course-title {
@@ -236,6 +237,7 @@
 .update-course-price-section {
   display: flex;
   gap: 5px;
+  width: 100%;
   flex-direction: column;
 }
 
@@ -246,13 +248,54 @@
 }
 
 .update-course-section-last-box {
-  width: 50%;
+  width: 100%;
 }
 
 .update-course-last-box-2 {
   display: flex;
   width: 50%;
   flex-direction: column;
+}
+
+.update-course-qr {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.update-course-qr-img {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.update-course-qr-container {
+  display: flex;
+  width: 50%;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.update-course-qr-img button {
+  background-color: var(--status-info);
+  height: 50px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.update-course-qr-img button:hover {
+  background-color: var(--status-info-hover);
+  transform: scale(0.95);
 }
 
 @media (max-width: 1200px) {

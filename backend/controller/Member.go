@@ -3,7 +3,6 @@ package controller
 import (
 	"net/http"
 
-	// "github.com/asaskevich/govalidator"
 	"github.com/ShadderWK/Training-Management-System-FinalProject/entity"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
@@ -26,11 +25,6 @@ func CreateMember(c *gin.Context) {
 	}
 
 	pass, _ := bcrypt.GenerateFromPassword([]byte(member.Password), 14)
-	// แทรกการ validate ไว้ช่วงนี้ของ controller
-	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	// 	return
-	// }
 
 	mem := entity.Member{
 		Email:     member.Email,
@@ -116,12 +110,6 @@ func UpdateMember(c *gin.Context) {
 		return
 	}
 
-	// แทรกการ validate ไว้ช่วงนี้ของ controller
-	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	// 	return
-	// }
-
 	update := entity.Member{
 		Email:     member.Email,
 		Firstname: member.Firstname,
@@ -150,11 +138,6 @@ func UpdateMemberPassword(c *gin.Context) {
 	}
 
 	pass, _ := bcrypt.GenerateFromPassword([]byte(member.Password), 14)
-	// แทรกการ validate ไว้ช่วงนี้ของ controller
-	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	// 	return
-	// }
 
 	update := entity.Member{
 		Password:  string(pass),

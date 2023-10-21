@@ -26,19 +26,32 @@ function CoursePurchase() {
   const navigate = useNavigate();
   const defaultSelectedKeys = ["1"];
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setCourseReg({ ...coursereg, [name]: value });
+  };
+
   const handleChangeImages = (event: ChangeEvent<HTMLInputElement>) => {
     const input = event.target.files?.[0];
 
     if (input && isImageType(input)) {
-      const reader = new FileReader();
-      reader.readAsDataURL(input);
-      reader.onload = function () {
-        const dataURL = reader.result as string;
-        setCourseReg({ ...coursereg, Receipt: dataURL });
-        setReceipt(dataURL);
-        setErrorPic("");
-        setSelectedFileName(input.name);
-      };
+      if (input.size > 300 * 1024) {
+        setErrorPic(
+          "รูปภาพมีขนาดใหญ่เกินไป กรุณาเลือกรูปภาพที่มีขนาดไม่เกิน 300 KB"
+        );
+      } else {
+        const reader = new FileReader();
+        reader.readAsDataURL(input);
+        reader.onload = function () {
+          const dataURL = reader.result as string;
+          setCourseReg({ ...coursereg, Receipt: dataURL });
+          setReceipt(dataURL);
+          setErrorPic("");
+          setSelectedFileName(input.name);
+        };
+      }
     } else {
       setErrorPic("รูปภาพไม่ถูกต้อง กรุณาเลือกรูปภาพใหม่");
     }
@@ -72,6 +85,7 @@ function CoursePurchase() {
 
       let data = {
         Receipt: coursereg.Receipt,
+        Note: coursereg.Note,
         MemberID: memberID,
         CourseID: convertType(id),
         PaymentStatusID: 1,
@@ -147,6 +161,17 @@ function CoursePurchase() {
                 {errorPic && (
                   <p className="course-purchase-error">{errorPic}</p>
                 )}
+              </div>
+              <div className="course-purchase-note">
+                <p>**หมายเหตุ</p>
+                <div className="course-purchase-input">
+                  <input
+                    name="Note"
+                    value={coursereg.Note}
+                    onChange={handleInputChange}
+                    placeholder="หมายเหตุ..."
+                  />
+                </div>
               </div>
             </div>
           </div>

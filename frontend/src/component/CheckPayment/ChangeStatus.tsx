@@ -138,6 +138,10 @@ function ChangeStatus() {
                 <span>ราคา :</span> {courseReg.Course?.Price}
               </p>
 
+              <p className="change-status-note">
+                <span>**หมายเหตุ :</span> {courseReg.Note}
+              </p>
+
               <div className="change-status-select-container">
                 <label htmlFor="statusSelect">เลือกสถานะการชำระเงิน:</label>
 

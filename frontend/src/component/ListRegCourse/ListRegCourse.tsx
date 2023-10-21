@@ -45,6 +45,23 @@ function ListRegCourse() {
     },
 
     {
+      title: "วันเริ่มอบรม",
+      dataIndex: "StartTime",
+      key: "ID",
+      align: "center",
+      render: (StartTime) => {
+        const dateObject = new Date(StartTime);
+        const formattedDate = `${dateObject
+          .getDate()
+          .toString()
+          .padStart(2, "0")}-${(dateObject.getMonth() + 1)
+          .toString()
+          .padStart(2, "0")}-${dateObject.getFullYear()}`;
+        return formattedDate;
+      },
+    },
+
+    {
       title: "สถานะ",
       dataIndex: ["CourseStatus", "Status"],
       key: "ID",
@@ -90,12 +107,14 @@ function ListRegCourse() {
     },
   ];
 
-  const fetchCourses = async () => {
-    let res = await GetCourses();
-    res && setCourse(res);
-  };
-
   useEffect(() => {
+    const fetchCourses = async () => {
+      let res = await GetCourses();
+      res && setCourse(res);
+    };
+
+    fetchCourses();
+
     const token = localStorage.getItem("token");
     if (token) {
       setToken(token);
@@ -109,16 +128,9 @@ function ListRegCourse() {
     } else {
       localStorage.clear();
     }
+  }, []);
 
-    if (filterActive) {
-      const filteredCourse = course.filter(
-        (item) => item.CourseStatus?.Status === "เปิดใช้งาน"
-      );
-      setFilteredData(filteredCourse);
-    } else {
-      setFilteredData(course);
-    }
-
+  useEffect(() => {
     let filteredCourse = course;
 
     if (filterActive && filterDisable) {
@@ -140,9 +152,7 @@ function ListRegCourse() {
     }
 
     setFilteredData(filteredCourse);
-
-    fetchCourses();
-  }, [course, filterActive, filterDisable]);
+  }, [course, filterActive, filterDisable, searchText]);
 
   return (
     <div>

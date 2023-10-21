@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Layout, Alert } from "antd";
-import { FilePdfOutlined } from "@ant-design/icons";
+import { Layout, Alert, Image } from "antd";
 
 import NavbarAdmin from "../Navbar/NavbarAdmin";
 import SidebarAdmin from "../Sidebar/SidebarAdmin";
@@ -25,7 +24,7 @@ function UpdateCourses() {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const navigate = useNavigate();
   const imageInputRef = useRef<HTMLInputElement | null>(null);
-  const pdfInputRef = useRef<HTMLInputElement | null>(null);
+  const qrCodeInputRef = useRef<HTMLInputElement | null>(null);
   const defaultSelectedKeys = ["2"];
 
   const convertType = (data: string | number | undefined) => {
@@ -66,41 +65,27 @@ function UpdateCourses() {
     return acceptedImageTypes.includes(file.type);
   };
 
-  const isPDFType = (file: File) => {
-    return file.type === "application/pdf";
-  };
-
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target?.files?.[0] as File;
+    const name = e.target.name;
 
-    if (file && isImageType(file)) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const imageUrl = event.target?.result as string;
-        setCourse({ ...course, Image: imageUrl });
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setError(true);
-      setErrorMessage("รูปภาพไม่ถูกต้อง");
-    }
-  };
-
-  const handlePDFChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target?.files?.[0] as File;
-
-    if (file && isPDFType(file)) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const pdfDataUrl = event.target?.result as string;
-        setCourse({ ...course, Pdf: pdfDataUrl });
-        setPdfFileName(file.name);
-        setPdfError("");
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setPdfError("ไฟล์ PDF ไม่ถูกต้อง");
-      setPdfFileName("");
+    if (file) {
+      if (file.size <= 300 * 1024) {
+        if (isImageType(file)) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const imageUrl = event.target?.result as string;
+            setCourse({ ...course, [name]: imageUrl });
+          };
+          reader.readAsDataURL(file);
+        } else {
+          setError(true);
+          setErrorMessage("รูปภาพไม่ถูกต้อง");
+        }
+      } else {
+        setError(true);
+        setErrorMessage("ไฟล์รูปภาพต้องมีขนาดไม่เกิน 300 KB");
+      }
     }
   };
 
@@ -125,7 +110,8 @@ function UpdateCourses() {
 
     if (
       !course.Image ||
-      !course.Pdf ||
+      !course.LinkContact ||
+      !course.LinkFile ||
       !course.Name ||
       !course.Detail ||
       !course.Price
@@ -140,7 +126,9 @@ function UpdateCourses() {
       Name: course.Name,
       Detail: course.Detail,
       Image: course.Image,
-      Pdf: course.Pdf,
+      LinkFile: course.LinkFile,
+      LinkContact: course.LinkContact,
+      QRContact: course.QRContact,
       Price: convertType(course.Price),
       AdminID: course.AdminID,
       CourseStatusID: course.CourseStatusID,
@@ -216,6 +204,7 @@ function UpdateCourses() {
                 เปลี่ยนรูป
               </button>
               <input
+                name="Image"
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}
@@ -223,6 +212,7 @@ function UpdateCourses() {
                 ref={imageInputRef}
               />
             </div>
+
             <div className="update-course-input-section">
               <div className="update-course-title">
                 <p>ชื่อหัวข้อ</p>
@@ -246,51 +236,25 @@ function UpdateCourses() {
                 </div>
               </div>
 
-              <div className="update-course-pdf">
-                <p>เอกสาร (PDF)</p>
-                <div className="update-course-pdf-upload">
-                  <a href={course.Pdf} target="_blank" download>
-                    <FilePdfOutlined />
-                    {pdfFileName ? pdfFileName : " เอกสาร"}
-                  </a>
-
-                  <button onClick={() => pdfInputRef.current?.click()}>
-                    อัพโหลดไฟล์ใหม่
-                  </button>
-                  <input
-                    type="file"
-                    accept=".pdf"
-                    onChange={handlePDFChange}
-                    ref={pdfInputRef}
-                    style={{ display: "none" }}
-                  />
-                  {pdfError && (
-                    <p className="update-course-error-message">{pdfError}</p>
+              <div className="update-course-section-last-box">
+                <p>ราคา</p>
+                <div className="update-course-price-section">
+                  <div className="update-course-title-price">
+                    <input
+                      name="Price"
+                      type="number"
+                      value={course.Price}
+                      onChange={handleInputChange}
+                    />
+                    <p>บาท</p>
+                  </div>
+                  {priceError && (
+                    <p className="update-course-error-message">{priceError}</p>
                   )}
                 </div>
               </div>
 
               <div className="update-course-section-last">
-                <div className="update-course-section-last-box">
-                  <p>ราคา</p>
-                  <div className="update-course-price-section">
-                    <div className="update-course-title-price">
-                      <input
-                        name="Price"
-                        type="number"
-                        value={course.Price}
-                        onChange={handleInputChange}
-                      />
-                      <p>บาท</p>
-                    </div>
-                    {priceError && (
-                      <p className="update-course-error-message">
-                        {priceError}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
                 <div className="update-course-last-box-2">
                   <p>วันที่เริ่มอบรม</p>
                   <div className="update-course-title-input">
@@ -302,9 +266,65 @@ function UpdateCourses() {
                     />
                   </div>
                 </div>
+
+                <div className="update-course-last-box-2">
+                  <p>วันที่สิ้นสุดการอบรม</p>
+                  <div className="update-course-title-input">
+                    <input
+                      name="EndTime"
+                      type="date"
+                      value={(course.EndTime + "").split("T")[0]}
+                      onChange={handleInputDateTimeChange}
+                    />
+                  </div>
+                </div>
               </div>
 
-              <div className="update-course-title"></div>
+              <div className="update-course-section-last-box">
+                <p>ลิงค์เอกสารการอบรม</p>
+                <div className="update-course-price-section">
+                  <div className="update-course-title-price">
+                    <input
+                      name="LinkFile"
+                      value={course.LinkFile}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="update-course-section-last-box">
+                <p>ลิงค์ช่องทางการติดต่อ</p>
+                <div className="update-course-price-section">
+                  <div className="update-course-title-price">
+                    <input
+                      name="LinkContact"
+                      value={course.LinkContact}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="update-course-qr">
+                <p>QRCode ช่องทางการติดต่อ</p>
+                <div className="update-course-qr-img">
+                  <div className="update-course-qr-container">
+                    <Image src={course.QRContact} />
+                    <button onClick={() => qrCodeInputRef.current?.click()}>
+                      เปลี่ยนรูป
+                    </button>
+                    <input
+                      name="QRContact"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      style={{ display: "none" }}
+                      ref={qrCodeInputRef}
+                    />
+                  </div>
+                </div>
+              </div>
 
               <button className="update-course-btn" onClick={submit}>
                 ยืนยันการแก้ไข

@@ -45,15 +45,10 @@ func LoginAdmin(c *gin.Context) {
 		return
 	}
 
-	// กำหนดค่า SecretKey, Issuer และระยะเวลาหมดอายุของ Token สามารถกำหนดเองได้
-	// SecretKey ใช้สำหรับการ sign ข้อความเพื่อบอกว่าข้อความมาจากตัวเราแน่นอน
-	// Issuer เป็น unique id ที่เอาไว้ระบุตัว client
-	// ExpirationHours เป็นเวลาหมดอายุของ token
-
 	jwtWrapper := service.JwtWrapper{
 		SecretKey:       "SvNQpBN8y3qlVrsGAYYWoJJk56LtzFHx",
 		Issuer:          "AuthService",
-		ExpirationHours: 24,
+		ExpirationHours: 8760,
 	}
 
 	signedToken, err := jwtWrapper.GenerateToken(admin.Email)
@@ -92,15 +87,10 @@ func LoginMember(c *gin.Context) {
 		return
 	}
 
-	// กำหนดค่า SecretKey, Issuer และระยะเวลาหมดอายุของ Token สามารถกำหนดเองได้
-	// SecretKey ใช้สำหรับการ sign ข้อความเพื่อบอกว่าข้อความมาจากตัวเราแน่นอน
-	// Issuer เป็น unique id ที่เอาไว้ระบุตัว client
-	// ExpirationHours เป็นเวลาหมดอายุของ token
-
 	jwtWrapper := service.JwtWrapper{
 		SecretKey:       "SvNQpBN8y3qlVrsGAYYWoJJk56LtzFHx",
 		Issuer:          "AuthService",
-		ExpirationHours: 24,
+		ExpirationHours: 8760,
 	}
 
 	signedToken, err := jwtWrapper.GenerateToken(member.Email)

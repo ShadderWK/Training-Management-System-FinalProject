@@ -5,6 +5,7 @@ import { PaymentStatusInterface } from "./IPaymentStatus";
 export interface CourseRegistrationInterface {
   ID?: number;
   Receipt?: string;
+  Note?: string;
   CreatedAt?: string;
   UpdatedAt?: string;
 

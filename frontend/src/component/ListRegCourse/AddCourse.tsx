@@ -20,8 +20,7 @@ function AddCourse() {
   const [token, setToken] = useState<String>("");
   const [role, setRole] = useState<String>("");
   const imageInputRef = useRef<HTMLInputElement | null>(null);
-  const pdfInputRef = useRef<HTMLInputElement | null>(null);
-  const [pdfFileName, setPdfFileName] = useState<string>("");
+  const qrCodeInputRef = useRef<HTMLInputElement | null>(null);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
@@ -66,40 +65,27 @@ function AddCourse() {
     return acceptedImageTypes.includes(file.type);
   };
 
-  const isPDFType = (file: File) => {
-    return file.type === "application/pdf";
-  };
-
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target?.files?.[0] as File;
+    const name = e.target.name;
 
-    if (file && isImageType(file)) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const imageUrl = event.target?.result as string;
-        setCourse({ ...course, Image: imageUrl });
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setImgError("ไฟล์รูปภาพไม่ถูกต้อง");
-    }
-  };
-
-  const handlePDFChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target?.files?.[0] as File;
-
-    if (file && isPDFType(file)) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const pdfDataUrl = event.target?.result as string;
-        setCourse({ ...course, Pdf: pdfDataUrl });
-        setPdfFileName(file.name);
-        setPdfError("");
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setPdfError("ไฟล์ PDF ไม่ถูกต้อง");
-      setPdfFileName("");
+    if (file) {
+      if (file.size <= 300 * 1024) {
+        if (isImageType(file)) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const imageUrl = event.target?.result as string;
+            setCourse({ ...course, [name]: imageUrl });
+          };
+          reader.readAsDataURL(file);
+        } else {
+          setError(true);
+          setImgError("รูปภาพไม่ถูกต้อง");
+        }
+      } else {
+        setError(true);
+        setImgError("ไฟล์รูปภาพต้องมีขนาดไม่เกิน 300 KB");
+      }
     }
   };
 
@@ -126,11 +112,13 @@ function AddCourse() {
 
       if (
         !course.Image ||
-        !course.Pdf ||
+        !course.LinkContact ||
+        !course.LinkFile ||
         !course.Name ||
         !course.Detail ||
         !course.Price ||
-        !course.StartTime
+        !course.StartTime ||
+        !course.EndTime
       ) {
         setError(true);
         setErrorMessage("ข้อมูลไม่ครบถ้วน");
@@ -141,10 +129,13 @@ function AddCourse() {
         Name: course.Name,
         Detail: course.Detail,
         Image: course.Image,
-        Pdf: course.Pdf,
+        LinkContact: course.LinkContact,
+        LinkFile: course.LinkFile,
+        QRContact: course.QRContact,
         Price: convertType(course.Price),
         AdminID: adminID,
         StartTime: course.StartTime,
+        EndTime: course.EndTime,
         CourseStatusID: 2,
       };
       console.log(data);
@@ -251,20 +242,80 @@ function AddCourse() {
               </div>
             </div>
 
+            <div className="add-course-section-link-container">
+              <div className="add-course-section-link">
+                <p>ลิงค์เอกสารการอบรม</p>
+                <div className="add-course-section-link-input">
+                  <input
+                    name="LinkFile"
+                    value={course.LinkFile}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+
+              <div className="add-course-section-link">
+                <p>ลิงค์ช่องทางการติดต่อ</p>
+                <div className="add-course-section-link-input">
+                  <input
+                    name="LinkContact"
+                    value={course.LinkContact}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+            </div>
+
             <div className="add-course-section-3">
               <div className="add-course-section-3-time-btn">
-                <button onClick={() => imageInputRef.current?.click()}>
-                  เพิ่มรูปภาพ
-                </button>
-
-                <p>วันที่เริ่มอบรม</p>
-                <div className="add-course-section-3-input">
+                <div className="add-course-section-3-btn">
+                  <button onClick={() => imageInputRef.current?.click()}>
+                    เพิ่มรูปภาพหน้าปก
+                  </button>
                   <input
-                    name="StartTime"
-                    type="date"
-                    value={(course.StartTime + "").split("T")[0]}
-                    onChange={handleInputDateTimeChange}
+                    name="Image"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    style={{ display: "none" }}
+                    ref={imageInputRef}
                   />
+                  <button onClick={() => qrCodeInputRef.current?.click()}>
+                    เพิ่มรูปภาพ QRCode ช่องทางการติดต่อ
+                  </button>
+                  <input
+                    name="QRContact"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    style={{ display: "none" }}
+                    ref={qrCodeInputRef}
+                  />
+                </div>
+                <div className="add-course-section-3-time">
+                  <div className="add-course-time-container">
+                    <p>วันที่เริ่มอบรม</p>
+                    <div className="add-course-section-3-input">
+                      <input
+                        name="StartTime"
+                        type="date"
+                        value={(course.StartTime + "").split("T")[0]}
+                        onChange={handleInputDateTimeChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="add-course-time-container">
+                    <p>วันที่สิ้นสุดการอบรม</p>
+                    <div className="add-course-section-3-input">
+                      <input
+                        name="EndTime"
+                        type="date"
+                        value={(course.EndTime + "").split("T")[0]}
+                        onChange={handleInputDateTimeChange}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -274,40 +325,15 @@ function AddCourse() {
                 </div>
               )}
 
+              {course.QRContact && (
+                <div className="add-course-img-section">
+                  <img src={course.QRContact} />
+                </div>
+              )}
+
               {imgError && (
                 <p className="update-course-error-message">{imgError}</p>
               )}
-            </div>
-
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              style={{ display: "none" }}
-              ref={imageInputRef}
-            />
-            <div className="update-course-pdf">
-              <p>เอกสาร (PDF)</p>
-              <div className="update-course-pdf-upload">
-                <a href={course.Pdf} target="_blank" download>
-                  <FilePdfOutlined />
-                  <span> </span> {pdfFileName}
-                </a>
-
-                <button onClick={() => pdfInputRef.current?.click()}>
-                  อัพโหลดไฟล์
-                </button>
-                <input
-                  type="file"
-                  accept=".pdf"
-                  onChange={handlePDFChange}
-                  ref={pdfInputRef}
-                  style={{ display: "none" }}
-                />
-                {pdfError && (
-                  <p className="update-course-error-message">{pdfError}</p>
-                )}
-              </div>
             </div>
           </div>
 

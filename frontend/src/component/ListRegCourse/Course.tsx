@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Layout, Popconfirm, Image } from "antd";
-import { FilePdfOutlined } from "@ant-design/icons";
+import { FilePdfOutlined, ContactsOutlined } from "@ant-design/icons";
 
 import NavbarAdmin from "../Navbar/NavbarAdmin";
 import SidebarAdmin from "../Sidebar/SidebarAdmin";
@@ -171,12 +171,19 @@ function Course() {
               </p>
 
               <p>
-                <span>เอกสาร : </span>
-                <a href={course.Pdf} target="_blank" download>
-                  <span className="course-pdf">
-                    <FilePdfOutlined /> ดาวน์โหลดเอกสาร
-                  </span>
-                </a>
+                {course.EndTime ? (
+                  <>
+                    <span>วันที่สิ้นสุดการอบรม : </span>
+
+                    {new Date(course.EndTime).toLocaleDateString("th-TH", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </>
+                ) : (
+                  "วันที่สิ้นสุดการอบรม: ไม่มีข้อมูล"
+                )}
               </p>
 
               <p>
@@ -201,6 +208,30 @@ function Course() {
               <p>
                 <span>ผู้ที่ทำการสร้าง : </span> {course.Admin?.Name}
               </p>
+
+              <div className="course-link">
+                <p>
+                  <a href={course.LinkFile} target="_blank" download>
+                    <span className="course-pdf">
+                      <FilePdfOutlined /> เอกสารการอบรม
+                    </span>
+                  </a>
+                </p>
+
+                <p>
+                  <a href={course.LinkContact} target="_blank" download>
+                    <span className="course-pdf">
+                      <ContactsOutlined /> ช่องทางการติดต่อ
+                    </span>
+                  </a>
+                </p>
+              </div>
+
+              <div className="course-qr">
+                <div className="course-qr-container">
+                  <Image src={course.QRContact} />
+                </div>
+              </div>
             </div>
           </div>
 

@@ -3,7 +3,6 @@ package controller
 import (
 	"net/http"
 
-	// "github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
 	"github.com/ShadderWK/Training-Management-System-FinalProject/entity"
 )
@@ -23,11 +22,6 @@ func CreateNews(c *gin.Context) {
 		return
 	}
 
-	// แทรกการ validate ไว้ช่วงนี้ของ controller
-	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	// 	return
-	// }
 
 	newsc := entity.News{
 		Image:			news.Image,
@@ -91,12 +85,6 @@ func UpdateNews(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Admin not found"})
 		return
 	}
-
-	// แทรกการ validate ไว้ช่วงนี้ของ controller
-	// if _, err := govalidator.ValidateStruct(foodinformation); err != nil {
-	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-	// 	return
-	// }
 
 	update := entity.News{
 		Image:			news.Image,

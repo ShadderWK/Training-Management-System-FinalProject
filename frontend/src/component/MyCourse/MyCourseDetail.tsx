@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Layout, Image } from "antd";
-import { FilePdfOutlined } from "@ant-design/icons";
+import { FilePdfOutlined, ContactsOutlined } from "@ant-design/icons";
 
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
@@ -81,15 +81,6 @@ function MyCourseDetail() {
               </p>
 
               <p>
-                <span>เอกสารการอบรม : </span>
-                <a href={courseReg.Course?.Pdf} target="_blank" download>
-                  <span className="course-pdf">
-                    <FilePdfOutlined /> ดาวน์โหลดเอกสาร
-                  </span>
-                </a>
-              </p>
-
-              <p>
                 <span>สถานที่การอบรม : </span>
                 {courseReg.Course?.Place}
               </p>
@@ -109,7 +100,26 @@ function MyCourseDetail() {
                     )}
                   </>
                 ) : (
-                  "วันที่ซื้อการอบรม: ไม่มีข้อมูล"
+                  "วันที่เริ่มอบรม: ไม่มีข้อมูล"
+                )}
+              </p>
+
+              <p>
+                {courseReg.Course?.EndTime ? (
+                  <>
+                    <span>วันที่สิ้นสุดอบรม: </span>
+
+                    {new Date(courseReg.Course.EndTime).toLocaleDateString(
+                      "th-TH",
+                      {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      }
+                    )}
+                  </>
+                ) : (
+                  "วันที่สิ้นสุดอบรม: ไม่มีข้อมูล"
                 )}
               </p>
 
@@ -131,6 +141,32 @@ function MyCourseDetail() {
                   "วันที่ซื้อการอบรม: ไม่มีข้อมูล"
                 )}
               </p>
+
+              <div className="mycourse-detail-link">
+                <p>
+                  <a href={courseReg.Course?.LinkFile}>
+                    <span className="course-pdf">
+                      <FilePdfOutlined /> เอกสารการอบรม
+                    </span>
+                  </a>
+                </p>
+
+                <p>
+                  <a href={courseReg.Course?.LinkContact}>
+                    <span className="course-pdf">
+                      <ContactsOutlined /> ช่องทางการติดต่อ
+                    </span>
+                  </a>
+                </p>
+              </div>
+
+              {courseReg.Course?.QRContact ? (
+                <div className="mycourse-detail-qr">
+                  <div className="mycourse-detail-qr-container">
+                    <Image src={courseReg.Course.QRContact} />
+                  </div>
+                </div>
+              ) : null}
             </div>
 
             <div className="mycourse-detail-img">

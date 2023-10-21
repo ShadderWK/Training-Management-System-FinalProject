@@ -97,7 +97,7 @@ type CourseRegistration struct {
 	MemberID *uint 
 	Member   Member
 
-	CourseID *uint `gorm:"uniqueIndex"`
+	CourseID *uint 
 	Course   Course
 
 	PaymentStatusID int

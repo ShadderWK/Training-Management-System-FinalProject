@@ -57,7 +57,7 @@ function ListCourseByID() {
   ];
 
   const navigate = useNavigate();
-  const defaultSelectedKeys = ["5"];
+  const defaultSelectedKeys = ["2"];
 
   const fetchCourseByID = async () => {
     let res = await GetCourseByID(id + "");

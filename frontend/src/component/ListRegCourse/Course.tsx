@@ -244,11 +244,19 @@ function Course() {
             </button>
 
             <Popconfirm
-              title="คุณแน่ใจว่าจะลบการอบรมนี้ใช่หรือไม่"
-              description="การลบการอบรมจะไม่สามารถกู้คืนได้"
+              title={
+                <p className="pop-confirm-title">
+                  คุณแน่ใจจะลบการอบรมนี้หรือไม่
+                </p>
+              }
+              description={
+                <p className="pop-confirm-desciption">
+                  การลบการอบรมจะทำให้รายการการซื้อการอบรมนี้ทั้งหมดถูกลบอย่างถาวร
+                </p>
+              }
               onConfirm={() => DeleteCourses(id + "")}
-              okText="ตกลง"
-              cancelText="ไม่"
+              okText={<p className="pop-confirm-desciption">ตกลง</p>}
+              cancelText={<p className="pop-confirm-desciption">ยกเลิก</p>}
             >
               <button className="course-btn-disable">ลบการอบรม</button>
             </Popconfirm>

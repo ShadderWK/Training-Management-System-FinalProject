@@ -86,7 +86,7 @@ type Course struct {
 	AdminID *uint
 	Admin   Admin
 
-	CourseRegistration []CourseRegistration `gorm:"foreignKey:CourseID"`
+	CourseRegistration []CourseRegistration `gorm:"foreignKey:CourseID;constraint:OnUpdate:CASCADE,OnDelete:CASCADE"`
 }
 
 type CourseRegistration struct {

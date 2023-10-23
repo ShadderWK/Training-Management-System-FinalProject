@@ -72,11 +72,19 @@ function News() {
                 <img src={newsItem.Image} />
 
                 <Popconfirm
-                  title="คุณแน่ใจว่าจะลบรูปข่าวนี้ใช่หรือไม่"
-                  description="การลบการอบรมจะไม่สามารถกู้คืนได้"
+                  title={
+                    <p className="pop-confirm-title">
+                      คุณแน่ใจว่าจะลบรูปข่าวนี้ใช่หรือไม่
+                    </p>
+                  }
+                  description={
+                    <p className="pop-confirm-desciption">
+                      การลบรูปข่าวจะไม่สามารถกู้คืนได้
+                    </p>
+                  }
                   onConfirm={() => DeletANews(newsItem.ID + "")}
-                  okText="ตกลง"
-                  cancelText="ไม่"
+                  okText={<p className="pop-confirm-desciption">ตกลง</p>}
+                  cancelText={<p className="pop-confirm-desciption">ยกเลิก</p>}
                 >
                   <button>Delete</button>
                 </Popconfirm>

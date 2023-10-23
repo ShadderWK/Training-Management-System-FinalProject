@@ -91,11 +91,21 @@ function EditFAQ() {
                     </button>
 
                     <Popconfirm
-                      title="คุณแน่ใจว่าจะลบคำถามนี้ใช่หรือไม่"
-                      description="การลบการอบรมจะไม่สามารถกู้คืนได้"
+                      title={
+                        <p className="pop-confirm-title">
+                          คุณแน่ใจว่าจะลบคำถามนี้ใช่หรือไม่
+                        </p>
+                      }
+                      description={
+                        <p className="pop-confirm-desciption">
+                          การลบการคำถามจะไม่สามารถกู้คืนได้
+                        </p>
+                      }
                       onConfirm={() => DeleteFAQ(question.ID + "")}
-                      okText="ตกลง"
-                      cancelText="ไม่"
+                      okText={<p className="pop-confirm-desciption">ตกลง</p>}
+                      cancelText={
+                        <p className="pop-confirm-desciption">ยกเลิก</p>
+                      }
                     >
                       <button className="delete-btn">Delete</button>
                     </Popconfirm>

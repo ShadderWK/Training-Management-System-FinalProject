@@ -116,11 +116,19 @@ body {
   font-weight: 400;
 }
 
-@media (max-width: 1200px) {
-  /* .ant-table-wrapper {
-    max-width: 80vw !important;
-  } */
+.pop-confirm-title {
+  margin: 0;
+  font-family: IBM Plex Sans Thai;
+  font-weight: 700;
+}
 
+.pop-confirm-desciption {
+  margin: 0;
+  font-family: IBM Plex Sans Thai;
+  font-weight: 400;
+}
+
+@media (max-width: 1200px) {
   .button-text {
     display: none;
   }

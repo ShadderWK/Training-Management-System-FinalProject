@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Layout } from "antd";
+import { CaretRightOutlined, CaretLeftOutlined } from "@ant-design/icons";
 
 import { GetCourseRegistrationByMemberID } from "../../service/HttpClientService";
 
@@ -19,6 +20,8 @@ function MyCourse() {
   const [role, setRole] = useState<String>("");
   const navigate = useNavigate();
   const defaultSelectedKeys = ["2"];
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
 
   const fetchCourseRegistrationByMemberID = async () => {
     let res = await GetCourseRegistrationByMemberID(Uid + "", "2");
@@ -58,16 +61,36 @@ function MyCourse() {
         <div className="mycourse-container">
           <h1>การอบรมของฉัน</h1>
           <div className="mycourse-section">
-            {courseReg.map((item) => {
-              return (
-                <BlogCourse
-                  key={item.ID!}
-                  id={item.CourseID!}
-                  name={item.Course?.Name!}
-                  image={item.Course?.Image!}
-                />
-              );
-            })}
+            {courseReg
+              .slice(
+                (currentPage - 1) * itemsPerPage,
+                currentPage * itemsPerPage
+              )
+              .map((item) => {
+                return (
+                  <BlogCourse
+                    key={item.ID!}
+                    id={item.CourseID!}
+                    name={item.Course?.Name!}
+                    image={item.Course?.Image!}
+                  />
+                );
+              })}
+          </div>
+
+          <div className="home-pagination">
+            <button
+              onClick={() => setCurrentPage(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <CaretLeftOutlined />
+            </button>
+            <button
+              onClick={() => setCurrentPage(currentPage + 1)}
+              disabled={currentPage * itemsPerPage >= courseReg.length}
+            >
+              <CaretRightOutlined />
+            </button>
           </div>
         </div>
       </Layout>

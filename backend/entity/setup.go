@@ -189,6 +189,134 @@ func SetupDatabase() {
 	}
 	db.Model(&Course{}).Create(&CourseE)
 
+	Course1 := Course{
+		Name:     "นักพากย์ Esports",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    500,
+		Image:    "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Admin:	  AdminA,
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
+		Place:	  "Microsoft Team",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
+	}
+	db.Model(&Course{}).Create(&Course1)
+
+	Course2 := Course{
+		Name:     "นักพากย์ Esports",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    500,
+		Image:    "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Admin:	  AdminA,
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
+		Place:	  "Microsoft Team",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
+	}
+	db.Model(&Course{}).Create(&Course2)
+
+	Course3 := Course{
+		Name:     "นักพากย์ Esports",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    500,
+		Image:    "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Admin:	  AdminA,
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
+		Place:	  "Microsoft Team",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
+	}
+	db.Model(&Course{}).Create(&Course3)
+
+	Course4 := Course{
+		Name:     "นักพากย์ Esports",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    500,
+		Image:    "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Admin:	  AdminA,
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
+		Place:	  "Microsoft Team",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
+	}
+	db.Model(&Course{}).Create(&Course4)
+
+	Course5 := Course{
+		Name:     "นักพากย์ Esports",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    500,
+		Image:    "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Admin:	  AdminA,
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
+		Place:	  "Microsoft Team",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
+	}
+	db.Model(&Course{}).Create(&Course5)
+
+	Course6 := Course{
+		Name:     "นักพากย์ Esports",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    500,
+		Image:    "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Admin:	  AdminA,
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
+		Place:	  "Microsoft Team",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
+	}
+	db.Model(&Course{}).Create(&Course6)
+
+	Course7 := Course{
+		Name:     "นักพากย์ Esports",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    500,
+		Image:    "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Admin:	  AdminA,
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
+		Place:	  "Microsoft Team",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
+	}
+	db.Model(&Course{}).Create(&Course7)
+
+	Course8 := Course{
+		Name:     "นักพากย์ Esports",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    500,
+		Image:    "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+		Admin:	  AdminA,
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
+		Place:	  "Microsoft Team",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
+	}
+	db.Model(&Course{}).Create(&Course8)
+
 	PaymentStatusA := PaymentStatus{
 		Status: "รอการตรวจสอบ",
 	}

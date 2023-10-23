@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Layout, Carousel } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+import {
+  SearchOutlined,
+  CaretRightOutlined,
+  CaretLeftOutlined,
+} from "@ant-design/icons";
 
 import { CourseInterface } from "../../interfaces/ICourse";
 import { NewsInterface } from "../../interfaces/INews";
@@ -27,6 +31,8 @@ function Home() {
   const [courses, setCourses] = useState<CourseInterface[]>([]);
   const navigate = useNavigate();
   const defaultSelectedKeys = ["1"];
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
 
   const fetchCourseByCourseStatusID = async () => {
     let res = await GetCoursesByCourseStatusID("1");
@@ -118,7 +124,10 @@ function Home() {
                   ? item
                   : item.Name?.toLowerCase().includes(search);
               })
-              .sort((a, b) => (b?.ID ?? 0) - (a?.ID ?? 0))
+              .slice(
+                (currentPage - 1) * itemsPerPage,
+                currentPage * itemsPerPage
+              )
               .map((item) => {
                 return (
                   <BlogCourse
@@ -129,6 +138,28 @@ function Home() {
                   />
                 );
               })}
+          </div>
+
+          <div className="home-pagination">
+            <button
+              onClick={() => setCurrentPage(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <CaretLeftOutlined />
+            </button>
+            <button
+              onClick={() => setCurrentPage(currentPage + 1)}
+              disabled={
+                currentPage * itemsPerPage >=
+                courses.filter((item) =>
+                  search.toLowerCase() === ""
+                    ? item
+                    : item.Name?.toLowerCase().includes(search)
+                ).length
+              }
+            >
+              <CaretRightOutlined />
+            </button>
           </div>
         </div>
       </Layout>

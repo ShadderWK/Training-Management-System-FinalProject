@@ -83,6 +83,34 @@
   max-width: calc(24.8% - 18px);
 }
 
+.home-pagination {
+  display: flex;
+  gap: 10px;
+}
+
+.home-pagination button {
+  background: var(--primary-blue-l1);
+
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 2px 5px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  font-size: 20px;
+  font-weight: 400;
+  font-family: IBM Plex Sans Thai;
+}
+
+.home-pagination button:hover {
+  background: var(--primary-b-pressed);
+  transform: scale(0.95);
+}
+
 @media (max-width: 1200px) {
   .home-container {
     padding: 18px;

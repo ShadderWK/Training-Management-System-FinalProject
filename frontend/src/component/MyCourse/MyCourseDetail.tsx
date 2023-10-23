@@ -6,10 +6,7 @@ import { FilePdfOutlined, ContactsOutlined } from "@ant-design/icons";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 
-import {
-  CheckCourseRegistrationByCourseID,
-  GetCourseRegistrationsByCourseID,
-} from "../../service/HttpClientService";
+import { GetCourseRegistrationsByCourseID } from "../../service/HttpClientService";
 
 import { CourseRegistrationInterface } from "../../interfaces/ICourseRegistration";
 
@@ -19,27 +16,15 @@ function MyCourseDetail() {
   const { id } = useParams();
   const Uid = localStorage.getItem("uid") + "";
   const [courseReg, setCourseReg] = useState<CourseRegistrationInterface>({});
-  const [check, setCheck] = useState<String>("");
   const [token, setToken] = useState<String>("");
   const [role, setRole] = useState<String>("");
   const navigate = useNavigate();
   const defaultSelectedKeys = ["2"];
 
-  const fetchCheckCourseRegistrationByCourseID = async () => {
-    let res = await CheckCourseRegistrationByCourseID(Uid, id + "", "2");
-    setCheck(res);
-
-    if (res === "not_checked") {
-      navigate(`/member/course/${id}`);
-    }
-  };
-
   const fetchCourseRegistrationsByCourseID = async () => {
     let res = await GetCourseRegistrationsByCourseID(Uid, id + "", "2");
     res && setCourseReg(res);
   };
-
-  console.log("Status =", check);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -56,7 +41,10 @@ function MyCourseDetail() {
       localStorage.clear();
     }
 
-    fetchCheckCourseRegistrationByCourseID();
+    window.addEventListener("popstate", () => {
+      navigate("/member/home");
+    });
+
     fetchCourseRegistrationsByCourseID();
   }, [navigate]);
 

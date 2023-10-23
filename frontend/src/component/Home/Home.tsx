@@ -55,6 +55,10 @@ function Home() {
 
     fetchNews();
     fetchCourseByCourseStatusID();
+
+    window.removeEventListener("popstate", () => {
+      navigate("/member/home");
+    });
   }, [navigate]);
 
   return (

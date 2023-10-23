@@ -95,6 +95,7 @@ function CoursePurchase() {
       let res = await CreateCourseRegistration(data);
       if (res.status) {
         setSuccess(true);
+        window.location.reload();
         window.location.href = "/member/home";
       } else {
         setError(true);
@@ -119,6 +120,10 @@ function CoursePurchase() {
     } else {
       localStorage.clear();
     }
+
+    window.addEventListener("popstate", () => {
+      navigate(`/member/course/${id}`);
+    });
   }, [navigate]);
 
   return (

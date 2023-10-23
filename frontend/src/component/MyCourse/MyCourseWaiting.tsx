@@ -9,9 +9,9 @@ import { CourseInterface } from "../../interfaces/ICourse";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 
-import "./CourseReg.css";
+import "./MyCourseWaiting.css";
 
-function CourseReg() {
+function MyCourseWaiting() {
   const { id } = useParams();
   const [token, setToken] = useState<String>("");
   const [role, setRole] = useState<String>("");
@@ -105,12 +105,7 @@ function CourseReg() {
                 )}
               </p>
 
-              <button
-                className="course-reg-buy"
-                onClick={() => navigate(`/member/course-purchase/${id}`)}
-              >
-                สั่งซื้อการอบรม
-              </button>
+              <button className="waiting-btn">รอการตรวจสอบ</button>
               <button
                 className="course-reg-back"
                 onClick={() => navigate(`/member/home`)}
@@ -125,4 +120,4 @@ function CourseReg() {
   );
 }
 
-export default CourseReg;
+export default MyCourseWaiting;

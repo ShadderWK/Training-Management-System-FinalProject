@@ -15,6 +15,8 @@ import CourseReg from "./component/CourseReg/CourseReg";
 import CoursePurchase from "./component/CourseReg/CoursePurchase";
 import MyCourse from "./component/MyCourse/MyCourse";
 import FAQ from "./component/FAQ/FAQ";
+import CheckCourse from "./component/MyCourse/CheckCourse";
+import MyCourseWaiting from "./component/MyCourse/MyCourseWaiting";
 
 //Page Admin
 import Admin from "./page/login/Admin";
@@ -64,6 +66,8 @@ function App() {
         <Route path="member/mycourse" element={<MyCourse />} />
         <Route path="member/faq" element={<FAQ />} />
         <Route path="member/mycourse/:id" element={<MyCourseDetail />} />
+        <Route path="member/check/:id" element={<CheckCourse />} />
+        <Route path="member/waiting/:id" element={<MyCourseWaiting />} />
 
         {/* Admin */}
         <Route path="admin" element={<Admin />} />

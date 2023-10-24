@@ -134,6 +134,13 @@ function Register() {
       setSuccess(true);
     } else {
       setError(true);
+      if (
+        res.message ===
+        'ERROR: duplicate key value violates unique constraint "idx_members_email" (SQLSTATE 23505)'
+      ) {
+        setErrorMessage("อีเมลนี้เคยถูกใช้สมัครสมาชิกไปแล้ว");
+        openNotificationWithIcon("warning");
+      }
     }
   };
 

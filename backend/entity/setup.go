@@ -189,6 +189,70 @@ func SetupDatabase() {
 	}
 	db.Model(&Course{}).Create(&CourseE)
 
+	CourseF := Course{
+		Name:     "ภาษาเยอรมันเบื้องต้น ระดับ A1 + เตรียมสอบ",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    1100,
+		Image:    "https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?auto=format&fit=crop&q=80&w=2021&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		Admin:	  AdminA,
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: 	  "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
+		Place:	  "Microsoft Team",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
+	}
+	db.Model(&Course{}).Create(&CourseF)
+
+	CourseG := Course{
+		Name:     "Healthy IF Masterclass",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    5100,
+		Image:    "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&q=80&w=1884&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		Admin:	  AdminA,
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: 	  "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
+		Place:	  "Microsoft Team",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
+	}
+	db.Model(&Course{}).Create(&CourseG)
+
+	CourseH := Course{
+		Name:     "Leadership Mindset คิดแบบผู้นำ",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    10000,
+		Image:    "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		Admin:	  AdminA,
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: 	  "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
+		Place:	  "Zoom",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
+	}
+	db.Model(&Course{}).Create(&CourseH)
+
+	CourseI := Course{
+		Name:     "How to Use Python in Excel",
+		Detail:   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		Price:    10,
+		Image:    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2015&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		Admin:	  AdminA,
+		LinkContact:  "https://www.facebook.com/",
+		QRContact: 	  "https://www.smartlevels.com/QR/WebSite?op=getpreview&type=def",
+		LinkFile:	  "https://www.africau.edu/images/default/sample.pdf",
+		CourseStatus: CourseStatusA,
+		Place:	  "Zoom",
+		StartTime: StartTimeA,
+		EndTime:   EndTimeA,
+	}
+	db.Model(&Course{}).Create(&CourseI)
+
 	PaymentStatusA := PaymentStatus{
 		Status: "รอการตรวจสอบ",
 	}
